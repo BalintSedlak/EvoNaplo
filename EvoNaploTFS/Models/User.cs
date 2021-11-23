@@ -21,8 +21,7 @@ namespace EvoNaploTFS.Models
         {
             Student,
             Mentor,
-            Admin,
-            Jani
+            Admin
         }
         public User()
         {

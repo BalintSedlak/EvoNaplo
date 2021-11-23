@@ -60,26 +60,6 @@ namespace EvoNaploTFS.Services
             return result;
         }
 
-        public IEnumerable<UserDTO> ListJanis()
-        {
-            var mostRecentSmesterId = _evoNaploContext.Semesters.Max(semester => semester.Id);
-            var UsersOnSemester = _evoNaploContext.UsersOnSemester.Where(usersOnSemester => usersOnSemester.SemesterId == mostRecentSmesterId);
-            var janis = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Jani);
-            List<UserDTO> result = new List<UserDTO>();
-            foreach (var jani in janis)
-            {
-                if (UsersOnSemester.Any(usersOnSemester => usersOnSemester.UserId == jani.Id))
-                {
-                    result.Add(new UserDTO(jani, true));
-                }
-                else
-                {
-                    result.Add(new UserDTO(jani, false));
-                }
-            }
-            return result;
-        }
-
         //public async Task<IEnumerable<User>> EditStudent(int id, StudentDto studentDto)
         //{
         //    _logger.LogInformation($"{id} ID-vel rendelkező diák keresése");

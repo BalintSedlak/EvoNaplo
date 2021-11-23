@@ -11,8 +11,12 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Interfaces\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Interfaces\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Interfaces\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -25,7 +29,6 @@
     <Folder Include="ClientApp\src\AppPages\MentorAddPage\" />
     <Folder Include="ClientApp\src\AppPages\AdminListPage\" />
     <Folder Include="ClientApp\src\AppPages\StudentAddPage\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

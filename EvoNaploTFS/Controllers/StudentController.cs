@@ -40,12 +40,6 @@ namespace EvoNaploTFS.Controllers
             return _studentService.ListStudents();
         }
 
-        [HttpGet("Janik")]
-        public IEnumerable<UserDTO> GetJanis()
-        {
-            return _studentService.ListJanis();
-        }
-
         ////PUT
         //// api/Student/edit jsonben paramból id és bodyból studentDto
         //[HttpPut("edit")]

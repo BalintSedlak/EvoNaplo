@@ -21,9 +21,6 @@
                 case User.RoleTypes.Admin:
                     role = "Admin";
                     break;
-                case User.RoleTypes.Jani:
-                    role = "Jani";
-                    break;
                 default:
                     break;
             }
