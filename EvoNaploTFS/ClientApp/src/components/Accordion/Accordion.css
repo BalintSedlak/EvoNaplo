@@ -1,0 +1,82 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Roboto:400,600&display=swap");
+
+/* Style the accordion section */
+.accordion__section {
+    display: flex;
+    flex-direction: column;
+}
+.accordion p{
+    margin: 0 0;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: rgba(40,200, 0,0.6);
+    color: #444;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    transition: background-color 0.6s ease;
+    vertical-align: middle;
+    text-align: center;
+}
+
+    .accordion:nth-child(2n+1) {
+        margin-top: 5px;
+    }
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .accordion:hover,
+    .active {
+        background-color: #ccc;
+    }
+
+/* Style the accordion content title */
+.accordion__title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Style the accordion chevron icon */
+.accordion__icon {
+    margin-left: auto;
+    transition: transform 0.6s ease;
+}
+
+/* Style to rotate icon when state is active */
+.rotate {
+    transform: rotate(90deg);
+}
+
+/* Style the accordion content panel. Note: hidden by default */
+.accordion__content {
+    background-color: white;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+}
+
+/* Style the accordion content text */
+.accordion__text {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 5px;
+}
+.AccordionContentTable
+{
+    table-layout: fixed;
+    width: 100%;
+}
+.AccordionContentTable tr td:first-child
+{
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.AccordionContentTable tr:nth-child(even) {
+    background-color: rgba(40,200, 0,0.1);
+}

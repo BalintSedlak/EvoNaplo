@@ -1,0 +1,63 @@
+﻿.DataListTable {
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.2) !important;
+    border-radius: 10px !important;
+    -moz-border-radius: 10px;
+    border-collapse: separate;
+}
+tbody {
+    border-bottom: none !important;
+}
+
+    .DataListTable tr td {
+        padding: 5px;
+    }
+
+.DataListTable thead tr:first-child {
+    background: linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+    background-color: #77d42a;
+    color: rgb(240,240,240);
+}
+    .DataListTable thead tr th:first-child {
+        border-top-left-radius: 10px;
+    }
+    .DataListTable thead tr th:last-child {
+        border-top-right-radius: 10px;
+    }
+    .DataListTable thead tr th {
+        padding: 5px;
+    }
+
+.DataListTable tr:nth-child(2n+1) {
+    background-color: #f0f0f0;
+}
+.DataListTable tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.DataListTable tr:hover {
+    background-color: lightsteelblue;
+}
+
+    .DataListTable tr:last-child td:first-child {
+        border-bottom-left-radius: 10px;
+    }
+    .DataListTable tr:last-child td:last-child {
+        border-bottom-right-radius: 10px;
+    }
+
+.ActionIcon {
+    cursor: pointer;
+}
+
+.EditIcon:hover {
+    color: sandybrown;
+}
+
+.RemoveIcon:hover {
+    color: firebrick;
+}
+
+.ViewIcon:hover {
+    color: forestgreen;
+}

@@ -1,0 +1,57 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Roboto:400,600&display=swap");
+
+/* Style the buttons that are used to open and close the Dropdownmenu panel */
+.Dropdownmenu {
+    background-color: transparent;
+    color: #f8f9fa;
+    cursor: pointer;
+
+    align-items: center;
+    vertical-align: middle;
+    position: relative;
+    min-width: 100px;
+    display:inline-block;
+}
+
+/* Style the Dropdownmenu content title */
+.DropdownmenuTitle {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Style the Dropdownmenu content panel. Note: hidden by default */
+.DropdownmenuContent {
+    background-color: white;
+    overflow: hidden;
+    position: absolute;
+    transition: max-height 0.3s ease;
+    min-width: 100px;
+    box-shadow: 0px 0px 4px #000000;
+    display: none;
+}
+.Dropdownmenu:hover .DropdownmenuContent {
+    display: block;
+}
+
+    .DropdownmenuContent ul {
+        list-style-type: none;
+        padding-left: 15px;
+        margin: 0;
+    }
+
+    .DropdownmenuContent a {
+        text-decoration: none !important;
+        color: rgba(0,0,0,0.7);
+    }
+
+        .DropdownmenuContent a:hover .LinkSelector {
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid green;
+            position: absolute;
+            margin-left: -10px;
+            margin-top: 5px;
+        }

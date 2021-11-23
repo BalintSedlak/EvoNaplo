@@ -1,0 +1,22 @@
+/* Provide sufficient contrast against white background */
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+input[type="text"] {
+    border: none;
+    border-bottom: 1px solid limegreen;
+    outline: none;
+}
+body {
+    background-color: #E7E7E1;
+}
+.text-justify {
+    text-align: justify;
+}

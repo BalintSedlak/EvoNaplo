@@ -1,0 +1,73 @@
+﻿a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.NavMenuColor {
+    background: linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+    background-color: #77d42a;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.NavLinkFonts {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: #f8f9fa !important;
+    text-align: center;
+}
+.nav-item {
+    margin-top: 0px !important;
+    outline: none;
+    text-align: center;
+    transition: all 1s;
+}
+
+.nav-item {
+    border-left: 2px solid rgba(0,0,0,0.1) !important;
+}
+
+    .nav-item:last-child {
+        border-right: 2px solid rgba(0,0,0,0.1) !important;
+    }
+    .nav-item:hover {
+        background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+        background-color: #5cb811;
+        transition: all 1s;
+    }
+    .nav-item:active {
+        border: none;
+    }
+    .nav-item a, .DropdownmenuTitle {
+        display: block;
+        cursor: pointer;
+        padding: 0.75rem 1rem;
+    }
+.colspan2{
+    column-count: 2;
+    text-align:center;
+}
+.DropdownmenuContent a {
+    padding: 0px 10px;
+}
+
+a {
+    outline: none !important;
+}

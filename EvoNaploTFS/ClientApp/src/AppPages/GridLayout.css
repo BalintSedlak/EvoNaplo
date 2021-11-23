@@ -1,0 +1,16 @@
+﻿.grid-table {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 20px;
+}
+
+.grid-card {
+    padding: 15px;
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.1);
+    display: block;
+    max-width: 503px;
+    border-radius: 4px;
+    background-color: white;
+}

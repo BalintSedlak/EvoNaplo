@@ -1,0 +1,28 @@
+﻿body {
+}
+
+.accordionTitle
+{
+    padding: 10px;
+}
+.accordionHolder
+{
+    margin: 0;
+    padding: 0 !important;
+    background-color: limegreen;
+}
+.accordionContent
+{
+    padding: 10px;
+    display: none;
+    overflow-y: hidden;
+    background-color: white;
+}
+
+.accordionInput:checked ~ .accordionContent {
+    display: block;
+}
+.accordionInput
+{
+    display: none;
+}
