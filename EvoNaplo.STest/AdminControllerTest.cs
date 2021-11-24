@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EvoNaplo.DataAccessLayer;
 using System.Linq;
 using EvoNaplo.TestHelper;
+using System.Threading.Tasks;
 
 namespace EvoNaplo.STest
 {
@@ -35,14 +36,14 @@ namespace EvoNaplo.STest
         }
 
         [Test]
-        public void PostAddAdmin_AddValidUser_Successful()
+        public async Task PostAddAdmin_AddValidUser_SuccessfulAsync()
         {
             //Arrange
             int expectedNumberOfAdmins = _evoNaploContext.Users.Count() + 1;
             User newUser = UserHelper.CreateDefaultUser(User.RoleTypes.Admin);
 
             //Act
-            _adminController.PostAddAdmin(newUser);
+            await _adminController.PostAddAdmin(newUser);
 
             //Assert
             int actualNumberOfAdmins = _evoNaploContext.Users.Count();
