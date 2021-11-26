@@ -21,11 +21,10 @@ namespace EvoNaplo.IntegrationTest
         private int _OriginalNumberOfMentors = 3;
         private int _OriginalNumberOfStudent = 12;
 
-        [SetUp]
-        public void SetUp()
+        public void SetUp(string databaseName)
         {
             _evoNaploContext = EvoNaploContextHelper
-                .CreateInMemoryDatabaseContext()
+                .CreateInMemoryDatabaseContext(databaseName)
                 .CreateDefaultUsers(_OriginalNumberOfAdmins, User.RoleTypes.Admin)
                 .CreateDefaultUsers(_OriginalNumberOfMentors, User.RoleTypes.Mentor)
                 .CreateDefaultUsers(_OriginalNumberOfStudent, User.RoleTypes.Student);
@@ -47,6 +46,7 @@ namespace EvoNaplo.IntegrationTest
         public async Task PostAddAdmin_AddValidUser_Successful()
         {
             //Arrange
+            SetUp(nameof(PostAddAdmin_AddValidUser_Successful));
             int expectedNumberOfAdmins = _OriginalNumberOfAdmins + _OriginalNumberOfMentors + _OriginalNumberOfStudent + 1;
             User newUser = UserHelper.CreateDefaultUser(User.RoleTypes.Admin);
 

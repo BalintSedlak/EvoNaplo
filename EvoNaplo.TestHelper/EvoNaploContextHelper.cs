@@ -6,10 +6,10 @@ namespace EvoNaplo.TestHelper
 {
     public static class EvoNaploContextHelper
     {
-        public static EvoNaploContext CreateInMemoryDatabaseContext()
+        public static EvoNaploContext CreateInMemoryDatabaseContext(string databaseName)
         {
             var options = new DbContextOptionsBuilder<EvoNaploContext>()
-                        .UseInMemoryDatabase(databaseName: "Test")
+                        .UseInMemoryDatabase(databaseName)
                         .Options;
 
             EvoNaploContext evoNaploContext = new EvoNaploContext(options);
