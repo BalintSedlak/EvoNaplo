@@ -28,7 +28,7 @@ namespace EvoNaplo.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<UserDTO> GetAdmin()
+        public IEnumerable<UserDTO> GetAdmins()
         {
             return _adminService.ListAdmins();
         }

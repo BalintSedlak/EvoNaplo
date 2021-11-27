@@ -26,7 +26,7 @@ namespace EvoNaplo.Controllers
         }
 
         [HttpPost("AddAttendanceSheet")]
-        public async Task<int> PostAddStudent([FromBody] AttendanceSheet attendanceSheet)
+        public async Task<int> PostAddAttendanceSheet([FromBody] AttendanceSheet attendanceSheet)
         {
             await _attendanceSheetService.AddAttendanceSheet(attendanceSheet);
             return StatusCodes.Status200OK;
@@ -40,7 +40,7 @@ namespace EvoNaplo.Controllers
         }
 
         [HttpDelete("DELETE")]
-        public async Task<int> DeleteProject(int id)
+        public async Task<int> DeleteAttendanceSheet(int id)
         {
             await _attendanceSheetService.DeleteAttendanceSheet(id);
             return StatusCodes.Status200OK;
