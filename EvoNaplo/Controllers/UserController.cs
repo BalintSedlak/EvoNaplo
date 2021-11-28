@@ -23,19 +23,19 @@ namespace EvoNaplo.Controllers
         }
         
         [HttpGet("Students")]
-        public IEnumerable<UserDTO> GetStudent()
+        public IEnumerable<UserDTO> GetStudents()
         {
             return _userService.ListStudents();
         }
 
         [HttpGet("Mentors")]
-        public IEnumerable<UserDTO> GetMentor()
+        public IEnumerable<UserDTO> GetMentors()
         {
             return _userService.ListActiveMentors();
         }
 
         [HttpGet("Admins")]
-        public IEnumerable<UserDTO> GetAdmin()
+        public IEnumerable<UserDTO> GetAdmins()
         {
             return _userService.ListActiveAdmins();
         }
