@@ -163,8 +163,65 @@ namespace EvoNaplo.IntegrationTest
 
 
         }
+        [Test]
+        public void GetMyProjects()
+        {
+            //Arrange
+            SetUp(nameof(GetMyProjects));
+            ProjectDTO projectDTO= new(GetSampleProject(true));
+            User user = UserHelper.CreateDefaultUser(User.RoleTypes.Student);
+            _evoNaploContext.Users.Add(user);
+            _evoNaploContext.SaveChanges();
+            UserProject userProject = new(user.Id,1);
+            _evoNaploContext.UserProjects.Add(userProject);
+            _evoNaploContext.SaveChanges();
 
+            //Act
+            List<ProjectDTO> projects= new(_projectController.GetMyProjects(user.Id));
 
+            //Assert
+            Assert.IsTrue(projects.First(p=> p.Id==projectDTO.Id).Description == projectDTO.Description);
+            Assert.IsTrue(projects.First(p => p.Id == projectDTO.Id).ProjectName == projectDTO.ProjectName);
+
+        }
+        [Test]
+        public async Task JoinProject()
+        {
+            //Assert
+            SetUp(nameof(JoinProject));
+            Project project = new(GetSampleProject(true));
+            User user = new(UserHelper.CreateDefaultUser(User.RoleTypes.Student));
+
+            //Act
+            await _projectController.JoinProject(user.Id, project.Id);
+            _evoNaploContext.SaveChanges();
+
+            //Assert
+            Assert.IsTrue(_evoNaploContext.UserProjects.FirstOrDefault(u => u.UserId == user.Id) != null);
+            Assert.AreEqual(_evoNaploContext.UserProjects.FirstOrDefault(u => u.UserId == user.Id).ProjectId, project.Id);
+
+        }
+        [Test]
+        public async Task LeaveProject()
+        {
+            //Arrange
+            SetUp(nameof(LeaveProject));
+            ProjectDTO projectDTO = new(GetSampleProject(true));
+            User user = UserHelper.CreateDefaultUser(User.RoleTypes.Student);
+            _evoNaploContext.Users.Add(user);
+            _evoNaploContext.SaveChanges();
+            UserProject userProject = new(user.Id, 1);
+            _evoNaploContext.UserProjects.Add(userProject);
+            _evoNaploContext.SaveChanges();
+
+            //Act
+            _evoNaploContext.Remove(userProject);
+            _evoNaploContext.SaveChanges();
+
+            //Assert
+            Assert.IsFalse(_evoNaploContext.UserProjects.Contains(userProject));
+
+        }
 
 
         private Project GetSampleProject(bool add)
