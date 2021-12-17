@@ -1,4 +1,4 @@
-﻿using EvoNaplo.Models.DTO;
+﻿using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

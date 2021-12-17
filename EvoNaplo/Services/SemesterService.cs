@@ -1,6 +1,6 @@
-﻿using EvoNaplo.DataAccessLayer;
-using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
+﻿using EvoNaplo.Common.DataAccessLayer;
+using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -87,7 +87,7 @@ namespace EvoNaplo.Services
         public async Task JoinSemester(int id)
         {
 
-            await _evoNaploContext.UsersOnSemester.AddAsync(new EvoNaplo.Models.TableConnectors.UsersOnSemester(id,_evoNaploContext.Semesters.Max(s => s.Id)));
+            await _evoNaploContext.UsersOnSemester.AddAsync(new EvoNaplo.Common.Models.TableConnectors.UsersOnSemester(id,_evoNaploContext.Semesters.Max(s => s.Id)));
             _evoNaploContext.SaveChanges();
         }
     }

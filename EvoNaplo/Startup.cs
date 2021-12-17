@@ -1,7 +1,5 @@
-using EvoNaplo.DataAccessLayer;
 using EvoNaplo.Services;
 using EvoNaplo.Helpers;
-using EvoNaplo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -9,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using EvoNaplo.UserDomain.Services;
+using EvoNaplo.Common.DataAccessLayer;
 
 namespace EvoNaplo
 {
@@ -40,6 +40,8 @@ namespace EvoNaplo
             services.AddScoped<StudentService>();
             services.AddScoped<AdminService>();
             services.AddScoped<UserService>();
+
+
             services.AddScoped<ProjectService>();
             services.AddScoped<LoginService>();
             services.AddScoped<JwtService>();

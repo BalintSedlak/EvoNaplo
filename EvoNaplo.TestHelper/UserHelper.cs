@@ -1,5 +1,5 @@
 ﻿using System;
-using EvoNaplo.Models;
+using EvoNaplo.Common.Models;
 
 namespace EvoNaplo.TestHelper
 {
@@ -16,19 +16,19 @@ namespace EvoNaplo.TestHelper
             _adminCounter = 0;
         }
 
-        public static User CreateDefaultUser(User.RoleTypes userType)
+        public static User CreateDefaultUser(RoleType userType)
         {
             User user;
 
             switch (userType)
             {
-                case User.RoleTypes.Student:
+                case RoleType.Student:
                     user = CreateStudent();
                     break;
-                case User.RoleTypes.Mentor:
+                case RoleType.Mentor:
                     user = CreateMentor();
                     break;
-                case User.RoleTypes.Admin:
+                case RoleType.Admin:
                     user = CreateAdmin();
                     break;
                 default:
@@ -47,7 +47,7 @@ namespace EvoNaplo.TestHelper
                 Email = "new.admin@company.com",
                 PhoneNumber = "+36101234567",
                 Password = "Password123456",
-                Role = User.RoleTypes.Student
+                Role = RoleType.Student
             };
         }
 
@@ -60,7 +60,7 @@ namespace EvoNaplo.TestHelper
                 Email = "new.admin@company.com",
                 PhoneNumber = "+36101234567",
                 Password = "Password123456",
-                Role = User.RoleTypes.Mentor
+                Role = RoleType.Mentor
             };
         }
 
@@ -73,7 +73,7 @@ namespace EvoNaplo.TestHelper
                 Email = "new.admin@company.com",
                 PhoneNumber = "+36101234567",
                 Password = "Password123456",
-                Role = User.RoleTypes.Admin
+                Role = RoleType.Admin
             };
         }
     }

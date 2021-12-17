@@ -1,8 +1,6 @@
-﻿using EvoNaplo.DataAccessLayer;
-using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using EvoNaplo.Common.DataAccessLayer;
+using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,11 +18,11 @@ namespace EvoNaplo.Services
         
         public async Task<IEnumerable<User>> AddStudent(User user)
         {
-            user.Role = User.RoleTypes.Student;
+            user.Role = RoleType.Student;
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await _evoNaploContext.Users.AddAsync(user);
             _evoNaploContext.SaveChanges();
-            var students = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Student);
+            var students = _evoNaploContext.Users.Where(m => m.Role == RoleType.Student);
             return students.ToList();
         }
 
@@ -44,7 +42,7 @@ namespace EvoNaplo.Services
         {
             var mostRecentSmesterId = _evoNaploContext.Semesters.Max(semester => semester.Id);
             var UsersOnSemester = _evoNaploContext.UsersOnSemester.Where(usersOnSemester => usersOnSemester.SemesterId == mostRecentSmesterId);
-            var students = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Student);
+            var students = _evoNaploContext.Users.Where(m => m.Role == RoleType.Student);
             List<UserDTO> result = new List<UserDTO>();
             foreach (var student in students)
             {
