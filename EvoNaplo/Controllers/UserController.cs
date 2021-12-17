@@ -1,6 +1,6 @@
-﻿using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
-using EvoNaplo.Models.TableConnectors;
+﻿using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.TableConnectors;
 using EvoNaplo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +61,7 @@ namespace EvoNaplo.Controllers
         }
 
         [HttpPut("EditUserRole")]
-        public async Task<int> EditUserRole([FromBody] User user, User.RoleTypes newRole)
+        public async Task<int> EditUserRole([FromBody] User user, RoleType newRole)
         {
             await _userService.EditUserRole(user, newRole);
             return StatusCodes.Status200OK;

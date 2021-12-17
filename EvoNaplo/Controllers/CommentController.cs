@@ -1,5 +1,5 @@
-﻿using EvoNaplo.Models.DTO;
-using EvoNaplo.Models.TableConnectors;
+﻿using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.TableConnectors;
 using EvoNaplo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

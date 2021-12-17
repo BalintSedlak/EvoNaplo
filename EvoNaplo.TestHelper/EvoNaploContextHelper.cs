@@ -1,6 +1,7 @@
-﻿using EvoNaplo.DataAccessLayer;
-using EvoNaplo.Models;
+﻿using EvoNaplo.Common.Models;
 using Microsoft.EntityFrameworkCore;
+using EvoNaplo.Common.DataAccessLayer;
+using System.Linq;
 
 namespace EvoNaplo.TestHelper
 {
@@ -16,7 +17,7 @@ namespace EvoNaplo.TestHelper
             return evoNaploContext;
         }
 
-        public static EvoNaploContext CreateDefaultUsers(this EvoNaploContext evoNaploContext, int numberOfUsers, User.RoleTypes roleTypes)
+        public static EvoNaploContext CreateDefaultUsers(this EvoNaploContext evoNaploContext, int numberOfUsers, RoleType roleTypes)
         {
             for (int i = 0; i < numberOfUsers; i++)
             {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
-using EvoNaplo.Services;
+using EvoNaplo.Common.DomainFacades;
+using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,24 +12,24 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class MentorController : ControllerBase
     {
-        private readonly MentorService _mentorService;
+        private readonly IUserFacade _userFacade;
 
-        public MentorController(MentorService MentorService)
+        public MentorController(IUserFacade userFacade)
         {
-            _mentorService = MentorService;
+            _userFacade = userFacade;
         }
 
         [HttpPost]
         public async Task<int> PostAddMentor([FromBody] User user)
         {
-            await _mentorService.AddMentor(user);
+            await _userFacade.AddUserAsync(user);
             return StatusCodes.Status200OK;
         }
 
         [HttpGet]
-        public IEnumerable<UserDTO> GetMentor()
+        public async Task<IEnumerable<UserDTO>> GetMentor()
         {
-            return _mentorService.ListMentors();
+            return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Mentor);
         }
     }
 }

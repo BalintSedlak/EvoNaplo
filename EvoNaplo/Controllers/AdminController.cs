@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
-using EvoNaplo.Services;
+using EvoNaplo.Common.DomainFacades;
+using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,24 +13,24 @@ namespace EvoNaplo.Controllers
 
     public class AdminController : ControllerBase
     {
-        private readonly AdminService _adminService;
+        private readonly IUserFacade _userFacade;
 
-        public AdminController(AdminService AdminService)
+        public AdminController(IUserFacade userFacade)
         {
-            _adminService = AdminService;
+            _userFacade = userFacade;
         }
 
         [HttpPost]
         public async Task<int> PostAddAdmin([FromBody] User user)
         {
-            await _adminService.AddAdmin(user);
+            await _userFacade.AddUserAsync(user);
             return StatusCodes.Status200OK;
         }
 
         [HttpGet]
-        public IEnumerable<UserDTO> GetAdmin()
+        public async Task<IEnumerable<UserDTO>> GetAdmin()
         {
-            return _adminService.ListAdmins();
+            return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Admin);
         }
     }
 }

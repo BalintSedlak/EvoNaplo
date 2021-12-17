@@ -1,5 +1,5 @@
-﻿using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
+﻿using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

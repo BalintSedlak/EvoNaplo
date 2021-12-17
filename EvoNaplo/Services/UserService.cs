@@ -1,7 +1,7 @@
-﻿using EvoNaplo.DataAccessLayer;
-using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
-using EvoNaplo.Models.TableConnectors;
+﻿using EvoNaplo.Common.DataAccessLayer;
+using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.TableConnectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace EvoNaplo.Services
                 return new List<UserDTO>();
             var mostRecentSmesterId = _evoNaploContext.Semesters.Max(semester => semester.Id);
             var UsersOnSemester = _evoNaploContext.UsersOnSemester.Where(usersOnSemester => usersOnSemester.SemesterId == mostRecentSmesterId).ToList();
-            var students = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Student).ToList();
+            var students = _evoNaploContext.Users.Where(m => m.Role == RoleType.Student).ToList();
             List<UserDTO> result = new List<UserDTO>();
             foreach (var student in students)
             {
@@ -35,6 +35,7 @@ namespace EvoNaplo.Services
                     result.Add(new UserDTO(student, false));
                 }
             }
+
             return result;
         }
         public IEnumerable<UserDTO> ListActiveMentors()
@@ -43,7 +44,7 @@ namespace EvoNaplo.Services
                 return new List<UserDTO>();
             var mostRecentSmesterId = _evoNaploContext.Semesters.Max(semester => semester.Id);
             var UsersOnSemester = _evoNaploContext.UsersOnSemester.Where(usersOnSemester => usersOnSemester.SemesterId == mostRecentSmesterId).ToList();
-            var mentors = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Mentor).ToList();
+            var mentors = _evoNaploContext.Users.Where(m => m.Role == RoleType.Mentor).ToList();
             List<UserDTO> result = new List<UserDTO>();
             foreach (var mentor in mentors)
             {
@@ -56,10 +57,11 @@ namespace EvoNaplo.Services
                     result.Add(new UserDTO(mentor, false));
                 }
             }
+
             return result;
         }
 
-        internal async Task EditUserRole(User user, User.RoleTypes newRole)
+        internal async Task EditUserRole(User user, RoleType newRole)
         {
                 var UserToEdit = await _evoNaploContext.Users.FindAsync(user.Id);
                 UserToEdit.Role = newRole;
@@ -72,7 +74,7 @@ namespace EvoNaplo.Services
                 return new List<UserDTO>();
             var mostRecentSmesterId = _evoNaploContext.Semesters.Max(semester => semester.Id);
             var UsersOnSemester = _evoNaploContext.UsersOnSemester.Where(usersOnSemester => usersOnSemester.SemesterId == mostRecentSmesterId).ToList();
-            var admins = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Admin).ToList();
+            var admins = _evoNaploContext.Users.Where(m => m.Role == RoleType.Admin).ToList();
             List<UserDTO> result = new List<UserDTO>();
             foreach (var admin in admins)
             {
@@ -85,6 +87,7 @@ namespace EvoNaplo.Services
                     result.Add(new UserDTO(admin, false));
                 }
             }
+
             return result;
         }
 

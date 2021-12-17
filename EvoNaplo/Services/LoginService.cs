@@ -1,11 +1,7 @@
-﻿using EvoNaplo.DataAccessLayer;
-using EvoNaplo.Models;
-using EvoNaplo.Models.DTO;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using EvoNaplo.Common.DataAccessLayer;
+using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.DTO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EvoNaplo.Services
 {
