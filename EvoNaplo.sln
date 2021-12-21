@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.TestHelper", "EvoN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.UserDomain", "EvoNaplo.UserDomain\EvoNaplo.UserDomain.csproj", "{34D11B5D-93D5-40D6-A04A-DAAACF24F862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.Common", "EvoNaplo.Common\EvoNaplo.Common.csproj", "{02F1B3EF-A43C-40A7-9083-1102F73E289E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Common", "EvoNaplo.Common\EvoNaplo.Common.csproj", "{02F1B3EF-A43C-40A7-9083-1102F73E289E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.Common.UnitTest", "EvoNaplo.Common.UnitTest\EvoNaplo.Common.UnitTest.csproj", "{8F20896F-72A2-44AA-81DA-7358993D9948}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
