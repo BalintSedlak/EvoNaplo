@@ -4,6 +4,7 @@ using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.TestHelper;
 using EvoNaplo.UserDomain.Facades;
+using EvoNaplo.UserDomain.Models;
 using EvoNaplo.UserDomain.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
