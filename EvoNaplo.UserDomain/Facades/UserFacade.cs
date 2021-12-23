@@ -2,6 +2,7 @@
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.UserDomain.Services;
 using EvoNaplo.Common.DomainFacades;
+using EvoNaplo.UserDomain.Models;
 
 namespace EvoNaplo.UserDomain.Facades
 {
