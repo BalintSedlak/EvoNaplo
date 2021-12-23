@@ -1,9 +1,4 @@
-﻿using EvoNaplo.Common.Models.DTO;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EvoNaplo.Common.Models
 {
@@ -25,6 +20,7 @@ namespace EvoNaplo.Common.Models
             StartDate = semester.StartDate;
             EndDate = semester.EndDate;
             IsAppliable = semester.IsAppliable;
+            
         }
     }
 }

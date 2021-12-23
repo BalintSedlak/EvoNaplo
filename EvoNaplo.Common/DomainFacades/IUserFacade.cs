@@ -5,8 +5,9 @@ namespace EvoNaplo.Common.DomainFacades
 {
     public interface IUserFacade
     {
-        Task AddUserAsync(User user);
+        //TODO
+        //Task AddUserAsync(User user);
         Task<IEnumerable<UserDTO>> GetAllUserFromRoleTypeAsync(RoleType roleType);
-        Task<User> GetUser(int userId);
+        //Task<User> GetUser(int userId);
     }
 }
