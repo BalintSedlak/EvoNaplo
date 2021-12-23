@@ -15,21 +15,5 @@ namespace EvoNaplo.Common.Models.DTO
         {
             Id = -1;
         }
-
-        public UserDTO(User user, bool isActive)
-        {
-            Id = user.Id;
-            IsActive = isActive ? "Active" : "Inactive";
-            Name = $"{user.FirstName} {user.LastName}";
-            Email = user.Email;
-            if (!string.IsNullOrEmpty(user.PhoneNumber))
-            {
-                PhoneNumber = user.PhoneNumber;
-            }
-            else
-            {
-                PhoneNumber = "No data";
-            }
-        }
     }
 }
