@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using EvoNaplo.Helpers;
 using EvoNaplo.Services;
+using EvoNaplo.Common.DomainFacades;
+using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Exceptions;
 
 namespace EvoNaplo.Controllers
 {
@@ -9,39 +11,31 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class SessionController : ControllerBase
     {
+        private readonly IUserFacade _userFacade;
+        private readonly SessionService _sessionService;
 
-
-        private readonly JwtService jwtService;
-        private readonly UserService userService;
-        private readonly SessionService sessionService;
-
-        public SessionController(JwtService _jwtService, UserService _userService,SessionService _sessionService)
+        public SessionController(IUserFacade userFacade,SessionService sessionService)
         {
-            jwtService = _jwtService;
-            userService = _userService;
-            sessionService = _sessionService;
+            _userFacade = userFacade;
+            _sessionService = sessionService;
         }
 
+        //TODO: Move to AuthController?
         [HttpGet]
         public IActionResult GetSession()
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
+                string jwt = Request.Cookies["jwt"];
+                UserDTO user = _userFacade.GetUserByJwt(jwt);
+                var session = _sessionService.GetSessionDTO(user);
 
-                var token = jwtService.Verify(jwt);
-
-                int userId = int.Parse(token.Issuer);
-
-                var user = userService.GetUserToEditById(userId);
-
-                var session = sessionService.GetSessionDTO(user);
                 return Ok(session);
             }
-            catch (Exception)
+            catch (ServiceException ex)
             {
-
-                return Unauthorized();
+                var statuscode = StatusCode(ex.HttpStatusCode.ConvertToInt(), ex.Message);
+                return statuscode;
             }
         }
     }

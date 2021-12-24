@@ -1,10 +1,9 @@
-﻿using EvoNaplo.Services;
-using EvoNaplo.Helpers;
-using EvoNaplo.Common.Models;
-using EvoNaplo.Common.Models.DTO;
-using Microsoft.AspNetCore.Http;
+﻿using EvoNaplo.Common.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using EvoNaplo.Common.DomainFacades;
+using EvoNaplo.Common.Exceptions;
+using Microsoft.AspNetCore.Http;
 
 namespace EvoNaplo.Controllers
 {
@@ -12,29 +11,19 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly LoginService loginService;
-        private readonly JwtService jwtService;
-        private readonly UserService userService;
+        private readonly IUserFacade _userFacade;
 
-        public AuthController(LoginService _loginService, JwtService _jwtService, UserService _userService)
+        public AuthController(IUserFacade userFacade)
         {
-            loginService = _loginService;
-            jwtService = _jwtService;
-            userService = _userService;
+            _userFacade = userFacade;
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] LoginDTO loginDTO)
+        public IActionResult Login([FromBody] LoginViewModel loginDTO)
         {
-            User user = loginService.LogInUser(loginDTO);
-            if (user == null)
+            try
             {
-                return BadRequest(new { message = "No such user" });
-            }
-
-            if (BCrypt.Net.BCrypt.Verify(loginDTO.password, user.Password))
-            {
-                var jwt = jwtService.GenerateToken(user.Id);
+                string jwt = _userFacade.Login(loginDTO);
 
                 Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
@@ -42,12 +31,13 @@ namespace EvoNaplo.Controllers
                 });
                 return Ok(new
                 {
-                    message="success"
+                    message = "success"
                 });
             }
-            else
+            catch (ServiceException ex)
             {
-                return BadRequest(new { message = "Bad password" });
+                var statuscode = StatusCode(ex.HttpStatusCode.ConvertToInt(), ex.Message);
+                return statuscode;
             }
         }
 
@@ -56,20 +46,15 @@ namespace EvoNaplo.Controllers
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
-
-                var token = jwtService.Verify(jwt);
-
-                int userId = int.Parse(token.Issuer);
-
-                var user = userService.GetUserById(userId);
+                string jwt = Request.Cookies["jwt"];
+                UserDTO user = _userFacade.GetUserByJwt(jwt);
 
                 return Ok(user);
             }
-            catch (Exception)
+            catch (ServiceException ex)
             {
-
-                return Unauthorized();
+                var statuscode = StatusCode(ex.HttpStatusCode.ConvertToInt(), ex.Message);
+                return statuscode;
             }
         }
 

@@ -1,12 +1,11 @@
-﻿using EvoNaplo.Common.Models;
+﻿using EvoNaplo.Common.DomainFacades;
+using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
-using EvoNaplo.Common.Models.TableConnectors;
-using EvoNaplo.Services;
+using EvoNaplo.UserDomain.Facades;
+using EvoNaplo.UserDomain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EvoNaplo.Controllers
@@ -15,55 +14,55 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserFacade _userFacade;
 
-        public UserController(UserService UserService)
+        public UserController(UserFacade userFacade)
         {
-            _userService = UserService;
+            _userFacade = userFacade;
         }
         
         [HttpGet("Students")]
-        public IEnumerable<UserDTO> GetStudent()
+        public async Task<IEnumerable<UserDTO>> GetStudentAsync()
         {
-            return _userService.ListStudents();
+            return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Student);
         }
 
         [HttpGet("Mentors")]
-        public IEnumerable<UserDTO> GetMentor()
+        public async Task<IEnumerable<UserDTO>> GetMentorAsync()
         {
-            return _userService.ListActiveMentors();
+            return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Mentor);
         }
 
         [HttpGet("Admins")]
-        public IEnumerable<UserDTO> GetAdmin()
+        public async Task<IEnumerable<UserDTO>> GetAdminAsync()
         {
-            return _userService.ListActiveAdmins();
+            return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Admin);
         }
 
         [HttpGet("GetUserById")]
         public UserDTO GetUserById(int id)
         {
-            return _userService.GetUserById(id);
+            return _userFacade.GetUser(id);
         }
 
         [HttpGet("GetUserToEditById")]
-        public User GetUserToEditById(int id)
+        public UserDTO GetUserToEditById(int id)
         {
-            return _userService.GetUserToEditById(id);
+            return _userFacade.GetUserById(id);
         }
 
         //PUT
         [HttpPut("EditUser")]
-        public async Task<int> EditUser([FromBody]User user)
+        public async Task<int> EditUser([FromBody]UserViewModel user)
         {
-            await _userService.EditUser(user);
+            await _userFacade.UpdateUserAsync(user);
             return StatusCodes.Status200OK;
         }
 
         [HttpPut("EditUserRole")]
-        public async Task<int> EditUserRole([FromBody] User user, RoleType newRole)
+        public async Task<int> EditUserRole([FromBody] UserViewModel user, RoleType newRole)
         {
-            await _userService.EditUserRole(user, newRole);
+            await _userFacade.SetUserRole(user, newRole);
             return StatusCodes.Status200OK;
         }
 
@@ -71,7 +70,7 @@ namespace EvoNaplo.Controllers
         [HttpDelete("DELETE")]
         public async Task<int> DeleteUser(int id)
         {
-            await _userService.DeleteUser(id);
+            await _userFacade.DeleteUserAsync(id);
             return StatusCodes.Status200OK;
         }
     }
