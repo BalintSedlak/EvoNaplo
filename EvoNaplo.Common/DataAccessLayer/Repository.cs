@@ -8,6 +8,12 @@ namespace EvoNaplo.Common.DataAccessLayer
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("Repository");
+            base.OnModelCreating(modelBuilder);
+        }
+
         public void Add(TEntity entity)
         {
             this.Set<TEntity>().Add(entity);
@@ -69,8 +75,6 @@ namespace EvoNaplo.Common.DataAccessLayer
         public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             await this.SaveChangesAsync(cancellationToken);
-        }
-
-        
+        }        
     }
 }

@@ -18,5 +18,11 @@ namespace EvoNaplo.Common.DataAccessLayer
         public EvoNaploContext(DbContextOptions<EvoNaploContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("EvoNaploContext");
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

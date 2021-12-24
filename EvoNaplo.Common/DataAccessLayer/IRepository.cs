@@ -1,4 +1,6 @@
-﻿namespace EvoNaplo.Common.DataAccessLayer
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace EvoNaplo.Common.DataAccessLayer
 {
     public interface IRepository<TEntity> where TEntity : class, IEntity
     {
