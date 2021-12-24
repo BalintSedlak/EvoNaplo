@@ -1,15 +1,16 @@
 ﻿using System;
 using EvoNaplo.Common.Models;
+using EvoNaplo.UserDomain.Models;
 
 namespace EvoNaplo.TestHelper
 {
-    public static class UserHelper
+    public static class UserGenerator
     {
         private static int _adminStudent;
         private static int _adminMentor;
         private static int _adminCounter;
 
-        static UserHelper()
+        static UserGenerator()
         {
             _adminStudent = 0;
             _adminMentor = 0;
