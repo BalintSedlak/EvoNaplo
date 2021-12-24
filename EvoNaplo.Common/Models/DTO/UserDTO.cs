@@ -10,6 +10,7 @@ namespace EvoNaplo.Common.Models.DTO
         public string IsActive { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public RoleType Role { get; set; }
 
         public UserDTO()
         {
