@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.UserDomain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace EvoNaplo.Controllers
         }
 
         [HttpPost]
-        public async Task<int> PostAddAdmin([FromBody] User user)
+        public async Task<int> PostAddAdmin([FromBody] UserViewModel user)
         {
             await _userFacade.AddUserAsync(user);
             return StatusCodes.Status200OK;

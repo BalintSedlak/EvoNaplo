@@ -1,5 +1,4 @@
 using EvoNaplo.Services;
-using EvoNaplo.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -9,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EvoNaplo.UserDomain.Services;
 using EvoNaplo.Common.DataAccessLayer;
+using EvoNaplo.UserDomain.Facades;
+using EvoNaplo.UserDomain.Models;
 
 namespace EvoNaplo
 {
@@ -34,17 +35,16 @@ namespace EvoNaplo
             });
 
             services.AddDbContext<EvoNaploContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddDbContext<Repository<User>>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
             services.AddControllers();
             services.AddScoped<SemesterService>();
             services.AddScoped<MentorService>();
             services.AddScoped<StudentService>();
             services.AddScoped<AdminService>();
-            services.AddScoped<UserService>();
+            services.AddScoped<UserFacade>();
 
 
             services.AddScoped<ProjectService>();
-            services.AddScoped<LoginService>();
-            services.AddScoped<JwtService>();
             services.AddScoped<ProjectStudentService>();
             services.AddScoped<SessionService>();
             services.AddScoped<CommentService>();

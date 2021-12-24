@@ -1,25 +1,23 @@
 ﻿using EvoNaplo.Common.DataAccessLayer;
-using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.TableConnectors;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using EvoNaplo.Common.DomainFacades;
 
 namespace EvoNaplo.Services
 {
     public class ProjectStudentService
     {
         private readonly EvoNaploContext _evoNaploContext;
-        private readonly UserService _userService;
+        private readonly IUserFacade _userFacade;
 
-        public ProjectStudentService(EvoNaploContext EvoNaploContext, UserService userService)
+        public ProjectStudentService(EvoNaploContext EvoNaploContext, IUserFacade userFacade)
         {
             _evoNaploContext = EvoNaploContext;
-            _userService = userService;
+            _userFacade = userFacade;
         }
 
         private List<int> GetUsersOnProjectIds(int projectId)
@@ -48,7 +46,7 @@ namespace EvoNaplo.Services
                 List<int> usersOnProjectIds = GetUsersOnProjectIds(project.Id);
                 foreach (var userId in usersOnProjectIds)
                 {
-                    usersOnProject.Add(_userService.GetUserById(userId));
+                    usersOnProject.Add(_userFacade.GetUserById(userId));
                 }
             }
             

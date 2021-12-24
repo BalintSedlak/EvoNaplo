@@ -1,4 +1,5 @@
 ﻿using EvoNaplo.Common.DataAccessLayer;
+using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.TableConnectors;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace EvoNaplo.Services
     public class CommentService
     {
         private readonly EvoNaploContext _evoNaploContext;
+        private readonly IUserFacade _userFacade;
 
-        public CommentService(EvoNaploContext EvoNaploContext)
+        public CommentService(EvoNaploContext EvoNaploContext, IUserFacade userFacade)
         {
             _evoNaploContext = EvoNaploContext;
+            _userFacade = userFacade;
         }
 
         internal async Task AddStudentComment(StudentComment studentComment)
@@ -53,9 +56,9 @@ namespace EvoNaplo.Services
             List<CommentDTO> result = new List<CommentDTO>();
             foreach (var comment in commentsCopy)
             {
-                var commenter = _evoNaploContext.Users.FirstOrDefault(u => u.Id == comment.CommenterId);
-                string commenterName = $"{commenter.FirstName} {commenter.LastName}";
-                result.Add(new CommentDTO(comment.Comment, comment.UserId,commenter.Id,$"{commenter.FirstName} {commenter.LastName}" ));
+                var commenter = _userFacade.GetAllUser().Result.Single(u => u.Id == comment.CommenterId);
+                string commenterName = $"{commenter.Name}";
+                result.Add(new CommentDTO(comment.Comment, comment.UserId,commenter.Id,$"{commenter.Name}" ));
             }
             return result;
         }
@@ -71,9 +74,9 @@ namespace EvoNaplo.Services
             List<CommentDTO> result = new List<CommentDTO>();
             foreach (var comment in commentsCopy)
             {
-                var commenter = _evoNaploContext.Users.FirstOrDefault(u => u.Id == comment.CommenterId);
-                string commenterName = $"{commenter.FirstName} {commenter.LastName}";
-                result.Add(new CommentDTO(comment.Comment, comment.CommenterId, commenter.Id, $"{commenter.FirstName} {commenter.LastName}"));
+                var commenter = _userFacade.GetAllUser().Result.FirstOrDefault(u => u.Id == comment.CommenterId);
+                string commenterName = $"{commenter.Name}";
+                result.Add(new CommentDTO(comment.Comment, comment.CommenterId, commenter.Id, $"{commenter.Name}"));
             }
             return result;
         }

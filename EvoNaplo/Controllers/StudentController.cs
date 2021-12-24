@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
-using EvoNaplo.Services;
+using EvoNaplo.UserDomain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,30 +13,30 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly StudentService _studentService;
+        private readonly IUserFacade _userFacade;
 
-        public StudentController(StudentService StudentService)
+        public StudentController(IUserFacade userFacade)
         {
-            _studentService = StudentService;
+            _userFacade = userFacade;
         }
 
         [HttpPost("AddStudent")]
-        public async Task<int> PostAddStudent([FromBody]User user)
+        public async Task<int> PostAddStudent([FromBody] UserViewModel user)
         {
-            await _studentService.AddStudent(user);
+            await _userFacade.AddUserAsync(user);
             return StatusCodes.Status200OK;
         }
 
         [HttpGet("EmailExists")]
         public bool EmailExists(string email)
         {
-            return _studentService.EmailExists(email);
+            return _userFacade.IsEmailExists(email);
         }
 
         [HttpGet]
-        public IEnumerable<UserDTO> GetStudent()
+        public async Task<IEnumerable<UserDTO>> GetStudentAsync()
         {
-            return _studentService.ListStudents();
+            return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Student);
         }
 
         ////PUT
@@ -63,7 +62,7 @@ namespace EvoNaplo.Controllers
         [HttpDelete("DELETE")]
         public async Task<int> DeleteUser(int id)
         {
-            await _studentService.DeleteUser(id);
+            await _userFacade.DeleteUserAsync(id);
             return StatusCodes.Status200OK;
         }
     }
