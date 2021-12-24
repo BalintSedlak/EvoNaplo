@@ -8,20 +8,22 @@ namespace EvoNaplo.UserDomain.Services
 {
     public class MentorService
     {
-        private readonly ILogger<MentorService> _logger;
         private readonly IRepository<User> _userRepository;
+        private readonly UserHelper _userHelper;
+        private readonly ILogger<MentorService> _logger;
 
-        public MentorService(ILogger<MentorService> logger, IRepository<User> userRepository)
+        public MentorService(IRepository<User> userRepository, UserHelper userHelper, ILogger<MentorService> logger)
         {
-            _logger = logger;
             _userRepository = userRepository;
+            _userHelper = userHelper;
+            _logger = logger;
         }
 
-        public async Task<IEnumerable<User>> AddMentorAsync(User user)
+        internal async Task<IEnumerable<User>> AddMentorAsync(UserViewModel user)
         {
             _logger.LogInformation($"Mentor hozzáadása következik: {user}");
             user.Role = RoleType.Mentor;
-            _userRepository.Add(user);
+            _userRepository.Add(_userHelper.ConvertUserViewModelToUser(user));
 
             await _userRepository.SaveChangesAsync();
             _logger.LogInformation($"Mentor hozzáadva.");
@@ -29,10 +31,10 @@ namespace EvoNaplo.UserDomain.Services
             return mentors.ToList();
         }
 
-        public async Task<IEnumerable<UserDTO>> ListMentorsAsync()
+        internal async Task<IEnumerable<UserDTO>> ListMentorsAsync()
         {
             IEnumerable<User> mentors = _userRepository.GetAll().Where(m => m.Role == RoleType.Mentor);
-            IEnumerable<UserDTO> userDTOs = mentors.Select(x => UserHelper.ConvertUserToUserDTO(x));
+            IEnumerable<UserDTO> userDTOs = mentors.Select(x => _userHelper.ConvertUserToUserDTO(x));
             return userDTOs;
         }
     }

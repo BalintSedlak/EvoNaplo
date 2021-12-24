@@ -9,19 +9,21 @@ namespace EvoNaplo.UserDomain.Services
     public class AdminService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly UserHelper _userHelper;
         private readonly ILogger<AdminService> _logger;
 
-        public AdminService(ILogger<AdminService> logger, IRepository<User> userRepository)
+        public AdminService(IRepository<User> userRepository, UserHelper userHelper, ILogger<AdminService> logger)
         {
-            _logger = logger;
             _userRepository = userRepository;
+            _userHelper = userHelper;
+            _logger = logger;
         }
 
-        public async Task<IEnumerable<User>> AddAdminAsync(User user)
+        internal async Task<IEnumerable<User>> AddAdminAsync(UserViewModel user)
         {
             _logger.LogInformation($"Admin hozzáadása következik: {user}");
             user.Role = RoleType.Admin;
-            _userRepository.Add(user);
+            _userRepository.Add(_userHelper.ConvertUserViewModelToUser(user));
 
             _userRepository.SaveChangesAsync();
             _logger.LogInformation($"Admin hozzáadva.");
@@ -29,10 +31,10 @@ namespace EvoNaplo.UserDomain.Services
             return admins.ToList();
         }
 
-        public async Task<IEnumerable<UserDTO>> ListAdminsAsync()
+        internal async Task<IEnumerable<UserDTO>> ListAdminsAsync()
         {
             IEnumerable<User> admins = _userRepository.GetAll().Where(m => m.Role == RoleType.Admin).ToList();
-            IEnumerable<UserDTO> userDTOs = admins.Select(x => UserHelper.ConvertUserToUserDTO(x));
+            IEnumerable<UserDTO> userDTOs = admins.Select(x => _userHelper.ConvertUserToUserDTO(x));
             return userDTOs;
         }
     }

@@ -8,23 +8,15 @@ namespace EvoNaplo.UserDomain.Services
     public class StudentService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly UserHelper _userHelper;
 
-        public StudentService(IRepository<User> userRepository)
+        public StudentService(IRepository<User> userRepository, UserHelper userHelper)
         {
             _userRepository = userRepository;
+            _userHelper = userHelper;
         }
 
-        public async Task<IEnumerable<User>> AddStudent(User user)
-        {
-            user.Role = RoleType.Student;
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            _userRepository.Add(user);
-            await _userRepository.SaveChangesAsync();
-            var students = _userRepository.GetAll().Where(m => m.Role == RoleType.Student);
-            return students.ToList();
-        }
-
-        public bool EmailExists(string email)
+        internal bool EmailExists(string email)
         {
             if (_userRepository.GetAll().FirstOrDefault(u => u.Email == email) != null)
             {
@@ -34,6 +26,22 @@ namespace EvoNaplo.UserDomain.Services
             {
                 return false;
             }
+        }
+
+        internal async Task AddStudentAsync(UserViewModel user)
+        {
+            user.Role = RoleType.Student;
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            _userRepository.Add(_userHelper.ConvertUserViewModelToUser(user));
+            await _userRepository.SaveChangesAsync();
+        }
+
+        internal IEnumerable<UserDTO> ListStudents()
+        {
+            var students = _userRepository.GetAll().Where(m => m.Role == RoleType.Student);
+            List<UserDTO> result = new List<UserDTO>();
+
+            return result;
         }
 
         //public IEnumerable<UserDTO> ListStudents()
@@ -55,14 +63,6 @@ namespace EvoNaplo.UserDomain.Services
         //    }
         //    return result;
         //}
-
-        public IEnumerable<UserDTO> ListStudents()
-        {
-            var students = _userRepository.GetAll().Where(m => m.Role == RoleType.Student);
-            List<UserDTO> result = new List<UserDTO>();
-            
-            return result;
-        }
 
         //public async Task<IEnumerable<User>> EditStudent(int id, StudentDto studentDto)
         //{
@@ -92,9 +92,9 @@ namespace EvoNaplo.UserDomain.Services
         //    return students.ToList();
         //}
 
-        public async Task<IEnumerable<User>> DeleteUser(int id)
+        internal async Task<IEnumerable<User>> DeleteUser(int id)
         {
-            var studentToDelete = await _userRepository.GetAll().Single(id);
+            var studentToDelete = _userRepository.GetAll().Single(x => x.Id == id);
             var role = studentToDelete.Role;
             _userRepository.Remove(studentToDelete);
             await _userRepository.SaveChangesAsync();
