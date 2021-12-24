@@ -1,7 +1,6 @@
 ﻿using EvoNaplo.Common.DataAccessLayer;
 using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
-using EvoNaplo.Common.Models.TableConnectors;
 using EvoNaplo.UserDomain.Models;
 
 namespace EvoNaplo.UserDomain.Services
@@ -12,27 +11,29 @@ namespace EvoNaplo.UserDomain.Services
         private readonly StudentService _studentService;
         private readonly MentorService _mentorService;
         private readonly AdminService _adminService;
+        private readonly UserHelper _userHelper;
 
-        public UserService(IRepository<User> userRepository, StudentService studentService, MentorService mentorService, AdminService adminService)
+        public UserService(IRepository<User> userRepository, StudentService studentService, MentorService mentorService, AdminService adminService, UserHelper userHelper)
         {
             _userRepository = userRepository;
             _studentService = studentService;
             _mentorService = mentorService;
             _adminService = adminService;
+            _userHelper = userHelper;
         }
 
-        internal async Task EditUserRole(User user, RoleType newRole)
+        internal async Task EditUserRole(UserViewModel user, RoleType newRole)
         {
             var UserToEdit = _userRepository.GetById(user.Id);
             UserToEdit.Role = newRole;
             await _userRepository.SaveChangesAsync();
         }
-        public UserDTO GetUserById(int id)
+        internal UserDTO GetUserById(int id)
         {
-            return UserHelper.ConvertUserToUserDTO(_userRepository.GetById(id));
+            return _userHelper.ConvertUserToUserDTO(_userRepository.GetById(id));
         }
 
-        public User GetUserToEditById(int id)
+        internal User GetUserToEditById(int id)
         {
             var user = _userRepository.GetAll().FirstOrDefault(u => u.Id == id);
             if (user != null)
@@ -45,9 +46,14 @@ namespace EvoNaplo.UserDomain.Services
             }
         }
 
-        public async Task<IEnumerable<User>> EditUser(User user)
+        internal UserAuth GetUserByEmail(string email)
         {
-            var UserToEdit = await _userRepository.GetAll().Single(user.Id);
+            throw new NotImplementedException();
+        }
+
+        internal async Task<IEnumerable<User>> EditUser(UserViewModel user)
+        {
+            var UserToEdit = _userRepository.GetAll().Single(x => x.Id == user.Id);
             UserToEdit.Email = user.Email;
             UserToEdit.FirstName = user.FirstName;
             UserToEdit.LastName = user.LastName;
@@ -58,9 +64,9 @@ namespace EvoNaplo.UserDomain.Services
             return Users.ToList();
         }
 
-        public async Task<IEnumerable<User>> DeleteUser(int id)
+        internal async Task<IEnumerable<User>> DeleteUserAsync(int id)
         {
-            var studentToDelete = await _userRepository.GetAll().Single(id);
+            var studentToDelete = _userRepository.GetAll().Single(x => x.Id == id);
             var role = studentToDelete.Role;
             _userRepository.Remove(studentToDelete);
             await _userRepository.SaveChangesAsync();
@@ -68,7 +74,7 @@ namespace EvoNaplo.UserDomain.Services
             return students.ToList();
         }
 
-        public int GetRoleByUserId(int id)
+        internal int GetRoleByUserId(int id)
         {
             var user = _userRepository.GetAll().FirstOrDefault(u => u.Id == id);
 
