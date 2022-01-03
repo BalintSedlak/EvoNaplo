@@ -48,7 +48,7 @@ namespace EvoNaplo.UserDomain.Services
 
         internal UserAuth GetUserByEmail(string email)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetAll().Where(x => x.Email == email).Select(x => new UserAuth() { Id = x.Id, Email = x.Email, Password = x.Password}).Single();
         }
 
         internal async Task<IEnumerable<User>> EditUser(UserViewModel user)
