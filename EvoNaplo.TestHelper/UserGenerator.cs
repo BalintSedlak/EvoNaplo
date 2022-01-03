@@ -1,19 +1,19 @@
 ﻿using System;
-using EvoNaplo.Common.Models;
+using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.UserDomain.Models;
 
 namespace EvoNaplo.TestHelper
 {
     public static class UserGenerator
     {
-        private static int _adminStudent;
-        private static int _adminMentor;
+        private static int _studentCounter;
+        private static int _mentorCounter;
         private static int _adminCounter;
 
         static UserGenerator()
         {
-            _adminStudent = 0;
-            _adminMentor = 0;
+            _studentCounter = 0;
+            _mentorCounter = 0;
             _adminCounter = 0;
         }
 
@@ -44,8 +44,8 @@ namespace EvoNaplo.TestHelper
             return new User
             {
                 FirstName = "New",
-                LastName = $"Admin{_adminStudent++}",
-                Email = "new.admin@company.com",
+                LastName = $"Student{_studentCounter++}",
+                Email = "new.student@company.com",
                 PhoneNumber = "+36101234567",
                 Password = "Password123456",
                 Role = RoleType.Student
@@ -57,8 +57,8 @@ namespace EvoNaplo.TestHelper
             return new User
             {
                 FirstName = "New",
-                LastName = $"Admin{_adminMentor++}",
-                Email = "new.admin@company.com",
+                LastName = $"Mentor{_mentorCounter++}",
+                Email = "new.mentor@company.com",
                 PhoneNumber = "+36101234567",
                 Password = "Password123456",
                 Role = RoleType.Mentor

@@ -1,4 +1,4 @@
-﻿using EvoNaplo.Common.Models;
+﻿using EvoNaplo.Common.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace EvoNaplo.UserDomain.Models

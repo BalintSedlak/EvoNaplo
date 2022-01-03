@@ -1,11 +1,11 @@
-﻿using EvoNaplo.Common.Models;
-using EvoNaplo.Common.Models.DTO;
+﻿using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.UserDomain.Services;
 using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.UserDomain.Models;
 using System.IdentityModel.Tokens.Jwt;
 using EvoNaplo.Common.Exceptions;
 using System.Net;
+using EvoNaplo.Common.Models.Entities;
 
 namespace EvoNaplo.UserDomain.Facades
 {

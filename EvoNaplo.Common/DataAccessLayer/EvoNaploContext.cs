@@ -1,4 +1,4 @@
-﻿using EvoNaplo.Common.Models;
+﻿using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.Common.Models.TableConnectors;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +6,7 @@ namespace EvoNaplo.Common.DataAccessLayer
 {
     public class EvoNaploContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<AttendanceSheet> AttendanceSheets { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Semester> Semesters { get; set; }
@@ -21,7 +22,7 @@ namespace EvoNaplo.Common.DataAccessLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("EvoNaploContext");
+            //modelBuilder.HasDefaultSchema("EvoNaploContext");
             base.OnModelCreating(modelBuilder);
         }
     }

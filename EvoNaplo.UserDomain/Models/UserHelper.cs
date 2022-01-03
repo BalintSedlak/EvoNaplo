@@ -1,4 +1,5 @@
 ﻿using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.Entities;
 
 namespace EvoNaplo.UserDomain.Models
 {
