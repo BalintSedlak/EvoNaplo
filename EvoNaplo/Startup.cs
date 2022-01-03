@@ -10,6 +10,7 @@ using EvoNaplo.UserDomain.Services;
 using EvoNaplo.Common.DataAccessLayer;
 using EvoNaplo.UserDomain.Facades;
 using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Common.DomainFacades;
 
 namespace EvoNaplo
 {
@@ -34,14 +35,17 @@ namespace EvoNaplo
                 configuration.RootPath = "ClientApp/build";
             });
 
-            services.AddDbContext<EvoNaploContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
-            services.AddDbContext<Repository<User>>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddEntityFrameworkSqlServer().AddDbContext<EvoNaploContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddEntityFrameworkSqlServer().AddDbContext<IRepository<User>, Repository<User>>(options => options.UseSqlServer(Configuration.GetConnectionString("UsersConnectionString")));
             services.AddControllers();
             services.AddScoped<SemesterService>();
             services.AddScoped<MentorService>();
             services.AddScoped<StudentService>();
             services.AddScoped<AdminService>();
-            services.AddScoped<UserFacade>();
+            services.AddScoped<UserService>();
+            services.AddScoped<AuthService>();
+            services.AddScoped<UserHelper>();
+            services.AddScoped<IUserFacade, UserFacade>();
 
 
             services.AddScoped<ProjectService>();
@@ -49,9 +53,6 @@ namespace EvoNaplo
             services.AddScoped<SessionService>();
             services.AddScoped<CommentService>();
             services.AddScoped<AttendanceSheetService>();
-            ////I hope this is the dependency injection part -marci
-            //services.AddScoped<PasswordService>();
-            //services.AddScoped<LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

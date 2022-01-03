@@ -21,6 +21,7 @@ namespace EvoNaplo.Controllers
         [HttpPost("Login")]
         public IActionResult Login([FromBody] LoginViewModel loginDTO)
         {
+            //TODO: Move to Service 
             try
             {
                 string jwt = _userFacade.Login(loginDTO);
@@ -61,6 +62,7 @@ namespace EvoNaplo.Controllers
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
+            //TODO: Move to Service 
             Response.Cookies.Delete("jwt");
 
             return Ok(new

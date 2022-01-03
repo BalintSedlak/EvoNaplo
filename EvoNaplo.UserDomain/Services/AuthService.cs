@@ -27,7 +27,7 @@ namespace EvoNaplo.UserDomain.Services
 
             if (user == null)
             {
-                throw new ServiceException(System.Net.HttpStatusCode.BadRequest, "No such user");
+                throw new ServiceException(HttpStatusCode.BadRequest, "No such user");
             }
 
             if (!BCrypt.Net.BCrypt.Verify(loginViewModel.password, user.Password))
