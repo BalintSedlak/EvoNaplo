@@ -1,6 +1,6 @@
 ﻿using EvoNaplo.Common.DomainFacades;
-using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.UserDomain.Facades;
 using EvoNaplo.UserDomain.Models;
 using Microsoft.AspNetCore.Http;

@@ -1,8 +1,7 @@
 ﻿using EvoNaplo.Common.DataAccessLayer;
-using EvoNaplo.Common.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace EvoNaplo.UserDomain.Models
+namespace EvoNaplo.Common.Models.Entities
 {
     /// <summary>
     /// This class is used to represent a database entry in the users table

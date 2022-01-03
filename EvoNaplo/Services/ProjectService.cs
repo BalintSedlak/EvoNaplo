@@ -1,6 +1,6 @@
 ﻿using EvoNaplo.Common.DataAccessLayer;
-using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.Common.Models.TableConnectors;
 using System.Collections.Generic;
 using System.Linq;

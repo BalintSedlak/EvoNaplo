@@ -1,4 +1,4 @@
-﻿namespace EvoNaplo.Common.Models
+﻿namespace EvoNaplo.Common.Models.Entities
 {
     public enum RoleType
     {

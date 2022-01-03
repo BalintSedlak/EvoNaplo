@@ -1,7 +1,7 @@
 using EvoNaplo.Common.DataAccessLayer;
 using EvoNaplo.Common.DomainFacades;
-using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.TestHelper;
 using EvoNaplo.UserDomain.Facades;
 using EvoNaplo.UserDomain.Models;
@@ -21,7 +21,7 @@ namespace EvoNaplo.IntegrationTest
         private UserHelper _userHelper;
 
         private IUserFacade _userFacade;
-        private TestDbContext _testDbContext;
+        private EvoNaploContext _evoNaploContext;
 
         private int _OriginalNumberOfAdmins = 2;
         private int _OriginalNumberOfMentors = 3;
@@ -33,19 +33,20 @@ namespace EvoNaplo.IntegrationTest
             _userHelper = new UserHelper();
 
             //Setup database
-            _testDbContext.UsersRepositry = TestDbContextHelper
-                .CreateInMemoryDatabaseContext<User>(databaseName)
-                .CreateDefaultUsers(_OriginalNumberOfAdmins, RoleType.Admin)
-                .CreateDefaultUsers(_OriginalNumberOfMentors, RoleType.Mentor)
-                .CreateDefaultUsers(_OriginalNumberOfStudent, RoleType.Student)
+            _evoNaploContext = TestDbContextHelper
+                .CreateInMemoryContext(databaseName)
+                .CreateRepository<User>()
+                    .CreateDefaultUsers(_OriginalNumberOfAdmins, RoleType.Admin)
+                    .CreateDefaultUsers(_OriginalNumberOfMentors, RoleType.Mentor)
+                    .CreateDefaultUsers(_OriginalNumberOfStudent, RoleType.Student)
                 .Build();
 
             Mock<ILogger<AdminService>> mockAdminLogger = new Mock<ILogger<AdminService>>();
             Mock<ILogger<MentorService>> mockMentorLogger = new Mock<ILogger<MentorService>>();
-            AdminService adminService = new AdminService(_testDbContext.UsersRepositry, _userHelper, mockAdminLogger.Object);
-            MentorService mentorService = new MentorService(_testDbContext.UsersRepositry, _userHelper, mockMentorLogger.Object);
-            StudentService studentService = new StudentService(_testDbContext.UsersRepositry, _userHelper);
-            UserService userService = new UserService(_testDbContext.UsersRepositry, studentService, mentorService, adminService, _userHelper);
+            AdminService adminService = new AdminService(TestDbContextHelper.InjectRepository<User>(), _userHelper, mockAdminLogger.Object);
+            MentorService mentorService = new MentorService(TestDbContextHelper.InjectRepository<User>(), _userHelper, mockMentorLogger.Object);
+            StudentService studentService = new StudentService(TestDbContextHelper.InjectRepository<User>(), _userHelper);
+            UserService userService = new UserService(TestDbContextHelper.InjectRepository<User>(), studentService, mentorService, adminService, _userHelper);
             AuthService authService = new AuthService(userService);
             _userFacade = new UserFacade(adminService, mentorService, studentService, userService, authService);
         }
@@ -54,7 +55,7 @@ namespace EvoNaplo.IntegrationTest
         public void TearDown()
         {
             _userFacade = null;
-            _testDbContext = null;
+            _evoNaploContext = null;
         }
 
         [Test]
@@ -70,9 +71,8 @@ namespace EvoNaplo.IntegrationTest
             await _userFacade.AddUserAsync(newAdminViewModel);
 
             //Assert
-            int actualNumberOfAdmins = _testDbContext.UsersRepositry.GetAll().Count(x => x.Role == RoleType.Admin);
+            int actualNumberOfAdmins = _evoNaploContext.Users.Count(x => x.Role == RoleType.Admin);
             Assert.AreEqual(expectedNumberOfAdmins, actualNumberOfAdmins);
-            Assert.Contains(newAdmin, _testDbContext.UsersRepositry.GetAll().ToList());
         }
 
         [Test]
@@ -88,9 +88,8 @@ namespace EvoNaplo.IntegrationTest
             await _userFacade.AddUserAsync(newMentorViewModel);
 
             //Assert
-            int actualNumberOfMentors = _testDbContext.UsersRepositry.GetAll().Count(x => x.Role == RoleType.Mentor);
+            int actualNumberOfMentors = _evoNaploContext.Users.Count(x => x.Role == RoleType.Mentor);
             Assert.AreEqual(expectedNumberOfMentors, actualNumberOfMentors);
-            Assert.Contains(newMentor, _testDbContext.UsersRepositry.GetAll().ToList());
         }
 
         [Test]

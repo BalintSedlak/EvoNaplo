@@ -1,4 +1,4 @@
-﻿using EvoNaplo.Common.Models;
+﻿using EvoNaplo.Common.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

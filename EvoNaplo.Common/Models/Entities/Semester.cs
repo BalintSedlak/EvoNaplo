@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EvoNaplo.Common.Models
+namespace EvoNaplo.Common.Models.Entities
 {
     public class Semester
     {
@@ -20,7 +20,7 @@ namespace EvoNaplo.Common.Models
             StartDate = semester.StartDate;
             EndDate = semester.EndDate;
             IsAppliable = semester.IsAppliable;
-            
+
         }
     }
 }

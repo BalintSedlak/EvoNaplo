@@ -1,5 +1,5 @@
-﻿using EvoNaplo.Common.Models;
-using EvoNaplo.Common.Models.DTO;
+﻿using EvoNaplo.Common.Models.DTO;
+using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.UserDomain.Models;
 
 namespace EvoNaplo.Common.DomainFacades

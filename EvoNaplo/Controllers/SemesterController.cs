@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EvoNaplo.Services;
-using EvoNaplo.Common.Models;
 using EvoNaplo.Common.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using EvoNaplo.Common.Models.Entities;
 
 namespace EvoNaplo.Controllers
 {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace EvoNaplo.Common.Models
+namespace EvoNaplo.Common.Models.Entities
 {
     public class Project
     {
@@ -19,7 +15,7 @@ namespace EvoNaplo.Common.Models
         public int SemesterId { get; set; }
         public Project()
         {
-          
+
         }
 
         public Project(Project project)
