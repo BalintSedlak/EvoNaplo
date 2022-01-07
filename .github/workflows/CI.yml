@@ -5,11 +5,12 @@ on:
     branches: 
     - main
     - Dev
-    - Features
+    - Features/*
   pull_request:
     branches:
     - main
     - Dev
+    - Features/*
   workflow_dispatch:
 
 jobs:
