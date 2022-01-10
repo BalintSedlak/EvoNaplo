@@ -1,5 +1,6 @@
-﻿using EvoNaplo.Common.Models.Entities;
-using EvoNaplo.Domains.Users.Models;
+﻿using EvoNaplo.Infrastructure.Models.Entities;
+using EvoNaplo.ApplicationCore.Domains.Users.Models;
+using EvoNaplo.Infrastructure.Helpers;
 
 namespace EvoNaplo.TestHelper
 {
