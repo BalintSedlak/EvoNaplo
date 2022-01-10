@@ -1,6 +1,6 @@
 ﻿using EvoNaplo.Common.Models.Entities;
 
-namespace EvoNaplo.UserDomain.Models
+namespace EvoNaplo.Common.Models.DTO
 {
     public class UserAuth
     {
