@@ -1,6 +1,7 @@
 ﻿using System;
 using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.ApplicationCore.Domains.Users.Models;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.TestHelper
 {
@@ -17,9 +18,9 @@ namespace EvoNaplo.TestHelper
             _adminCounter = 0;
         }
 
-        public static User CreateDefaultUser(RoleType userType)
+        public static UserEntity CreateDefaultUser(RoleType userType)
         {
-            User user;
+            UserEntity user;
 
             switch (userType)
             {
@@ -39,9 +40,9 @@ namespace EvoNaplo.TestHelper
             return user;
         }
 
-        private static User CreateStudent()
+        private static UserEntity CreateStudent()
         {
-            return new User
+            return new UserEntity
             {
                 FirstName = "New",
                 LastName = $"Student{_studentCounter++}",
@@ -52,9 +53,9 @@ namespace EvoNaplo.TestHelper
             };
         }
 
-        private static User CreateMentor()
+        private static UserEntity CreateMentor()
         {
-            return new User
+            return new UserEntity
             {
                 FirstName = "New",
                 LastName = $"Mentor{_mentorCounter++}",
@@ -65,9 +66,9 @@ namespace EvoNaplo.TestHelper
             };
         }
 
-        private static User CreateAdmin()
+        private static UserEntity CreateAdmin()
         {
-            return new User
+            return new UserEntity
             {
                 FirstName = "Admin",
                 LastName = $"Admin{_adminCounter++}",

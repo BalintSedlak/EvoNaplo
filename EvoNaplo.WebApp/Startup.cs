@@ -9,11 +9,11 @@ using Microsoft.Extensions.Hosting;
 using EvoNaplo.ApplicationCore.Domains.Users.Services;
 using EvoNaplo.Infrastructure.DataAccessLayer;
 using EvoNaplo.Infrastructure.DomainFacades;
-using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.ApplicationCore.Domains.Users.Facades;
 using EvoNaplo.ApplicationCore.Domains.Auth.Services;
 using EvoNaplo.Infrastructure.Helpers;
 using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.WebApp
 {
@@ -40,7 +40,7 @@ namespace EvoNaplo.WebApp
 
             services.AddDbContext<EvoNaploContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
             services.AddControllers();
-            services.AddScoped<IRepository<User>, Repository<User>>();
+            services.AddScoped<IRepository<UserEntity>, Repository<UserEntity>>();
             services.AddScoped<IUserFacade, UserFacade>();
             services.AddScoped<SemesterService>();
             services.AddScoped<MentorService>();

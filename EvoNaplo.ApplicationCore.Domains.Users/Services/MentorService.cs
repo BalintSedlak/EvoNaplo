@@ -1,19 +1,19 @@
 ﻿using EvoNaplo.Infrastructure.DataAccessLayer;
 using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.Entities;
-using EvoNaplo.ApplicationCore.Domains.Users.Models;
 using Microsoft.Extensions.Logging;
 using EvoNaplo.Infrastructure.Helpers;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.Services
 {
     public class MentorService
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<UserEntity> _userRepository;
         private readonly UserHelper _userHelper;
         private readonly ILogger<MentorService> _logger;
 
-        public MentorService(IRepository<User> userRepository, UserHelper userHelper, ILogger<MentorService> logger)
+        public MentorService(IRepository<UserEntity> userRepository, UserHelper userHelper, ILogger<MentorService> logger)
         {
             _userRepository = userRepository;
             _userHelper = userHelper;
@@ -34,7 +34,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Services
 
         internal async Task<IEnumerable<UserDTO>> ListMentorsAsync()
         {
-            IEnumerable<User> mentors = _userRepository.GetAll().Where(m => m.Role == RoleType.Mentor);
+            IEnumerable<UserEntity> mentors = _userRepository.GetAll().Where(m => m.Role == RoleType.Mentor);
             IEnumerable<UserDTO> userDTOs = mentors.Select(x => _userHelper.ConvertUserToUserDTO(x));
             return userDTOs;
         }

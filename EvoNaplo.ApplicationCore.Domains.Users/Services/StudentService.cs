@@ -1,17 +1,17 @@
 ﻿using EvoNaplo.Infrastructure.DataAccessLayer;
 using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.Entities;
-using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Helpers;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.Services
 {
     public class StudentService
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<UserEntity> _userRepository;
         private readonly UserHelper _userHelper;
 
-        public StudentService(IRepository<User> userRepository, UserHelper userHelper)
+        public StudentService(IRepository<UserEntity> userRepository, UserHelper userHelper)
         {
             _userRepository = userRepository;
             _userHelper = userHelper;
@@ -93,7 +93,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Services
         //    return students.ToList();
         //}
 
-        internal async Task<IEnumerable<User>> DeleteUser(int id)
+        internal async Task<IEnumerable<UserEntity>> DeleteUser(int id)
         {
             var studentToDelete = _userRepository.GetAll().Single(x => x.Id == id);
             var role = studentToDelete.Role;

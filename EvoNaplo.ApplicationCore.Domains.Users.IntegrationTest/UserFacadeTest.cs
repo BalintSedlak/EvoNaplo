@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using EvoNaplo.ApplicationCore.Domains.Users.Services;
 using EvoNaplo.ApplicationCore.Domains.Users.Facades;
 using EvoNaplo.Infrastructure.Helpers;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
 {
@@ -36,7 +37,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
             //Setup database
             _evoNaploContext = TestDbContextHelper
                 .CreateInMemoryContext(databaseName)
-                .CreateRepository<User>()
+                .CreateRepository<UserEntity>()
                     .CreateDefaultUsers(_OriginalNumberOfAdmins, RoleType.Admin)
                     .CreateDefaultUsers(_OriginalNumberOfMentors, RoleType.Mentor)
                     .CreateDefaultUsers(_OriginalNumberOfStudent, RoleType.Student)
@@ -45,10 +46,10 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
             Mock<ILogger<AdminService>> mockAdminLogger = new Mock<ILogger<AdminService>>();
             Mock<ILogger<MentorService>> mockMentorLogger = new Mock<ILogger<MentorService>>();
 
-            AdminService adminService = new AdminService(TestDbContextHelper.InjectRepository<User>(), _userHelper, mockAdminLogger.Object);
-            MentorService mentorService = new MentorService(TestDbContextHelper.InjectRepository<User>(), _userHelper, mockMentorLogger.Object);
-            StudentService studentService = new StudentService(TestDbContextHelper.InjectRepository<User>(), _userHelper);
-            UserService userService = new UserService(TestDbContextHelper.InjectRepository<User>(), studentService, mentorService, adminService, _userHelper);
+            AdminService adminService = new AdminService(TestDbContextHelper.InjectRepository<UserEntity>(), _userHelper, mockAdminLogger.Object);
+            MentorService mentorService = new MentorService(TestDbContextHelper.InjectRepository<UserEntity>(), _userHelper, mockMentorLogger.Object);
+            StudentService studentService = new StudentService(TestDbContextHelper.InjectRepository<UserEntity>(), _userHelper);
+            UserService userService = new UserService(TestDbContextHelper.InjectRepository<UserEntity>(), studentService, mentorService, adminService, _userHelper);
             _userFacade = new UserFacade(adminService, mentorService, studentService, userService);
         }
 
@@ -65,7 +66,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
             //Arrange
             SetUp(nameof(AddUserAsync_AddValidAdmin_AdminUserIsSuccessfullyAddedToDatabase));
             int expectedNumberOfAdmins = _OriginalNumberOfAdmins + 1;
-            User newAdmin = UserGenerator.CreateDefaultUser(RoleType.Admin);
+            UserEntity newAdmin = UserGenerator.CreateDefaultUser(RoleType.Admin);
             UserViewModel newAdminViewModel = _userHelper.ConvertUserToUserViewModel(newAdmin);
 
             //Act
@@ -82,7 +83,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
             //Arrange
             SetUp(nameof(AddUserAsync_AddValidMentor_MentorUserIsSuccessfullyAddedToDatabase));
             int expectedNumberOfMentors = _OriginalNumberOfMentors + 1;
-            User newMentor = UserGenerator.CreateDefaultUser(RoleType.Mentor);
+            UserEntity newMentor = UserGenerator.CreateDefaultUser(RoleType.Mentor);
             UserViewModel newMentorViewModel = _userHelper.ConvertUserToUserViewModel(newMentor);
 
             //Act
