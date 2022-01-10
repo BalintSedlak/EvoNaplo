@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using EvoNaplo.Common.DataAccessLayer;
-using EvoNaplo.Common.Models.Entities;
+using EvoNaplo.Infrastructure.DataAccessLayer;
+using EvoNaplo.Infrastructure.Models.Entities;
 using System.Collections.Generic;
 using System;
 
