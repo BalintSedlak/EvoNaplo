@@ -48,7 +48,12 @@ namespace EvoNaplo.Domains.Users.Services
 
         internal UserAuth GetUserByEmail(string email)
         {
-            return _userRepository.GetAll().Where(x => x.Email == email).Select(x => new UserAuth() { Id = x.Id, Email = x.Email, Password = x.Password}).Single();
+            var user = _userRepository.GetAll().Where(u => u.Email == email).FirstOrDefault();
+            if (user != null)
+            {
+                return new UserAuth(user);
+            }
+            return null;
         }
 
         internal async Task<IEnumerable<User>> EditUser(UserViewModel user)
