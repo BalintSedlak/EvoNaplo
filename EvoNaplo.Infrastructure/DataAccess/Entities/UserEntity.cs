@@ -1,12 +1,13 @@
 ﻿using EvoNaplo.Infrastructure.DataAccessLayer;
+using EvoNaplo.Infrastructure.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace EvoNaplo.Infrastructure.Models.Entities
+namespace EvoNaplo.Infrastructure.DataAccess.Entities
 {
     /// <summary>
     /// This class is used to represent a database entry in the users table
     /// </summary>
-    public class User : IEntity
+    public class UserEntity : IEntity
     {
         [Key]
         public int Id { get; set; }
@@ -21,12 +22,12 @@ namespace EvoNaplo.Infrastructure.Models.Entities
         public string PhoneNumber { get; set; }
         public RoleType Role { get; set; }
 
-        public User()
+        public UserEntity()
         {
 
         }
 
-        public User(User user)
+        public UserEntity(UserEntity user)
         {
             Id = user.Id;
             FirstName = user.FirstName;

@@ -1,13 +1,13 @@
 ﻿using EvoNaplo.ApplicationCore.Domains.Users.Models;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.Models.DTO;
-using EvoNaplo.Infrastructure.Models.Entities;
 
 namespace EvoNaplo.Infrastructure.Helpers
 {
     //TODO: Replace this with property mapper
     public class UserHelper
     {
-        public UserDTO ConvertUserToUserDTO(User user)
+        public UserDTO ConvertUserToUserDTO(UserEntity user)
         {
             return new UserDTO
             {
@@ -19,9 +19,9 @@ namespace EvoNaplo.Infrastructure.Helpers
             };
         }
 
-        public User ConvertUserViewModelToUser(UserViewModel user)
+        public UserEntity ConvertUserViewModelToUser(UserViewModel user)
         {
-            return new User
+            return new UserEntity
             {
                 Id = user.Id,
                 FirstName = user.FirstName,

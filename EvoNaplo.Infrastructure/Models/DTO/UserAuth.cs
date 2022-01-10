@@ -1,10 +1,10 @@
-﻿using EvoNaplo.Infrastructure.Models.Entities;
+﻿using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.Infrastructure.Models.DTO
 {
     public class UserAuth
     {
-        public UserAuth(User user)
+        public UserAuth(UserEntity user)
         {
             Id = user.Id;
             Email = user.Email;
