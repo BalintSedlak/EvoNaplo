@@ -48,5 +48,10 @@ namespace EvoNaplo.ApplicationCore.Domains.Auth.Facades
             userViewModel.Password = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password);
             _userFacade.AddUserAsync(userViewModel);
         }
+
+        public SessionDTO GetSession(UserDTO user)
+        {
+            return _authService.GetSession(user);
+        }
     }
 }

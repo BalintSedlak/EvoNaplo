@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EvoNaplo.WebApp.Services;
 using EvoNaplo.Infrastructure.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EvoNaplo.Infrastructure.Models.Entities;
+using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
 
 namespace EvoNaplo.WebApp.Controllers
 {
@@ -12,18 +12,18 @@ namespace EvoNaplo.WebApp.Controllers
     [ApiController]
     public class SemesterController : ControllerBase
     {
-        private readonly SemesterService _semesterService;
+        private readonly SemesterFacade _semesterFacade;
 
-        public SemesterController(SemesterService SemesterService)
+        public SemesterController(SemesterFacade SemesterFacade)
         {
-            _semesterService = SemesterService;
+            _semesterFacade = SemesterFacade;
         }
 
         [HttpPost("AddSemester")]
-        public async Task<int> AddSemester([FromBody]Semester semester)
+        public IActionResult AddSemester([FromBody]SemesterEntity semester)
         {
-            await _semesterService.AddSemester(semester);
-            return StatusCodes.Status200OK;
+            _semesterFacade.AddSemester(semester);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         // List
@@ -31,48 +31,42 @@ namespace EvoNaplo.WebApp.Controllers
         [HttpGet("Semesters")]
         public IEnumerable<SemesterDTO> GetSemesters()
         {
-            return _semesterService.GetSemesters();
+            return _semesterFacade.GetSemesters();
         }
 
         [HttpGet("GetSemesterById")]
         public SemesterDTO GetSemesterById(int id)
         {
-            return _semesterService.GetSemesterById(id);
+            return _semesterFacade.GetSemesterById(id);
         }
 
         [HttpGet("GetSemesterToEditById")]
-        public Semester GetSemesterToEditById(int id)
+        public SemesterEntity GetSemesterToEditById(int id)
         {
-            return _semesterService.GetSemesterToEditById(id);
+            return _semesterFacade.GetSemesterToEditById(id);
         }
 
         //PUT
         [HttpPut("EditSemester")]
-        public async Task<int> EditSemester([FromBody] Semester semester)
+        public IActionResult EditSemester([FromBody] SemesterEntity semester)
         {
-            await _semesterService.EditSemester(semester);
-            return StatusCodes.Status200OK;
+            _semesterFacade.EditSemester(semester);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         //Delete (is-active falsera)
         // PUT /api/Semester Postman param részébe az adatok
         [HttpDelete("DELETE")]
-        public async Task<int> DeleteSemester(int id)
+        public IActionResult DeleteSemester(int id)
         {
-            await _semesterService.DeleteSemester(id);
-            return StatusCodes.Status200OK;
+            _semesterFacade.DeleteSemester(id);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpGet("GetSemesterProjects")]
         public IEnumerable<ProjectDTO> GetSemesterProjects(int id)
         {
-            return _semesterService.GetSemesterProjects(id);
-        }
-
-        [HttpPost("JoinSemester")]
-        public async Task JoinSemester(int id)
-        {
-            await _semesterService.JoinSemester(id);
+            return _semesterFacade.GetSemesterProjects(id);
         }
     }
 }

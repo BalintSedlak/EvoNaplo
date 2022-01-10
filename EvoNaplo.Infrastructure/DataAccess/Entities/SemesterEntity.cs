@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EvoNaplo.Infrastructure.DataAccessLayer;
+using System.ComponentModel.DataAnnotations;
 
 namespace EvoNaplo.Infrastructure.Models.Entities
 {
-    public class Semester
+    public class SemesterEntity : IEntity
     {
         [Key]
         public int Id { get; set; }
@@ -11,16 +12,16 @@ namespace EvoNaplo.Infrastructure.Models.Entities
         public bool IsAppliable { get; set; }
 
 
-        public Semester()
+        public SemesterEntity()
         {
         }
-        public Semester(Semester semester)
+
+        public SemesterEntity(SemesterEntity semester)
         {
             Id = semester.Id;
             StartDate = semester.StartDate;
             EndDate = semester.EndDate;
             IsAppliable = semester.IsAppliable;
-
         }
     }
 }

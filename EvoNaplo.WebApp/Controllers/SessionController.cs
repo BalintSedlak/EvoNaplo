@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using EvoNaplo.WebApp.Services;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Exceptions;
@@ -11,12 +10,10 @@ namespace EvoNaplo.WebApp.Controllers
     public class SessionController : ControllerBase
     {
         private readonly IAuthFacade _authFacade;
-        private readonly SessionService _sessionService;
 
-        public SessionController(IAuthFacade authFacade,SessionService sessionService)
+        public SessionController(IAuthFacade authFacade)
         {
             _authFacade = authFacade;
-            _sessionService = sessionService;
         }
 
         //TODO: Move to AuthController?
@@ -27,7 +24,7 @@ namespace EvoNaplo.WebApp.Controllers
             {
                 string jwt = Request.Cookies["jwt"];
                 UserDTO user = _authFacade.GetUserByJwt(jwt);
-                var session = _sessionService.GetSessionDTO(user);
+                var session = _authFacade.GetSession(user);
 
                 return Ok(session);
             }

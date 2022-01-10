@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.Entities;
-using EvoNaplo.WebApp.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,82 +11,82 @@ namespace EvoNaplo.WebApp.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private readonly ProjectService _projectService;
+        private readonly IProjectFacade _projectFacade;
 
-        public ProjectController(ProjectService ProjectService)
+        public ProjectController(IProjectFacade ProjectFacade)
         {
-            _projectService = ProjectService;
+            _projectFacade = ProjectFacade;
         }
 
         [HttpGet("Projects")]
         public IEnumerable<ProjectDTO> GetProjects()
         {
-            return _projectService.GetProjects();
+            return _projectFacade.GetProjects();
         }
 
         [HttpPost("AddProject")]
-        public async Task<int> PostAddProject([FromBody] Project project)
+        public IActionResult PostAddProject([FromBody] ProjectEntity project)
         {
-            await _projectService.AddProject(project);
-            return StatusCodes.Status200OK;
+            _projectFacade.AddProject(project);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpGet("ProjectsOfCurrentSemester")]
         public IEnumerable<ProjectDTO> GetProjectsOfCurrentSemester()
         {
-            return _projectService.GetProjectsOfCurrentSemseter();
+            return _projectFacade.GetProjectsOfCurrentSemseter();
         }
 
         [HttpGet("GetProjectById")]
         public ProjectDTO GetProjectById(int id)
         {
-            return _projectService.GetProjectById(id);
+            return _projectFacade.GetProjectById(id);
         }
 
         [HttpGet("GetProjectToEditById")]
-        public Project GetProjectToEditById(int id)
+        public ProjectEntity GetProjectToEditById(int id)
         {
-            return _projectService.GetProjectToEditById(id);
+            return _projectFacade.GetProjectToEditById(id);
         }
         //PUT
         [HttpPut("EditProject")]
-        public async Task<int> EditProject([FromBody] Project project)
+        public IActionResult EditProject([FromBody] ProjectEntity project)
         {
-            await _projectService.EditProject(project);
-            return StatusCodes.Status200OK;
+            _projectFacade.EditProject(project);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpDelete("DELETE")]
-        public async Task<int> DeleteProject(int id)
+        public IActionResult DeleteProject(int id)
         {
-            await _projectService.DeleteProject(id);
-            return StatusCodes.Status200OK;
+            _projectFacade.DeleteProject(id);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpGet("MyProjectThisSemester")]
         public ProjectDTO GetMyProjectThisSemester(int userId)
         {
-            return _projectService.GetMyProjectThisSemester(userId);
+            return _projectFacade.GetMyProjectThisSemester(userId);
         }
 
         [HttpGet("MyProjects")]
         public List<ProjectDTO> GetMyProjects(int userId)
         {
-            return _projectService.GetMyProjects(userId);
+            return _projectFacade.GetMyProjects(userId);
         }
 
         [HttpPost("JoinProject")]
-        public async Task<int> JoinProject(int userId,int projectId)
+        public IActionResult JoinProject(int userId,int projectId)
         {
-            await _projectService.JoinProject(userId, projectId);
-            return StatusCodes.Status200OK;
+            _projectFacade.JoinProject(userId, projectId);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpDelete("LeaveProject")]
-        public async Task<int> LeaveProject(int userId,int projectId)
+        public IActionResult LeaveProject(int userId, int projectId)
         {
-            await _projectService.LeaveProject(userId, projectId);
-            return StatusCodes.Status200OK;
+            _projectFacade.LeaveProject(userId, projectId);
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }

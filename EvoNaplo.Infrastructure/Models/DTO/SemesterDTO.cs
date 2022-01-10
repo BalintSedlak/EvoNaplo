@@ -18,7 +18,7 @@ namespace EvoNaplo.Infrastructure.Models.DTO
             Id = -1;
         }
 
-        public SemesterDTO(Semester semester)
+        public SemesterDTO(SemesterEntity semester)
         {
             Id = semester.Id;
             StartDate = semester.StartDate;

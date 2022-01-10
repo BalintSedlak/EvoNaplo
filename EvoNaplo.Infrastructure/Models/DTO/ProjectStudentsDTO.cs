@@ -29,7 +29,7 @@ namespace EvoNaplo.Infrastructure.Models.DTO
         public string Title { get; set; }
         public List<string> ProjectStudentIds { get; set; } = new List<string>();
 
-        public ColumnProject(Project project)
+        public ColumnProject(ProjectEntity project)
         {
             Id = project.Id.ToString();
             Title = project.ProjectName;
