@@ -16,6 +16,8 @@ using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.ApplicationCore.Domains.Projects.Services;
 using EvoNaplo.Infrastructure.Models.Entities;
+using EvoNaplo.ApplicationCore.Domains.Semesters.Facades;
+using EvoNaplo.ApplicationCore.Domains.Projects.Facades;
 
 namespace EvoNaplo.WebApp
 {
@@ -56,8 +58,8 @@ namespace EvoNaplo.WebApp
             services.AddScoped<ISemesterFacade, SemesterFacade>();
             services.AddScoped<SemesterService>();
 
-            services.AddScoped<IRepository<SemesterEntity>, Repository<SemesterEntity>>();
-            services.AddScoped<ISemesterFacade, SemesterFacade>();
+            services.AddScoped<IRepository<ProjectEntity>, Repository<ProjectEntity>>();
+            services.AddScoped<IProjectFacade, ProjectFacade>();
             services.AddScoped<ProjectService>();
 
             services.AddScoped<CommentService>();

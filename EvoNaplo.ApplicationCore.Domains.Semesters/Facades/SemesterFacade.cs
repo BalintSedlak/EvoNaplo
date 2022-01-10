@@ -3,16 +3,14 @@ using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.WebApp.Services;
 
-namespace EvoNaplo.ApplicationCore.Domains.Auth.Facades
+namespace EvoNaplo.ApplicationCore.Domains.Semesters.Facades
 {
     public class SemesterFacade : ISemesterFacade
     {
-        private readonly ISemesterFacade _semesterFacade;
         private readonly SemesterService _semesterService;
 
-        public SemesterFacade(ISemesterFacade semesterFacade, SemesterService semesterService)
+        public SemesterFacade(SemesterService semesterService)
         {
-            _semesterFacade = semesterFacade;
             _semesterService = semesterService;
         }
 

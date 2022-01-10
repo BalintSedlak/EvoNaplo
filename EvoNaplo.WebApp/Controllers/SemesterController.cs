@@ -4,7 +4,7 @@ using EvoNaplo.Infrastructure.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EvoNaplo.Infrastructure.Models.Entities;
-using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
+using EvoNaplo.ApplicationCore.Domains.Semesters.Facades;
 
 namespace EvoNaplo.WebApp.Controllers
 {
