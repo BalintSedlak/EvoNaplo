@@ -8,5 +8,6 @@ namespace EvoNaplo.Infrastructure.DomainFacades
         string Login(LoginViewModel loginDTO);
         UserDTO GetUserByJwt(string jwt);
         void RegisterNewUser(UserViewModel userViewModel);
+        SessionDTO GetSession(UserDTO user);
     }
 }

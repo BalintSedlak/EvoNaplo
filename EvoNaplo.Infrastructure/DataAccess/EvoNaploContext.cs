@@ -9,7 +9,7 @@ namespace EvoNaplo.Infrastructure.DataAccessLayer
     {
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<AttendanceSheet> AttendanceSheets { get; set; }
-        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectEntity> Projects { get; set; }
         public DbSet<SemesterEntity> Semesters { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<ProjectComment> ProjectComments { get; set; }

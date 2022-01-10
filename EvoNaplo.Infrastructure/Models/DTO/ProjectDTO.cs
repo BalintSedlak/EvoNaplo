@@ -21,7 +21,7 @@ namespace EvoNaplo.Infrastructure.Models.DTO
             Id = -1;
         }
 
-        public ProjectDTO(Project project)
+        public ProjectDTO(ProjectEntity project)
         {
             Id = project.Id;
             ProjectName = project.ProjectName;

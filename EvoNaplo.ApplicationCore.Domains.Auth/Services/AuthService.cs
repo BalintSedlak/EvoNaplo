@@ -66,5 +66,10 @@ namespace EvoNaplo.ApplicationCore.Domains.Auth.Services
 
             return (JwtSecurityToken)validatedToken;
         }
+
+        public SessionDTO GetSession(UserDTO user)
+        {
+            return new SessionDTO(user);
+        }
     }
 }

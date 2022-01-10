@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EvoNaplo.Infrastructure.DataAccessLayer;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EvoNaplo.Infrastructure.Models.Entities
 {
-    public class Project
+    public class ProjectEntity: IEntity
     {
         [Key]
         public int Id { get; set; }
@@ -13,12 +14,12 @@ namespace EvoNaplo.Infrastructure.Models.Entities
         public string Technologies { get; set; }
         [ForeignKey("SemesterId")]
         public int SemesterId { get; set; }
-        public Project()
+        public ProjectEntity()
         {
 
         }
 
-        public Project(Project project)
+        public ProjectEntity(ProjectEntity project)
         {
             Id = project.Id;
             ProjectName = project.ProjectName;

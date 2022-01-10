@@ -14,6 +14,8 @@ using EvoNaplo.ApplicationCore.Domains.Auth.Services;
 using EvoNaplo.Infrastructure.Helpers;
 using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
+using EvoNaplo.ApplicationCore.Domains.Projects.Services;
+using EvoNaplo.Infrastructure.Models.Entities;
 
 namespace EvoNaplo.WebApp
 {
@@ -42,7 +44,6 @@ namespace EvoNaplo.WebApp
             services.AddControllers();
             services.AddScoped<IRepository<UserEntity>, Repository<UserEntity>>();
             services.AddScoped<IUserFacade, UserFacade>();
-            services.AddScoped<SemesterService>();
             services.AddScoped<MentorService>();
             services.AddScoped<StudentService>();
             services.AddScoped<AdminService>();
@@ -50,13 +51,19 @@ namespace EvoNaplo.WebApp
             
             services.AddScoped<IAuthFacade, AuthFacade>();
             services.AddScoped<AuthService>();
-            
-            services.AddScoped<UserHelper>();
+                        
+            services.AddScoped<IRepository<SemesterEntity>, Repository<SemesterEntity>>();
+            services.AddScoped<ISemesterFacade, SemesterFacade>();
+            services.AddScoped<SemesterService>();
 
+            services.AddScoped<IRepository<SemesterEntity>, Repository<SemesterEntity>>();
+            services.AddScoped<ISemesterFacade, SemesterFacade>();
             services.AddScoped<ProjectService>();
-            services.AddScoped<ProjectStudentService>();
-            services.AddScoped<SessionService>();
+
             services.AddScoped<CommentService>();
+
+            services.AddScoped<UserHelper>();
+            services.AddScoped<ProjectStudentService>();
             services.AddScoped<AttendanceSheetService>();
         }
 
