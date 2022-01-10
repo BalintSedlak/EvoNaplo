@@ -1,4 +1,6 @@
-﻿namespace EvoNaplo.Common.Models.DTO
+﻿using EvoNaplo.Common.Models.Entities;
+
+namespace EvoNaplo.Common.Models.DTO
 {
     public class UserAuth
     {
