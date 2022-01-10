@@ -1,6 +1,6 @@
-﻿namespace EvoNaplo.UserDomain.Models
+﻿namespace EvoNaplo.Common.Models.DTO
 {
-    internal class UserAuth
+    public class UserAuth
     {
         public int Id { get; set; }
         public string Email { get; set; }

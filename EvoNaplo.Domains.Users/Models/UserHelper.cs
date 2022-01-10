@@ -1,7 +1,7 @@
 ﻿using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.Entities;
 
-namespace EvoNaplo.UserDomain.Models
+namespace EvoNaplo.Domains.Users.Models
 {
     //TODO: Replace this with property mapper
     public class UserHelper

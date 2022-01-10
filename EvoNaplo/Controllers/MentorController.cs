@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.Entities;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,9 +1,8 @@
 ﻿using EvoNaplo.Common.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
+using EvoNaplo.AuthDomain.Facades;
 
 namespace EvoNaplo.Controllers
 {
@@ -11,11 +10,11 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IUserFacade _userFacade;
+        private readonly IAuthFacade _authFacade;
 
-        public AuthController(IUserFacade userFacade)
+        public AuthController(IAuthFacade authFacade)
         {
-            _userFacade = userFacade;
+            _authFacade = authFacade;
         }
 
         [HttpPost("Login")]
@@ -24,7 +23,7 @@ namespace EvoNaplo.Controllers
             //TODO: Move to Service 
             try
             {
-                string jwt = _userFacade.Login(loginDTO);
+                string jwt = _authFacade.Login(loginDTO);
 
                 Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
@@ -48,7 +47,7 @@ namespace EvoNaplo.Controllers
             try
             {
                 string jwt = Request.Cookies["jwt"];
-                UserDTO user = _userFacade.GetUserByJwt(jwt);
+                UserDTO user = _authFacade.GetUserByJwt(jwt);
 
                 return Ok(user);
             }

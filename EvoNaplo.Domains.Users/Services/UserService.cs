@@ -1,9 +1,9 @@
 ﻿using EvoNaplo.Common.DataAccessLayer;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.Entities;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 
-namespace EvoNaplo.UserDomain.Services
+namespace EvoNaplo.Domains.Users.Services
 {
     public class UserService
     {

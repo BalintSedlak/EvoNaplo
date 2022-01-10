@@ -3,15 +3,16 @@ using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.Entities;
 using EvoNaplo.TestHelper;
-using EvoNaplo.UserDomain.Facades;
-using EvoNaplo.UserDomain.Models;
-using EvoNaplo.UserDomain.Services;
+using EvoNaplo.Domains.Users.Facades;
+using EvoNaplo.Domains.Users.Models;
+using EvoNaplo.Domains.Users.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EvoNaplo.AuthDomain.Facades;
 
 namespace EvoNaplo.IntegrationTest
 {
@@ -43,12 +44,13 @@ namespace EvoNaplo.IntegrationTest
 
             Mock<ILogger<AdminService>> mockAdminLogger = new Mock<ILogger<AdminService>>();
             Mock<ILogger<MentorService>> mockMentorLogger = new Mock<ILogger<MentorService>>();
+            Mock<IAuthFacade> mockAuthFacade = new Mock<IAuthFacade>(); 
+
             AdminService adminService = new AdminService(TestDbContextHelper.InjectRepository<User>(), _userHelper, mockAdminLogger.Object);
             MentorService mentorService = new MentorService(TestDbContextHelper.InjectRepository<User>(), _userHelper, mockMentorLogger.Object);
-            StudentService studentService = new StudentService(TestDbContextHelper.InjectRepository<User>(), _userHelper);
+            StudentService studentService = new StudentService(TestDbContextHelper.InjectRepository<User>(), mockAuthFacade.Object, _userHelper);
             UserService userService = new UserService(TestDbContextHelper.InjectRepository<User>(), studentService, mentorService, adminService, _userHelper);
-            AuthService authService = new AuthService(userService);
-            _userFacade = new UserFacade(adminService, mentorService, studentService, userService, authService);
+            _userFacade = new UserFacade(adminService, mentorService, studentService, userService);
         }
 
         [TearDown]

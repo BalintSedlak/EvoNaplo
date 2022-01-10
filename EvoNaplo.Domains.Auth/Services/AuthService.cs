@@ -1,29 +1,28 @@
-﻿using EvoNaplo.Common.DataAccessLayer;
+﻿using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Exceptions;
 using EvoNaplo.Common.Models.DTO;
-using EvoNaplo.UserDomain.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Text;
 
-namespace EvoNaplo.UserDomain.Services
+namespace EvoNaplo.Domains.Auth.Services
 {
     public class AuthService
     {
         //TODO: Move to config?
         private readonly string secureKey = "valami nagyonszupereroscucclikey";
 
-        private readonly UserService _userService;
+        private readonly IUserFacade _userFacade;
 
-        public AuthService(UserService userService)
+        public AuthService(IUserFacade userFacade)
         {
-            _userService = userService;
+            _userFacade = userFacade;
         }
 
         internal string Login(LoginViewModel loginViewModel)
         {
-            UserAuth user = _userService.GetUserByEmail(loginViewModel.email);
+            UserAuth user = _userFacade.GetUserByEmail(loginViewModel.email);
 
             if (user == null)
             {

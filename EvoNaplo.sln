@@ -5,15 +5,17 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo", "EvoNaplo\EvoNaplo.csproj", "{291B5F8A-0874-446A-BE93-D8DAB80C9510}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.UserDomain.IntegrationTest", "EvoNaplo.UserDomain.IntegrationTest\EvoNaplo.UserDomain.IntegrationTest.csproj", "{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Domains.Users.IntegrationTest", "EvoNaplo.Domains.Users.IntegrationTest\EvoNaplo.Domains.Users.IntegrationTest.csproj", "{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.TestHelper", "EvoNaplo.TestHelper\EvoNaplo.TestHelper.csproj", "{E78E5F54-A7C8-4062-9561-132A8C5DCEBE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.UserDomain", "EvoNaplo.UserDomain\EvoNaplo.UserDomain.csproj", "{34D11B5D-93D5-40D6-A04A-DAAACF24F862}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Domains.Users", "EvoNaplo.Domains.Users\EvoNaplo.Domains.Users.csproj", "{34D11B5D-93D5-40D6-A04A-DAAACF24F862}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Common", "EvoNaplo.Common\EvoNaplo.Common.csproj", "{02F1B3EF-A43C-40A7-9083-1102F73E289E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.Common.UnitTest", "EvoNaplo.Common.UnitTest\EvoNaplo.Common.UnitTest.csproj", "{8F20896F-72A2-44AA-81DA-7358993D9948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Common.UnitTest", "EvoNaplo.Common.UnitTest\EvoNaplo.Common.UnitTest.csproj", "{8F20896F-72A2-44AA-81DA-7358993D9948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.Domains.Auth", "EvoNaplo.Domains.Auth\EvoNaplo.Domains.Auth.csproj", "{6F5531D8-35B8-49A8-8600-71CFF0B80297}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{8F20896F-72A2-44AA-81DA-7358993D9948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F20896F-72A2-44AA-81DA-7358993D9948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F20896F-72A2-44AA-81DA-7358993D9948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

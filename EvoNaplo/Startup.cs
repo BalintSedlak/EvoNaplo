@@ -6,12 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using EvoNaplo.UserDomain.Services;
+using EvoNaplo.Domains.Users.Services;
 using EvoNaplo.Common.DataAccessLayer;
-using EvoNaplo.UserDomain.Facades;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models.Entities;
+using EvoNaplo.Domains.Users.Facades;
+using EvoNaplo.Domains.Auth.Services;
 
 namespace EvoNaplo
 {
