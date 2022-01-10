@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EvoNaplo.TestHelper\EvoNaplo.TestHelper.csproj" />
-    <ProjectReference Include="..\EvoNaplo.UserDomain\EvoNaplo.UserDomain.csproj" />
+    <ProjectReference Include="..\EvoNaplo.Domains.Users\EvoNaplo.Domains.Users.csproj" />
     <ProjectReference Include="..\EvoNaplo\EvoNaplo.csproj" />
   </ItemGroup>
 

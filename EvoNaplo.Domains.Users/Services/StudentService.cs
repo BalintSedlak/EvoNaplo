@@ -1,18 +1,21 @@
-﻿using EvoNaplo.Common.DataAccessLayer;
+﻿using EvoNaplo.AuthDomain.Facades;
+using EvoNaplo.Common.DataAccessLayer;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.Entities;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 
-namespace EvoNaplo.UserDomain.Services
+namespace EvoNaplo.Domains.Users.Services
 {
     public class StudentService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IAuthFacade _authFacade;
         private readonly UserHelper _userHelper;
 
-        public StudentService(IRepository<User> userRepository, UserHelper userHelper)
+        public StudentService(IRepository<User> userRepository, IAuthFacade authFacade, UserHelper userHelper)
         {
             _userRepository = userRepository;
+            _authFacade = authFacade;
             _userHelper = userHelper;
         }
 
@@ -31,7 +34,7 @@ namespace EvoNaplo.UserDomain.Services
         internal async Task AddStudentAsync(UserViewModel user)
         {
             user.Role = RoleType.Student;
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.Password = _authFacade.HashPassword(user.Password);
             _userRepository.Add(_userHelper.ConvertUserViewModelToUser(user));
             await _userRepository.SaveChangesAsync();
         }

@@ -1,5 +1,5 @@
 ﻿using EvoNaplo.Common.Models.DTO;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 
 namespace EvoNaplo.Services
 {

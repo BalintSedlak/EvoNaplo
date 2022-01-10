@@ -4,6 +4,7 @@ using EvoNaplo.Services;
 using EvoNaplo.Common.DomainFacades;
 using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Exceptions;
+using EvoNaplo.AuthDomain.Facades;
 
 namespace EvoNaplo.Controllers
 {
@@ -11,12 +12,12 @@ namespace EvoNaplo.Controllers
     [ApiController]
     public class SessionController : ControllerBase
     {
-        private readonly IUserFacade _userFacade;
+        private readonly IAuthFacade _authFacade;
         private readonly SessionService _sessionService;
 
-        public SessionController(IUserFacade userFacade,SessionService sessionService)
+        public SessionController(IAuthFacade authFacade,SessionService sessionService)
         {
-            _userFacade = userFacade;
+            _authFacade = authFacade;
             _sessionService = sessionService;
         }
 
@@ -27,7 +28,7 @@ namespace EvoNaplo.Controllers
             try
             {
                 string jwt = Request.Cookies["jwt"];
-                UserDTO user = _userFacade.GetUserByJwt(jwt);
+                UserDTO user = _authFacade.GetUserByJwt(jwt);
                 var session = _sessionService.GetSessionDTO(user);
 
                 return Ok(session);

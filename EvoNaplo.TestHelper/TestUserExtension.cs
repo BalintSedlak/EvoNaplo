@@ -1,5 +1,5 @@
 ﻿using EvoNaplo.Common.Models.Entities;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 
 namespace EvoNaplo.TestHelper
 {

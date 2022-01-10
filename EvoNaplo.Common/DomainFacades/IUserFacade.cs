@@ -1,6 +1,6 @@
 ﻿using EvoNaplo.Common.Models.DTO;
 using EvoNaplo.Common.Models.Entities;
-using EvoNaplo.UserDomain.Models;
+using EvoNaplo.Domains.Users.Models;
 
 namespace EvoNaplo.Common.DomainFacades
 {
@@ -15,7 +15,6 @@ namespace EvoNaplo.Common.DomainFacades
         Task DeleteUserAsync(int id);
         Task UpdateUserAsync(UserViewModel user);
         Task SetUserRole(UserViewModel user, RoleType newRole);
-        string Login(LoginViewModel loginDTO);
-        UserDTO GetUserByJwt(string jwt);
+        UserAuth GetUserByEmail(string email);
     }
 }

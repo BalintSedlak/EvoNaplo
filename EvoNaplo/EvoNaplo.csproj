@@ -48,7 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EvoNaplo.UserDomain\EvoNaplo.UserDomain.csproj" />
+    <ProjectReference Include="..\EvoNaplo.Common\EvoNaplo.Common.csproj" />
+    <ProjectReference Include="..\EvoNaplo.Domains.Auth\EvoNaplo.Domains.Auth.csproj" />
+    <ProjectReference Include="..\EvoNaplo.Domains.Users\EvoNaplo.Domains.Users.csproj" />
+    <ProjectReference Include="..\EvoNaplo.Domains.Users\EvoNaplo.Domains.Users.csproj" />
   </ItemGroup>
 
   <ItemGroup>
