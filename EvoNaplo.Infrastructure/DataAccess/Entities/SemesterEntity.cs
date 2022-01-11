@@ -1,7 +1,6 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace EvoNaplo.Infrastructure.Models.Entities
+namespace EvoNaplo.Infrastructure.DataAccess.Entities
 {
     public class SemesterEntity : IEntity
     {

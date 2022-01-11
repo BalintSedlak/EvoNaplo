@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EvoNaplo.Infrastructure.DataAccessLayer
+namespace EvoNaplo.Infrastructure.DataAccess
 {
     public interface IRepository<TEntity> where TEntity : class, IEntity
     {

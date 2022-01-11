@@ -1,4 +1,5 @@
-﻿using EvoNaplo.Infrastructure.Models.DTO;
+﻿using EvoNaplo.ApplicationCore.Domains.Comments.Facades;
+using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.TableConnectors;
 using EvoNaplo.WebApp.Services;
 using Microsoft.AspNetCore.Http;
@@ -12,51 +13,51 @@ namespace EvoNaplo.WebApp.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly CommentService _commentService;
+        private readonly CommentFacade _commentFacade;
 
-        public CommentController(CommentService commentService)
+        public CommentController(CommentFacade commentFacade)
         {
-            _commentService = commentService;
+            _commentFacade = commentFacade;
         }
 
         [HttpGet("StudentComments")]
         public IEnumerable<CommentDTO> GetStudentComments(int id)
         {
-            return _commentService.GetStudentComments(id);
+            return _commentFacade.GetStudentComments(id);
         }
 
         [HttpPost("StudentComment")]
-        public async Task<int> StudentComment([FromBody] StudentComment studentComment)
+        public IActionResult StudentComment([FromBody] StudentComment studentComment)
         {
-            await _commentService.AddStudentComment(studentComment);
-            return StatusCodes.Status200OK;
+            _commentFacade.AddStudentComment(studentComment);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpGet("ProjectComments")]
         public IEnumerable<CommentDTO> GetProjectComments(int id)
         {
-            return _commentService.GetProjectComments(id);
+            return _commentFacade.GetProjectComments(id);
         }
 
         [HttpPost("ProjectComment")]
-        public async Task<int> ProjectComment([FromBody] ProjectComment projectComment)
+        public IActionResult ProjectComment([FromBody] ProjectComment projectComment)
         {
-            await _commentService.AddProjectComment(projectComment);
-            return StatusCodes.Status200OK;
+            _commentFacade.AddProjectComment(projectComment);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpPost("EditStudentComment")]
-        public async Task<int> EditStudentComment([FromBody] CommentDTO studentComment)
+        public IActionResult EditStudentComment([FromBody] CommentDTO studentComment)
         {
-            await _commentService.EditStudentComment(studentComment);
-            return StatusCodes.Status200OK;
+            _commentFacade.EditStudentComment(studentComment);
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpPost("EditProjectComment")]
-        public async Task<int> EditProjectComment([FromBody] CommentDTO projectComment)
+        public IActionResult EditProjectComment([FromBody] CommentDTO projectComment)
         {
-            await _commentService.EditProjectComment(projectComment);
-            return StatusCodes.Status200OK;
+            _commentFacade.EditProjectComment(projectComment);
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }

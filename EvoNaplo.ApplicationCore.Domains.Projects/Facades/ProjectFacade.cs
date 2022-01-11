@@ -1,7 +1,7 @@
 ﻿using EvoNaplo.ApplicationCore.Domains.Projects.Services;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Models.DTO;
-using EvoNaplo.Infrastructure.Models.Entities;
 
 namespace EvoNaplo.ApplicationCore.Domains.Projects.Facades
 {

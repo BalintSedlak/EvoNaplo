@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EvoNaplo.Infrastructure.DataAccessLayer
+namespace EvoNaplo.Infrastructure.DataAccess
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
@@ -72,6 +72,6 @@ namespace EvoNaplo.Infrastructure.DataAccessLayer
         public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             await _context.SaveChangesAsync(cancellationToken);
-        }        
+        }
     }
 }

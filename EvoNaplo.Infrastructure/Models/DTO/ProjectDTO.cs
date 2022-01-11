@@ -1,4 +1,4 @@
-﻿using EvoNaplo.Infrastructure.Models.Entities;
+﻿using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.Infrastructure.Models.DTO
 {

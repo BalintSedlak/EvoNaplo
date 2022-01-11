@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EvoNaplo.ApplicationCore.Domains.Users.Services;
-using EvoNaplo.Infrastructure.DataAccessLayer;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.ApplicationCore.Domains.Users.Facades;
 using EvoNaplo.ApplicationCore.Domains.Auth.Services;
@@ -15,9 +14,11 @@ using EvoNaplo.Infrastructure.Helpers;
 using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.ApplicationCore.Domains.Projects.Services;
-using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.ApplicationCore.Domains.Semesters.Facades;
 using EvoNaplo.ApplicationCore.Domains.Projects.Facades;
+using EvoNaplo.Infrastructure.DataAccess;
+using EvoNaplo.ApplicationCore.Domains.Comments.Services;
+using EvoNaplo.ApplicationCore.Domains.Comments.Facades;
 
 namespace EvoNaplo.WebApp
 {
@@ -62,6 +63,8 @@ namespace EvoNaplo.WebApp
             services.AddScoped<IProjectFacade, ProjectFacade>();
             services.AddScoped<ProjectService>();
 
+            services.AddScoped<IRepository<CommentEntity>, Repository<CommentEntity>>();
+            services.AddScoped<ICommentFacade, CommentFacade>();
             services.AddScoped<CommentService>();
 
             services.AddScoped<UserHelper>();

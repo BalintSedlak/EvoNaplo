@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Projects", "EvoNaplo.ApplicationCore.Domains.Projects\EvoNaplo.ApplicationCore.Domains.Projects.csproj", "{26D725AE-9E97-4DAC-9964-69DD987AD5CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Comments", "EvoNaplo.ApplicationCore.Domains.Comments\EvoNaplo.ApplicationCore.Domains.Comments.csproj", "{5A17A651-B08D-4882-BC46-9D743C63F90E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
