@@ -1,9 +1,9 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
-using EvoNaplo.Infrastructure.Models.DTO;
+﻿using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.Entities;
 using Microsoft.Extensions.Logging;
 using EvoNaplo.Infrastructure.Helpers;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
+using EvoNaplo.Infrastructure.DataAccess;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.Services
 {

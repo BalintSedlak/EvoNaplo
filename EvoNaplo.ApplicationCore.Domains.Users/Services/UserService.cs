@@ -1,9 +1,9 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
-using EvoNaplo.Infrastructure.Models.DTO;
+﻿using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.ApplicationCore.Domains.Users.Models;
 using EvoNaplo.Infrastructure.Helpers;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
+using EvoNaplo.Infrastructure.DataAccess;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.Services
 {

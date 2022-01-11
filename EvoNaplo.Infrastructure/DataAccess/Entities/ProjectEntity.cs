@@ -1,10 +1,9 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EvoNaplo.Infrastructure.Models.Entities
+namespace EvoNaplo.Infrastructure.DataAccess.Entities
 {
-    public class ProjectEntity: IEntity
+    public class ProjectEntity : IEntity
     {
         [Key]
         public int Id { get; set; }

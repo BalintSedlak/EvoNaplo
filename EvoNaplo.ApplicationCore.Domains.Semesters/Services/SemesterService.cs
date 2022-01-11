@@ -1,6 +1,6 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
+﻿using EvoNaplo.Infrastructure.DataAccess;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.Models.DTO;
-using EvoNaplo.Infrastructure.Models.Entities;
 
 namespace EvoNaplo.WebApp.Services
 {

@@ -1,6 +1,6 @@
-﻿using EvoNaplo.Infrastructure.DomainFacades;
+﻿using EvoNaplo.Infrastructure.DataAccess.Entities;
+using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Models.DTO;
-using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.WebApp.Services;
 
 namespace EvoNaplo.ApplicationCore.Domains.Semesters.Facades

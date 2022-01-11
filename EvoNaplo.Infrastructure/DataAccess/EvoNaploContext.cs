@@ -3,7 +3,7 @@ using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.Infrastructure.Models.TableConnectors;
 using Microsoft.EntityFrameworkCore;
 
-namespace EvoNaplo.Infrastructure.DataAccessLayer
+namespace EvoNaplo.Infrastructure.DataAccess
 {
     public class EvoNaploContext : DbContext
     {

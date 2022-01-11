@@ -47,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EvoNaplo.ApplicationCore.Domains.Comments\EvoNaplo.ApplicationCore.Domains.Comments.csproj" />
     <ProjectReference Include="..\EvoNaplo.ApplicationCore.Domains.Projects\EvoNaplo.ApplicationCore.Domains.Projects.csproj" />
     <ProjectReference Include="..\EvoNaplo.ApplicationCore.Domains.Semesters\EvoNaplo.ApplicationCore.Domains.Semesters.csproj" />
     <ProjectReference Include="..\EvoNaplo.Infrastructure\EvoNaplo.Infrastructure.csproj" />

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using EvoNaplo.Infrastructure.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using EvoNaplo.Infrastructure.Models.Entities;
 using EvoNaplo.ApplicationCore.Domains.Semesters.Facades;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 
 namespace EvoNaplo.WebApp.Controllers
 {

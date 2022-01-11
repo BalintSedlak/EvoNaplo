@@ -1,5 +1,4 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
-using EvoNaplo.Infrastructure.Models.Entities;
+﻿using EvoNaplo.Infrastructure.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace EvoNaplo.Infrastructure.DataAccess.Entities

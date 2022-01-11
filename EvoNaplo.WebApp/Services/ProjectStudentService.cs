@@ -1,11 +1,11 @@
-﻿using EvoNaplo.Infrastructure.DataAccessLayer;
-using EvoNaplo.Infrastructure.Models.DTO;
+﻿using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.TableConnectors;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
 using EvoNaplo.Infrastructure.DomainFacades;
+using EvoNaplo.Infrastructure.DataAccess;
 
 namespace EvoNaplo.WebApp.Services
 {

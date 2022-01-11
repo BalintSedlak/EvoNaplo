@@ -1,5 +1,5 @@
-﻿using EvoNaplo.Infrastructure.Models.DTO;
-using EvoNaplo.Infrastructure.Models.Entities;
+﻿using EvoNaplo.Infrastructure.DataAccess.Entities;
+using EvoNaplo.Infrastructure.Models.DTO;
 
 namespace EvoNaplo.Infrastructure.DomainFacades
 {

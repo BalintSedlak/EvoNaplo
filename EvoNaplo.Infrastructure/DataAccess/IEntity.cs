@@ -1,4 +1,4 @@
-﻿namespace EvoNaplo.Infrastructure.DataAccessLayer
+﻿namespace EvoNaplo.Infrastructure.DataAccess
 {
     public interface IEntity
     {

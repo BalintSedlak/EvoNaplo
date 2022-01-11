@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Models.DTO;
-using EvoNaplo.Infrastructure.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
