@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IStudentEntry from './IStudentEntry';
 import StudentEntry from './StudentEntry';
 
@@ -48,11 +48,28 @@ const ListStudents = () => {
         }
     ];
 
+    const [filteredStudentList, setStudentListFilter] = useState(students);
+    const [studentNameFilter, setStudentNameFilter] = useState("");
+
+  const filterStudentsByName = (filterString: string) => {
+    setStudentNameFilter(filterString);
+    filterStudents(filterString);
+  }
+
+  function filterStudents(nameFilter: string) {
+    let filteredStudents = students.filter(student => student.fullname.toLowerCase().includes(nameFilter.toLowerCase()));    
+    
+    //TODO: Filter by semester
+    //TODO: Filter by schoolarship
+
+    setStudentListFilter(filteredStudents);
+  }
+
     return (
         <div>
             <label>
                 Név:
-                <input type="text" name="fullname" />
+                <input type="text" name="fullname" onChange={e => filterStudentsByName(e.target.value)}/>
             </label>
 
             <label>
@@ -89,7 +106,7 @@ const ListStudents = () => {
                     <th>Részvétel</th>
                     <th>Profil</th>
                 </tr>
-                {students.map((student) => <StudentEntry
+                {filteredStudentList.map((student) => <StudentEntry
                     fullname={student.fullname}
                     email={student.email}
                     phoneNumber={student.phoneNumber}
@@ -108,3 +125,5 @@ const ListStudents = () => {
 }
 
 export default ListStudents;
+
+
