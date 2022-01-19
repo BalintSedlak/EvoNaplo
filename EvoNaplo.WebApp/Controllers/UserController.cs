@@ -39,12 +39,6 @@ namespace EvoNaplo.WebApp.Controllers
             return await _userFacade.GetAllUserFromRoleTypeAsync(RoleType.Admin);
         }
 
-        [HttpGet("GetUserById")]
-        public UserDTO GetUserById(int id)
-        {
-            return _userFacade.GetUser(id);
-        }
-
         [HttpGet("GetUserToEditById")]
         public UserDTO GetUserToEditById(int id)
         {
