@@ -1,45 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback } from 'react';
 import './App.css';
 import RegisterStudent from './Components/RoleType/Unauthenticated/RegisterStudent';
 import RegisterUser from './Components/RoleType/Admin/RegisterUser';
 import ListStudents from './Components/RoleType/Admin/ListStudents';
 import AddAttendance from './Components/RoleType/Mentor/AddAttendance';
-import ListAttendance from './Components/RoleType/Admin/ListAttendances';
+import SemesterOpening from './Components/RoleType/Admin/SemesterOpening/SemesterOpeningView';
+// import ListAttendance from './Components/RoleType/Admin/ListAttendances';
 
 function App() {
   return (
-    <div className="App">
-      <RegisterStudent/>
-      <RegisterUser/>
+      <div className="App">
+        <RegisterStudent/>
+        <RegisterUser/>
 
-      <br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/>
 
-      <ListStudents/>
+        <ListStudents/>
 
-      <br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/>
 
-      <AddAttendance/>
+        <AddAttendance/>
 
-      <br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/>
       
-      <ListAttendance/>
+        {/* <ListAttendance/> */}
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <SemesterOpening/>
+
+      </div>    
   );
 }
 
