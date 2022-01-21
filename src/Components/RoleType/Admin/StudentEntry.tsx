@@ -7,6 +7,7 @@ const StudentEntry = (props: IStudentEntry) => {
         <td>{props.fullname}</td>
         <td>{props.email}</td>
         <td>{props.phoneNumber}</td>
+        <td>{props.semester}</td>
         <td>{props.project}</td>
         <td>{props.mentors}</td>
         <td>{props.dateOfClass}</td>

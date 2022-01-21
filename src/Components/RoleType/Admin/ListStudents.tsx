@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { type } from 'os';
+import React, { useEffect,useState } from 'react';
+import { fileURLToPath } from 'url';
 import IStudentEntry from './IStudentEntry';
 import StudentEntry from './StudentEntry';
 
@@ -8,6 +10,7 @@ const ListStudents = () => {
             fullname: "Név1",
             email: "nev1@email.com",
             phoneNumber: "+3621423423",
+            semester: "5",
             project: "Project1",
             mentors: "ASD, QWE",
             dateOfClass: "Péntek 14:00",
@@ -22,6 +25,7 @@ const ListStudents = () => {
             fullname: "Név2",
             email: "nev2@email.com",
             phoneNumber: "+3621424454",
+            semester: "4",
             project: "Project2",
             mentors: "ASD, Rtz",
             dateOfClass: "Péntek 10:00",
@@ -36,6 +40,7 @@ const ListStudents = () => {
             fullname: "Név3",
             email: "nev3@email.com",
             phoneNumber: "+36214245656",
+            semester: "5",
             project: "Project3",
             mentors: "HJK",
             dateOfClass: "Szerda 14:00",
@@ -47,17 +52,62 @@ const ListStudents = () => {
             participationPercent: 60
         }
     ];
+    
+    const [filteredStudentList, setStudentListFilter] = useState(students);
+    const [studentNameFilter, setStudentNameFilter] = useState("");
+    const [studentSemesterFilter, setStudentSemesterFilter] = useState("");
+    const [studentScholarshipFilter, setStudentScholarshipFilter] = useState(false);
 
+    function ifBranching(name: string, semester: string, scholarship: boolean) {
+        if(scholarship === true && semester === "0")
+            filterStudents(name,"",true);
+        else if(scholarship === true && !(semester === "0"))
+            filterStudents(name,semester,true);
+        else if(semester === "0")
+            filterStudents(name,"")
+        else
+            filterStudents(name,semester); 
+    }
+
+    const filterStudentsByName = (filterString: string) => {
+        setStudentNameFilter(filterString);
+        ifBranching(filterString,studentSemesterFilter,studentScholarshipFilter);
+    }
+
+    const filterStudentsBySemester = (filterString: string) => {
+        setStudentSemesterFilter(filterString);
+        ifBranching(studentNameFilter,filterString,studentScholarshipFilter);
+    }
+    const filterStudentsByScholarship = (filterBoolean: boolean) => {
+        setStudentScholarshipFilter(filterBoolean);
+        ifBranching(studentNameFilter,studentSemesterFilter,filterBoolean);
+    }
+    
+    function filterStudents(nameFilter: string, semesterFilter: string, scholarshipFilter?: boolean) {
+        let filteredStudents;
+        if(scholarshipFilter === true)
+            filteredStudents = students.filter(student => student.fullname.toLowerCase().includes(nameFilter.toLowerCase())
+            && student.semester.toLowerCase().includes(semesterFilter.toLowerCase())
+            && student.isAppliedForScholarship === scholarshipFilter);
+        else
+            filteredStudents = students.filter(student => student.fullname.toLowerCase().includes(nameFilter.toLowerCase())
+            && student.semester.toLowerCase().includes(semesterFilter.toLowerCase()));
+
+        setStudentListFilter(filteredStudents);
+    }
+    
     return (
         <div>
-            <label>
-                Név:
-                <input type="text" name="fullname" />
-            </label>
 
             <label>
+                Név:
+                <input type="text" name="fullname" onChange={e => filterStudentsByName(e.target.value)}/>
+            </label>
+             
+            <label>
+                
                 Semester:
-                <select>
+                <select onChange={e => filterStudentsBySemester(e.target.value)}>
                     <option value={0}>Összes</option>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
@@ -66,11 +116,12 @@ const ListStudents = () => {
                     <option value={5}>5</option>
                     <option value={6}>6</option>
                 </select>
+                
             </label>
 
             <label>
                 Ösztöndíjra jelentkezett?
-                <input type="checkbox" name='isAppliedForSchoolarship'/>
+                <input type="checkbox" name='isAppliedForScholarship' onChange={e => filterStudentsByScholarship(e.target.checked)} />
             </label>
 
             <table>
@@ -78,6 +129,7 @@ const ListStudents = () => {
                     <th>Név</th>
                     <th>Email</th>
                     <th>Telefonszám</th>
+                    <th>Szemeszter</th>
                     <th>Project</th>
                     <th>Mentorok</th>
                     <th>Időpont</th>
@@ -89,10 +141,11 @@ const ListStudents = () => {
                     <th>Részvétel</th>
                     <th>Profil</th>
                 </tr>
-                {students.map((student) => <StudentEntry
+                {filteredStudentList.map((student) => <StudentEntry
                     fullname={student.fullname}
                     email={student.email}
                     phoneNumber={student.phoneNumber}
+                    semester={student.semester}
                     project={student.project}
                     mentors={student.mentors}
                     dateOfClass={student.dateOfClass}
@@ -106,5 +159,4 @@ const ListStudents = () => {
         </div>
     )
 }
-
 export default ListStudents;
