@@ -1,54 +1,44 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-  
-//   const tdStyle = {
-//     border: "1px solid black",
-//   };
-  
-//   const Table({ id, columns, data }) {
-//     return (
-//         <table>
-//             <tbody>
-//                 <tr>
-//                     {columns.map(({ path, name }) => (
-//                         <th style={tdStyle} key={path}>{name}</th>
-//                     ))}
-//                 </tr>
-//                 {data.map((rowData) => (
-//                     <tr key={rowData[id]}>
-//                         {columns.map(({ path }) => (
-//                             <td style={tdStyle} key={path}>
-//                                 {rowData[path]}
-//                             </td>
-//                         ))}
-//                     </tr>
-//                 ))}
-//             </tbody>
-//         </table>
-//     );
-// }
-  
-//   // Example use --------------------
-  
-  const ListAttendances = () => {
-    const columns = [
-      { path: "id",   name: "ID" },
-      { path: "name", name: "Name" },
-      { path: "age",  name: "Age" },
-    ];
-  
-    const data = [
-      { id: 1, name: 'Kate',  age: 25, favFruit: '🍏' },
-      { id: 2, name: 'Tom',   age: 23, favFruit: '🍌' },
-      { id: 3, name: 'Ann',   age: 26, favFruit: '🍊' },
-      { id: 4, name: 'Jack',  age: 21, favFruit: '🍒' }
-    ];
-  
-    return (
-      <div>
-        {/* <Table id="id" columns={columns} data={data} /> */}
-      </div>
-    );
-  };
+import ListStudents from "./ListStudents"
 
-   export default ListAttendances;
+
+const response = {
+  initial_data: [
+   {
+     "Did I see this plant in 2016?":"No",
+     "Did I see this plant in 2017?":"Yes",
+     "How Many?":1,
+     "User Data 4":"x",
+     "User Data 5":"",
+     "Did I see this plant in 2022?":"No",
+     "Name":"Abronia alpina"
+   },
+   {
+     "Did I see this plant in 2016?":"No",
+     "Did I see this plant in 2017?":"No",
+     "How Many?":11,
+     "User Data 4":"x",
+     "User Data 5":"",
+     "Did I see this plant in 2022?":"Yes",
+     "Name":"Abronia alpina1"
+   }]
+}
+
+// class App extends React.Component {
+
+//     <ListStudents/>
+// //   render() {
+//     // const data = response.initial_data
+
+//     // const columns = Object.keys(response.initial_data[0]).map((key, id)=>{
+//     //   return {
+//     //     Header: key,
+//     //     accessor: key
+//     //   }
+//     // })
+
+//     // return <ReactTable
+//     //   data = { data }
+//     //   columns = { columns }
+//     // />
+//   }
+// }

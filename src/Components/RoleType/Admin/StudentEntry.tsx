@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import IStudentEntry from './IStudentEntry';
 
-const StudentEntry = (props: IStudentEntry) => {
+const StudentEntry = (studentEntry: IStudentEntry) => {
     return (
     <tr>
         <td>{props.fullname}</td>
