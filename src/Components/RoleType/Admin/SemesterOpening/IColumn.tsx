@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import IStudent from './IStudent';
+import ICardContent from './ICardContent';
 
 interface IColumn {
     id: number;
     title: string;
-    students: Array<IStudent>;
+    cards: Array<ICardContent>;
   }
 
   export default IColumn;
