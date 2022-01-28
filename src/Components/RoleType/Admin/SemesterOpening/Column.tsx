@@ -63,7 +63,7 @@ const Column = (project: IColumn) => {
     return (
         <div style={getColumnStyle()}>
             <p>{project.title}</p>
-            <DragDropContext onDragEnd={onDragEnd}>
+            {/* <DragDropContext onDragEnd={onDragEnd}> */}
                 <Droppable droppableId={project.id.toString()}>
                     {(provided, snapshot) => (
                         <div
@@ -92,7 +92,7 @@ const Column = (project: IColumn) => {
                         </div>
                     )}
                 </Droppable>
-            </DragDropContext>
+            {/* </DragDropContext> */}
         </div>
     )
 }
