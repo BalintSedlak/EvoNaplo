@@ -7,6 +7,7 @@ const StudentEntry = (studentEntry: IStudentEntry) => {
         <td>{studentEntry.fullname}</td>
         <td>{studentEntry.email}</td>
         <td>{studentEntry.phoneNumber}</td>
+        <td>{studentEntry.semester}</td>
         <td>{studentEntry.project}</td>
         <td>{studentEntry.mentors}</td>
         <td>{studentEntry.dateOfClass}</td>

@@ -5,46 +5,51 @@ const AddAttendance = () => {
     const students = [
         {
             fullname: "Név1",
-            attendance: false
+            semester: '1',
+            project: '2',
         },
         {
             fullname: "Név2",
-            attendance: false
+            semester: '2',
+            project: '1',
         },
         {
             fullname: "Név3",
-            attendance: false
+            semester: '1',
+            project: '2',
         }
     ]
-    
+
+    const [filteredStudentList, setStudentListFilter] = useState(students);
+    const [studentSemesterFilter, setStudentSemesterFilter] = useState("1");
+    const [studentProjectFilter, setStudentProjectFilter] = useState("1");
+
+    function filterStudents(semesterFilter: string, projectFilter: string){
+        let filteredStudents = students.filter(student => student.semester === semesterFilter && student.project === projectFilter)
+        setStudentListFilter(filteredStudents);
+    }
+
     return (
         <div>
-            Jelenléti ív leadása <br/>
+            Jelenléti ív leadása (Mentor) <br/>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>1. hét<br/> 2021.02.02-<br/>2021.02.08</th>
+                    <th>2. hét<br/> 2021.02.02-<br/>2021.02.08</th>
+                    <th>3. hét<br/> 2021.02.02-<br/>2021.02.08</th>
+                    <th>4. hét<br/> 2021.02.02-<br/>2021.02.08</th>
+                    <th>5. hét<br/> 2021.02.02-<br/>2021.02.08</th>
+                    <th>6. hét<br/> 2021.02.02-<br/>2021.02.08</th>
+                </tr>
+                {filteredStudentList.map((student) => <AddAttendanceEntry fullname={student.fullname}/>)}
+            </table>
             <label>
-                Project:
-                <select>
-                    <option value={0}>Project1</option>
-                    <option value={1}>Project2</option>
-                </select>
+                <input type="button" value="Submit"/>
             </label>
-
-            <label>
-                Dátum:
-                <input type="date"/>
-            </label>
-
-            <label>
-                Időpont:
-                <input type="time"/>
-            </label>
-
-            <form>
-                {students.map((student) => <AddAttendanceEntry fullname={student.fullname} attendance={student.attendance}/> )}
-                <label>
-                    <input type="button" value="Submit"/>
-                </label>
-            </form>
+            <br/>
         </div>
+        
     )
 }    
 

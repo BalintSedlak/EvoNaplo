@@ -5,6 +5,7 @@ import RegisterUser from './Components/RoleType/Admin/RegisterUser';
 import ListStudents from './Components/RoleType/Admin/ListStudents';
 import AddAttendance from './Components/RoleType/Mentor/AddAttendance';
 import SemesterOpening from './Components/RoleType/Admin/SemesterOpening/SemesterOpeningView';
+import ListAttendances from './Components/RoleType/Admin/ListAttendances';
 // import ListAttendance from './Components/RoleType/Admin/ListAttendances';
 
 function App() {
@@ -22,8 +23,10 @@ function App() {
         <AddAttendance/>
 
         <br/><br/><br/><br/><br/><br/><br/>
-      
-        {/* <ListAttendance/> */}
+
+        <ListAttendances/>
+
+        <br/><br/><br/><br/><br/><br/><br/>
 
         <SemesterOpening/>
 

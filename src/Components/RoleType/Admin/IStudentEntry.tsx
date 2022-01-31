@@ -4,6 +4,7 @@ interface IStudentEntry {
     fullname: string;
     email: string;
     phoneNumber: string;
+    semester: string;
     project: string;
     mentors: string;
     dateOfClass: string;
