@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ButtonGroup, Dropdown, DropdownButton } from 'react-bootstrap';
 
-const AddAttendanceEntry = (props: any) => {
+const ListAttendancesEntry = (props: any) => {
     const [studentDropDownTitle, setDropDownTitle] = useState(["Jelenlét","Jelenlét","Jelenlét","Jelenlét","Jelenlét","Jelenlét"])
 
     const changeTitle = (changestring: string, i: number) => {
@@ -50,4 +50,4 @@ const AddAttendanceEntry = (props: any) => {
     )
 }
 
-export default AddAttendanceEntry;
+export default ListAttendancesEntry;
