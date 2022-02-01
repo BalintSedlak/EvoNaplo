@@ -3,6 +3,7 @@ using EvoNaplo.ApplicationCore.Domains.Users.Services;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.ApplicationCore.Domains.Users.Models;
 using EvoNaplo.Infrastructure.Models.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
 {
@@ -12,18 +13,21 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
         private readonly MentorService _mentorService;
         private readonly StudentService _studentService;
         private readonly UserService _userService;
+        private readonly ILogger _logger;
 
-        public UserFacade(AdminService adminService, MentorService mentorService, StudentService studentService, UserService userService)
+        public UserFacade(AdminService adminService, MentorService mentorService, StudentService studentService, UserService userService, ILogger logger)
         {
             _adminService = adminService;
             _mentorService = mentorService;
             _studentService = studentService;
             _userService = userService;
+            _logger = logger;
         }
 
         public async Task AddUserAsync(UserViewModel user)
         {
             await _userService.AddNewStudentAsync(user);
+            _logger.LogInformation($"{user.Id} user was added");
 
             //switch (user.Role)
             //{
@@ -62,6 +66,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
         public async Task DeleteUserAsync(int id)
         {
             await _userService.DeleteUserAsync(id);
+            _logger.LogInformation($"{id} user was deleted");
         }
 
         public UserDTO GetUser(int userId)
@@ -94,11 +99,13 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
         public async Task UpdateUserAsync(UserViewModel user)
         {
             await _userService.EditUser(user);
+            _logger.LogInformation($"{user.Id} user was updated");
         }
 
         public async Task SetUserRole(UserViewModel user, RoleType newRole)
         {
             await _userService.EditUserRole(user, newRole);
+            _logger.LogInformation($"{user.Id} user's role was changed to the following: {newRole}");
         }
 
         public UserAuth GetUserByEmail(string email)
