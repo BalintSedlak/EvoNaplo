@@ -26,8 +26,21 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
 
         public async Task AddUserAsync(UserViewModel user)
         {
-            await _userService.AddNewStudentAsync(user);
-            _logger.LogInformation($"{user.Id} user was added");
+            try
+            {
+                await _userService.AddNewStudentAsync(user);
+                _logger.LogInformation($"{user.Id} user was added.");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"Failed to add {user.Id} user");
+                }
+                throw;
+            }
+            
 
             //switch (user.Role)
             //{
@@ -65,8 +78,21 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
 
         public async Task DeleteUserAsync(int id)
         {
-            await _userService.DeleteUserAsync(id);
-            _logger.LogInformation($"{id} user was deleted");
+            try
+            {
+                await _userService.DeleteUserAsync(id);
+                _logger.LogInformation($"{id} user was deleted.");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"Failed to delete {id} user");
+                }
+                throw;
+            }
+            
         }
 
         public UserDTO GetUser(int userId)
@@ -98,14 +124,41 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
 
         public async Task UpdateUserAsync(UserViewModel user)
         {
-            await _userService.EditUser(user);
-            _logger.LogInformation($"{user.Id} user was updated");
+            try
+            {
+                await _userService.EditUser(user);
+                _logger.LogInformation($"{user.Id} user was updated.");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"Failed to update {user.Id} user");
+                }
+                throw;
+            }
+            
         }
 
         public async Task SetUserRole(UserViewModel user, RoleType newRole)
         {
-            await _userService.EditUserRole(user, newRole);
-            _logger.LogInformation($"{user.Id} user's role was changed to the following: {newRole}");
+            try
+            {
+                await _userService.EditUserRole(user, newRole);
+                _logger.LogInformation($"{user.Id} user's role was changed to the following: {newRole}");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"Failed to change {user.Id} user's role to the following: {newRole}");
+                }
+                throw;
+            }
+            
+            
         }
 
         public UserAuth GetUserByEmail(string email)

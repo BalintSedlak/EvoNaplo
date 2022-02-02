@@ -19,20 +19,58 @@ namespace EvoNaplo.ApplicationCore.Domains.Projects.Facades
 
         public void AddProject(ProjectEntity project)
         {
-            _projectService.AddProject(project);
-            _logger.LogInformation($"{project.Id} was added.");
+            try
+            {
+                _projectService.AddProject(project);
+                _logger.LogInformation($"{project.Id} project was added.");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"Failed to add {project.Id} project");
+                }
+                throw;
+            }
         }
 
         public void DeleteProject(int id)
         {
-            _projectService.DeleteProject(id);
-            _logger.LogInformation($"The project with {id} id was deleted");
+            try
+            {
+                _projectService.DeleteProject(id);
+                _logger.LogInformation($"{id} project was deleted.");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"The project with {id} id was deleted");
+                }
+                throw;
+            }
+            
+            
         }
 
         public void EditProject(ProjectEntity project)
-        {
-            _projectService.EditProject(project);
-            _logger.LogInformation($"The project with {project.Id} id was edited");
+        {          
+            try
+            {
+                _projectService.EditProject(project);
+                _logger.LogInformation($"{project.Id} project was edited.");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"The project with {project.Id} id was edited");
+                }
+                throw;
+            }
         }
 
         public List<ProjectDTO> GetMyProjects(int userId)

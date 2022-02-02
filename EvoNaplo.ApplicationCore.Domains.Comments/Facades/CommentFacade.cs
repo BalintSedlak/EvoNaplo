@@ -19,6 +19,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Comments.Facades
 
         public IEnumerable<CommentDTO> GetStudentComments(int id)
         {
+
             throw new NotImplementedException();
         }
 

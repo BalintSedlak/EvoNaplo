@@ -24,8 +24,21 @@ namespace EvoNaplo.ApplicationCore.Domains.Auth.Facades
 
         public string Login(LoginViewModel loginDTO)
         {
-                return _authService.Login(loginDTO);
-                _logger.LogInformation($"User with {loginDTO.email} logged in");
+            try
+            {
+                var value = _authService.Login(loginDTO);
+                _logger.LogInformation($"User: {loginDTO.email} logged in");
+                return value;
+            }
+            catch (ServiceException ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"User: {loginDTO.email} failed to log in");
+                }
+                throw;
+            }
         }
 
         public UserDTO GetUserByJwt(string jwt)
@@ -41,8 +54,11 @@ namespace EvoNaplo.ApplicationCore.Domains.Auth.Facades
             //TODO: Use specific exception
             catch (Exception ex)
             {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                }
                 throw new ServiceException(HttpStatusCode.Unauthorized, ex.Message);
-                _logger.LogError("Unauthorized user");
             }
 
             return user;
@@ -50,9 +66,21 @@ namespace EvoNaplo.ApplicationCore.Domains.Auth.Facades
 
         public void RegisterNewUser(UserViewModel userViewModel)
         {
-            userViewModel.Password = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password);
-            _userFacade.AddUserAsync(userViewModel);
-            _logger.LogInformation($"{userViewModel.Email} has been registered");
+            try
+            {
+                userViewModel.Password = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password);
+                _userFacade.AddUserAsync(userViewModel);
+                _logger.LogInformation($"{userViewModel.Email} has been registered");
+            }
+            catch (Exception ex)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(ex.Message);
+                    _logger.LogInformation($"Failed to register {userViewModel.Id} user");
+                }
+                throw;
+            }
         }
 
         public SessionDTO GetSession(UserDTO user)
