@@ -1,11 +1,9 @@
 ﻿using EvoNaplo.ApplicationCore.Domains.Comments.Facades;
 using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Models.TableConnectors;
-using EvoNaplo.WebApp.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace EvoNaplo.WebApp.Controllers
 {

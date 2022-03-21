@@ -24,22 +24,6 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
         public async Task AddUserAsync(UserViewModel user)
         {
             await _userService.AddNewStudentAsync(user);
-
-            //switch (user.Role)
-            //{
-                //case RoleType.Student:
-                //    await _studentService.AddStudentAsync(user);
-                //    break;
-                //case RoleType.Mentor:
-                //    await _mentorService.AddMentorAsync(user);
-                //    break;
-                //case RoleType.Admin:
-                //    await _adminService.AddAdminAsync(user);
-                //    break;
-                //default:
-                //    //TODO: Better logging
-                //    throw new NotImplementedException();
-            //}
         }
 
         public async Task<IEnumerable<UserDTO>> GetAllUserFromRoleTypeAsync(RoleType roleType)
