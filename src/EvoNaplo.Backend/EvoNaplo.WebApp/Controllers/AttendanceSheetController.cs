@@ -12,38 +12,38 @@ namespace EvoNaplo.WebApp.Controllers
     [ApiController]
     public class AttendanceSheetController
     {
-        private readonly AttendanceSheetService _attendanceSheetService;
+        //private readonly AttendanceSheetService _attendanceSheetService;
 
-        public AttendanceSheetController(AttendanceSheetService attendanceSheetService)
+        public AttendanceSheetController(/*AttendanceSheetService attendanceSheetService*/)
         {
-            _attendanceSheetService = attendanceSheetService;
+            //_attendanceSheetService = attendanceSheetService;
         }
 
-        [HttpGet("AttendanceSheets")]
-        public IEnumerable<AttendanceSheetDTO> GetAttendanceSheets()
-        {
-            return _attendanceSheetService.GetAttendanceSheets();
-        }
+        //[HttpGet("AttendanceSheets")]
+        //public IEnumerable<AttendanceSheetDTO> GetAttendanceSheets()
+        //{
+        //    //return _attendanceSheetService.GetAttendanceSheets();
+        //}
 
-        [HttpPost("AddAttendanceSheet")]
-        public async Task<int> PostAddStudent([FromBody] AttendanceSheet attendanceSheet)
-        {
-            await _attendanceSheetService.AddAttendanceSheet(attendanceSheet);
-            return StatusCodes.Status200OK;
-        }
+        //[HttpPost("AddAttendanceSheet")]
+        //public async Task<int> PostAddStudent([FromBody] AttendanceSheet attendanceSheet)
+        //{
+        //    await _attendanceSheetService.AddAttendanceSheet(attendanceSheet);
+        //    return StatusCodes.Status200OK;
+        //}
 
-        [HttpPut("EditAttendanceSheet")]
-        public async Task<int> EditAttendanceSheet([FromBody] AttendanceSheet attendanceSheet)
-        {
-            await _attendanceSheetService.EditAttendanceSheet(attendanceSheet);
-            return StatusCodes.Status200OK;
-        }
+        //[HttpPut("EditAttendanceSheet")]
+        //public async Task<int> EditAttendanceSheet([FromBody] AttendanceSheet attendanceSheet)
+        //{
+        //    await _attendanceSheetService.EditAttendanceSheet(attendanceSheet);
+        //    return StatusCodes.Status200OK;
+        //}
 
-        [HttpDelete("DELETE")]
-        public async Task<int> DeleteProject(int id)
-        {
-            await _attendanceSheetService.DeleteAttendanceSheet(id);
-            return StatusCodes.Status200OK;
-        }
+        //[HttpDelete("DELETE")]
+        //public async Task<int> DeleteProject(int id)
+        //{
+        //    await _attendanceSheetService.DeleteAttendanceSheet(id);
+        //    return StatusCodes.Status200OK;
+        //}
     }
 }
