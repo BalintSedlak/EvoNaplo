@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EvoNaplo.Infrastructure\EvoNaplo.Infrastructure.csproj" />
-    <ProjectReference Include="..\EvoNaplo.Infrastructure\EvoNaplo.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

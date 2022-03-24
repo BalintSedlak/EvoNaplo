@@ -11,8 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EvoNaplo.Infrastructure\EvoNaplo.Infrastructure.csproj" />
-    <ProjectReference Include="..\EvoNaplo\EvoNaplo.csproj" />
-    <ProjectReference Include="..\EvoNaplo\EvoNaplo.csproj" />
   </ItemGroup>
 
 </Project>
