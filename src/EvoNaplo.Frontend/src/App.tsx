@@ -9,6 +9,9 @@ import ISession from './ISession';
 import { DoesImplementISession } from './Helpers';
 import { Container } from 'react-bootstrap';
 import './Forms.css';
+import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
+import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
+import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
 
 function App() {
   const [session, setSession] = useState<ISession>({
@@ -42,11 +45,14 @@ function App() {
   return (
     <BrowserRouter>
       <NavMenu session={session} />
-      <Container>
+      <Container style={{padding:"60px"}}>
         <Routes>
           <Route path='/' element={<Home session={session} />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Registration' element={<Registration />} />
+          <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
+          <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
+          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView />} />
         </Routes>
       </Container>
     </BrowserRouter>

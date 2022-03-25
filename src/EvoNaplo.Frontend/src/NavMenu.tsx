@@ -14,6 +14,26 @@ const RegistrationLink = (id: number) => {
         return <Nav.Link href="/Registration">Registration</Nav.Link>
     }
 }
+const SemesterOpeningLink = (id: number) => {
+    // if(id > 0)
+    // {
+        return <NavDropdown.Item href="/Prototypes/SemesterOpeningView">SemesterOpeningView</NavDropdown.Item>
+    // }
+}
+
+const ListStudentsViewLink = (id: number) => {
+    // if(id > 0)
+    // {
+        return <NavDropdown.Item href="/Prototypes/ListStudentsView">ListStudentsView</NavDropdown.Item>
+    // }
+}
+
+const AddAttendanceViewLink = (id: number) => {
+    // if(id > 0)
+    // {
+        return <NavDropdown.Item href="/Prototypes/AddAttendanceView">AddAttendanceView</NavDropdown.Item>
+    // }
+}
 
 export default function NavMenu({session}: {session: ISession}) {
     return (
@@ -26,12 +46,13 @@ export default function NavMenu({session}: {session: ISession}) {
                         <Nav.Link href="/">Home</Nav.Link>
                         {LoginLink(session.id)}
                         {RegistrationLink(session.id)}
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <NavDropdown title="Prototypes" id="basic-nav-dropdown">
+                            {SemesterOpeningLink(session.id)}
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                            {ListStudentsViewLink(session.id)}
+                            <NavDropdown.Divider />
+                            {AddAttendanceViewLink(session.id)}                            
+                            <NavDropdown.Divider />                            
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
