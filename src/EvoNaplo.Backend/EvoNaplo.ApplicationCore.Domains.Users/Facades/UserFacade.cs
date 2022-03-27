@@ -63,7 +63,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
 
             return result.AsQueryable();
         }
-
+        //Vagy ez vagy a GetUser felesleges
         public UserDTO GetUserById(int userId)
         {
             return _userService.GetUserById(userId);

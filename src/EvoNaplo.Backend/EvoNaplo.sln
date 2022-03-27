@@ -19,9 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Do
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Semesters", "EvoNaplo.ApplicationCore.Domains.Semesters\EvoNaplo.ApplicationCore.Domains.Semesters.csproj", "{3C12E9E8-C3D0-4704-AE6F-A811A320F297}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Projects", "EvoNaplo.ApplicationCore.Domains.Projects\EvoNaplo.ApplicationCore.Domains.Projects.csproj", "{26D725AE-9E97-4DAC-9964-69DD987AD5CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Projects", "EvoNaplo.ApplicationCore.Domains.Projects\EvoNaplo.ApplicationCore.Domains.Projects.csproj", "{26D725AE-9E97-4DAC-9964-69DD987AD5CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Comments", "EvoNaplo.ApplicationCore.Domains.Comments\EvoNaplo.ApplicationCore.Domains.Comments.csproj", "{5A17A651-B08D-4882-BC46-9D743C63F90E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Comments", "EvoNaplo.ApplicationCore.Domains.Comments\EvoNaplo.ApplicationCore.Domains.Comments.csproj", "{5A17A651-B08D-4882-BC46-9D743C63F90E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Semesters.IntegrationTest", "EvoNaplo.ApplicationCore.Domains.Semesters.IntegrationTest\EvoNaplo.ApplicationCore.Domains.Semesters.IntegrationTest.csproj", "{717E1361-A711-4C33-B4F7-1CCCF1E0457F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Comments.IntegrationTest", "EvoNaplo.ApplicationCore.Domains.Comments.IntegrationTest\EvoNaplo.ApplicationCore.Domains.Comments.IntegrationTest.csproj", "{04F06268-0B9D-48F3-8D35-C4B05CEE6EDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.Projects.IntegrationTest", "EvoNaplo.ApplicationCore.Domains.Projects.IntegrationTest\EvoNaplo.ApplicationCore.Domains.Projects.IntegrationTest.csproj", "{63122B49-2598-4702-9512-ECB96AED5E30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{717E1361-A711-4C33-B4F7-1CCCF1E0457F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717E1361-A711-4C33-B4F7-1CCCF1E0457F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717E1361-A711-4C33-B4F7-1CCCF1E0457F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717E1361-A711-4C33-B4F7-1CCCF1E0457F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F06268-0B9D-48F3-8D35-C4B05CEE6EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F06268-0B9D-48F3-8D35-C4B05CEE6EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F06268-0B9D-48F3-8D35-C4B05CEE6EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F06268-0B9D-48F3-8D35-C4B05CEE6EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63122B49-2598-4702-9512-ECB96AED5E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63122B49-2598-4702-9512-ECB96AED5E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63122B49-2598-4702-9512-ECB96AED5E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63122B49-2598-4702-9512-ECB96AED5E30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
