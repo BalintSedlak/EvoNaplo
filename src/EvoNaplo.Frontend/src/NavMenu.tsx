@@ -21,6 +21,13 @@ const SemesterOpeningLink = (id: number) => {
     // }
 }
 
+const SemesterOpeningLink2 = (id: number) => {
+    // if(id > 0)
+    // {
+        return <NavDropdown.Item href="/Components/SemesterOpeningView/SemesterOpening">SemesterOpeningView v2</NavDropdown.Item>
+    // }
+}
+
 const ListStudentsViewLink = (id: number) => {
     // if(id > 0)
     // {
@@ -48,6 +55,8 @@ export default function NavMenu({session}: {session: ISession}) {
                         {RegistrationLink(session.id)}
                         <NavDropdown title="Prototypes" id="basic-nav-dropdown">
                             {SemesterOpeningLink(session.id)}
+                            <NavDropdown.Divider />
+                            {SemesterOpeningLink2(session.id)}
                             <NavDropdown.Divider />
                             {ListStudentsViewLink(session.id)}
                             <NavDropdown.Divider />

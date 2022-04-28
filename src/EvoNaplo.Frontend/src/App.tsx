@@ -12,6 +12,7 @@ import './Forms.css';
 import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
 import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
+import SemesterOpening from './Components/SemesterOpeningView/SemesterOpening';
 
 function App() {
   const [session, setSession] = useState<ISession>({
@@ -49,6 +50,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home session={session} />} />
           <Route path='/Login' element={<Login />} />
+          <Route path='/SemesterOpening' element={<SemesterOpening/>}/>
           <Route path='/Registration' element={<Registration />} />
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
