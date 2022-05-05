@@ -6,6 +6,7 @@ import { Dropdown } from 'react-bootstrap';
 /*
 Kérdések:
 - Mi történik akkor ha a semester időpontja nem akkor volt ami a táblán van
+=> Attendance-né az időpont
 */
 
 const columns: Column<Data>[] = [
@@ -34,6 +35,11 @@ const data: Data[] = [
   {
     name: "Béla",
     attendance: "Online",
+    attendance2: "Online"
+  },
+  {
+    name: "István",
+    attendance: "Offline",
     attendance2: "Offline"
   }
 
