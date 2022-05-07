@@ -1,20 +1,24 @@
 ﻿using EvoNaplo.Infrastructure.DataAccess;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.Models.DTO;
+using Microsoft.Extensions.Logging;
 
 namespace EvoNaplo.WebApp.Services
 {
     public class SemesterService
     {
         private readonly IRepository<SemesterEntity> _semesterRepository;
+        private readonly ILogger logger;
 
         public SemesterService(IRepository<SemesterEntity> semesterRepository)
         {
             _semesterRepository = semesterRepository;
+            
         }
 
         public async Task<IEnumerable<SemesterEntity>> AddSemester(SemesterEntity semester)
         {
+            
             _semesterRepository.Add(semester);
             await _semesterRepository.SaveChangesAsync();
             return _semesterRepository.GetAll().ToList();

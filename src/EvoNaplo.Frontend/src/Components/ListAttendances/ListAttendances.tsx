@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import { useTable, Column, useSortBy } from "react-table";
 import { Dropdown } from 'react-bootstrap';
 
-/*
-Kérdések:
-- Mi történik akkor ha a semester időpontja nem akkor volt ami a táblán van
-=> Attendance-né az időpont
-*/
 
 const columns: Column<Data>[] = [
   {
