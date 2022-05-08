@@ -18,6 +18,8 @@ namespace EvoNaplo.Infrastructure.DataAccess
         public DbSet<StudentProject> StudentProjects { get; set; }
         public DbSet<MentorProject> MentorProjects { get; set; }
         public DbSet<StudentsOnSemester> StudentsOnSemester { get; set; }
+        public DbSet<ProjectTechnologies> ProjectTechnologies { get; set; }
+
 
         public EvoNaploContext(DbContextOptions<EvoNaploContext> options) : base(options)
         {
