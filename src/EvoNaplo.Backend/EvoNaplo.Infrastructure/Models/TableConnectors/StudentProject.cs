@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EvoNaplo.Infrastructure.Models.TableConnectors
 {
-    public class UserProject
+    public class StudentProject
     {
         [Key]
         public int Id { get; set; }
@@ -16,12 +16,12 @@ namespace EvoNaplo.Infrastructure.Models.TableConnectors
         [ForeignKey("ProjectId")]
         public int ProjectId { get; set; }
 
-        public UserProject()
+        public StudentProject()
         {
 
         }
 
-        public UserProject(int userId, int projectId)
+        public StudentProject(int userId, int projectId)
         {
             UserId = userId;
             ProjectId = projectId;
