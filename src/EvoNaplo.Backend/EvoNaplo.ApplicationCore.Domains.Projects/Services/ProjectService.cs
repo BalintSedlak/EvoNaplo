@@ -83,7 +83,6 @@ namespace EvoNaplo.ApplicationCore.Domains.Projects.Services
             ProjectToEdit.ProjectName = project.ProjectName;
             ProjectToEdit.Description = project.Description;
             ProjectToEdit.SourceLink = project.SourceLink;
-            ProjectToEdit.Technologies = project.Technologies;
             _projectRepository.SaveChangesAsync();
             return _projectRepository.GetAll().ToList();
         }

@@ -47,7 +47,6 @@ namespace EvoNaplo.TestHelper
                 FirstName = "New",
                 LastName = $"Student{_studentCounter++}",
                 Email = "new.student@company.com",
-                PhoneNumber = "+36101234567",
                 Password = "Password123456",
                 Role = RoleType.Student
             };
@@ -60,7 +59,6 @@ namespace EvoNaplo.TestHelper
                 FirstName = "New",
                 LastName = $"Mentor{_mentorCounter++}",
                 Email = "new.mentor@company.com",
-                PhoneNumber = "+36101234567",
                 Password = "Password123456",
                 Role = RoleType.Mentor
             };
@@ -73,7 +71,6 @@ namespace EvoNaplo.TestHelper
                 FirstName = "Admin",
                 LastName = $"Admin{_adminCounter++}",
                 Email = "new.admin@company.com",
-                PhoneNumber = "+36101234567",
                 Password = "Password123456",
                 Role = RoleType.Admin
             };
