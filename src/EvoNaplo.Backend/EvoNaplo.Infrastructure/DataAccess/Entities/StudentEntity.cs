@@ -14,13 +14,5 @@ namespace EvoNaplo.Infrastructure.DataAccess.Entities
         public string Email { get; set; }
 
         public StudentEntity() {}
-
-        public StudentEntity(UserEntity student)
-        {
-            Id = student.Id;
-            FirstName = student.FirstName;
-            LastName = student.LastName;
-            Email = student.Email;
-        }
     }
 }
