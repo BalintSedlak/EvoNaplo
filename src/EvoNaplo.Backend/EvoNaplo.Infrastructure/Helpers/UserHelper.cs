@@ -14,7 +14,6 @@ namespace EvoNaplo.Infrastructure.Helpers
                 Id = user.Id,
                 Name = $"{user.FirstName} {user.LastName}",
                 Email = user.Email,
-                PhoneNumber = !string.IsNullOrEmpty(user.PhoneNumber) ? user.PhoneNumber : "No data",
                 Role = user.Role
             };
         }
@@ -28,7 +27,6 @@ namespace EvoNaplo.Infrastructure.Helpers
                 LastName = user.LastName,
                 Password = user.Password,
                 Email = user.Email,
-                PhoneNumber = !string.IsNullOrEmpty(user.PhoneNumber) ? user.PhoneNumber : "No data",
                 Role = user.Role
             };
         }

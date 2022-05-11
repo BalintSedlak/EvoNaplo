@@ -13,8 +13,8 @@ namespace EvoNaplo.Infrastructure.Models.TableConnectors
         public int Id { get; set; }
         [Required]
         public string Comment { get; set; }
-        [ForeignKey("UserId")]
-        public int UserId { get; set; }
+        [ForeignKey("StudentId")]
+        public int StudentId { get; set; }
         [ForeignKey("CommenterId")]
         public int CommenterId { get; set; }
     }
