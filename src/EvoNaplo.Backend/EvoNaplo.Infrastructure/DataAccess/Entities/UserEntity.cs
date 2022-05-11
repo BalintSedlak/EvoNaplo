@@ -18,7 +18,6 @@ namespace EvoNaplo.Infrastructure.DataAccess.Entities
         public string Password { get; set; }
         [Required]
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
         public RoleType Role { get; set; }
 
         public UserEntity()
@@ -33,7 +32,6 @@ namespace EvoNaplo.Infrastructure.DataAccess.Entities
             LastName = user.LastName;
             Password = user.Password;
             Email = user.Email;
-            PhoneNumber = user.PhoneNumber;
             Role = user.Role;
         }
     }

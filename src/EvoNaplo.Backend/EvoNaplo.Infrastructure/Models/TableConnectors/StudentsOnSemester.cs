@@ -3,23 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EvoNaplo.Infrastructure.Models.TableConnectors
 {
-    public class UsersOnSemester
+    public class StudentsOnSemester
     {
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("UserId")]
-        public int UserId { get; set; }
+        [ForeignKey("StudentId")]
+        public int StudentId { get; set; }
 
         [ForeignKey("SemesterId")]
         public int SemesterId { get; set; }
 
-        public UsersOnSemester()
+        public StudentsOnSemester()
         {
         }
-        public UsersOnSemester(int userId,int semesterId)
+        public StudentsOnSemester(int studentId,int semesterId)
         {
-            UserId = userId;
+            StudentId = studentId;
             SemesterId = semesterId;
         }
     }

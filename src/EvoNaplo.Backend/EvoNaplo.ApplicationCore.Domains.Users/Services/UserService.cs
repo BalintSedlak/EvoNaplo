@@ -64,7 +64,6 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Services
             UserToEdit.Email = user.Email;
             UserToEdit.FirstName = user.FirstName;
             UserToEdit.LastName = user.LastName;
-            UserToEdit.PhoneNumber = user.PhoneNumber;
             UserToEdit.Password = user.Password;
             await _userRepository.SaveChangesAsync();
             var Users = _userRepository.GetAll().Where(m => m.Role == UserToEdit.Role);

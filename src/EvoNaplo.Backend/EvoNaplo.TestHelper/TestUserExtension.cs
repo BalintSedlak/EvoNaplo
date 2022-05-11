@@ -12,7 +12,6 @@ namespace EvoNaplo.TestHelper
             {
                 Id = user.Id,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
                 Role = user.Role,
                 Password = user.Password,
                 FirstName = user.FirstName,

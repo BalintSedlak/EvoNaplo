@@ -10,7 +10,6 @@ namespace EvoNaplo.Infrastructure.DataAccess.Entities
         public string ProjectName { get; set; }
         public string Description { get; set; }
         public string SourceLink { get; set; }
-        public string Technologies { get; set; }
         [ForeignKey("SemesterId")]
         public int SemesterId { get; set; }
         public ProjectEntity()
@@ -24,7 +23,6 @@ namespace EvoNaplo.Infrastructure.DataAccess.Entities
             ProjectName = project.ProjectName;
             Description = project.Description;
             SourceLink = project.SourceLink;
-            Technologies = project.Technologies;
             SemesterId = project.SemesterId;
         }
     }

@@ -12,8 +12,6 @@ namespace EvoNaplo.Infrastructure.Models.DTO
 
         public string SourceLink { get; set; }
 
-        public string Technologies { get; set; }
-
         public int SemesterId { get; set; }
 
         public ProjectDTO()
@@ -27,7 +25,6 @@ namespace EvoNaplo.Infrastructure.Models.DTO
             ProjectName = project.ProjectName;
             Description = project.Description;
             SourceLink = project.SourceLink;
-            Technologies = project.Technologies;
             SemesterId = project.SemesterId;
         }
 
