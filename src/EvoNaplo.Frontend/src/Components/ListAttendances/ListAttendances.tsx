@@ -26,7 +26,8 @@ interface Data {
   attendance2: string;
 }
 
-const data: Data[] = [
+const data: Data[] = 
+[ 
   {
     name: "Béla",
     attendance: "Online",

@@ -31,7 +31,7 @@ const ListStudentsViewLink = (id: number) => {
 const ListAttendancesLink = (id: number) => {
     if(id < 1)
     {
-        return <Nav.Link href="/Components/ListAttendances/ListAttendances">ListStudentsView</Nav.Link>
+        return <Nav.Link href="/Components/ListAttendances/ListAttendances">ListAttendances</Nav.Link>
     }
 }
 
