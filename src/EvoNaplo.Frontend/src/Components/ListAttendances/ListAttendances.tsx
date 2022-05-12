@@ -35,23 +35,25 @@ const data: Data[] = [{
     }
   ]
 },
+
 {
   Week: "Hét 2 2022.01.10. - 2022.01.17.",
   Details: [
     {
       Semester: "2022/1",
       Project: "EvoNaplo",
-      Name: "Kis Béla",
+      Name: "Kis2 Béla",
       Status: "Online"
     },
     {
       Semester: "2022/1",
       Project: "EvoNaplo",
-      Name: "Nagy Béla",
+      Name: "Nagy2 Béla",
       Status: "Online"
     }
   ]
 },
+
 ];
 
 
@@ -64,7 +66,6 @@ td, th {
 }
 `
 
-
 const ListAttendances = () => {
 
   return (
@@ -72,7 +73,7 @@ const ListAttendances = () => {
 
 
       <Styles>
-        <tbody>
+        <table>
           <thead>
           <tr>
             <th>Name</th>
@@ -81,10 +82,20 @@ const ListAttendances = () => {
           ))}
           </tr>
           </thead>
-
+          <tbody>
+            
+            {data.map((items, i) => (
+              items.Details.map((el, e) => (
+                <tr key={e}>
+                  <td>{items.Details[e].Name}</td>
+                </tr>
+              ))
+            ))}
+            
+          </tbody>
          
 
-        </tbody>
+        </table>
 
       </Styles>
     </>
