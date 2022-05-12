@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Dropdown } from 'react-bootstrap';
-import { useTable, Column, useSortBy } from "react-table";
+import { useTable, Column, useSortBy, useGlobalFilter } from "react-table";
+import { GlobalFilter } from './GlobalFilter';
+
 
 
 const columns: Column<Data>[] = [
@@ -44,7 +46,7 @@ const data: Data[] = [
     status: "online"
   },
   {
-    name: "Kis Béla",
+    name: "Nagy Béla",
     semester: "2022/1",
     project: "EvoNaplo",
     date: "2. Hét - 2022.05.01.- 2022.05.08.",
@@ -60,7 +62,7 @@ const data: Data[] = [
   {
     name: "Kis Béla",
     semester: "2021/1",
-    project: "EvoNaplo",
+    project: "EvoRPG",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",
     status: "online"
   },
@@ -82,13 +84,17 @@ const ListAttendances = () => {
     getTableBodyProps,
     headerGroups,
     rows,
-    prepareRow
-  } = useTable<Data>({ columns, data }, useSortBy);
-
+    prepareRow,
+    state,
+    setGlobalFilter
+  } = useTable<Data>({ columns, data }, useGlobalFilter, useSortBy);
+  
+  const {globalFilter} = state;
 
   return (
     <>
-
+      
+      
       <Dropdown className=' m-2 inline-block' style={{display : 'inline-block'}}>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Semester
@@ -114,6 +120,7 @@ const ListAttendances = () => {
       </Dropdown>
 
       <Styles>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
