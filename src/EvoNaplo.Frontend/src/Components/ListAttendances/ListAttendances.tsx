@@ -10,6 +10,7 @@ const columns: Column<Data>[] = [
     accessor: "name"
   },
   {
+    Header: "Semester",
     accessor: "semester"
   },
   {
