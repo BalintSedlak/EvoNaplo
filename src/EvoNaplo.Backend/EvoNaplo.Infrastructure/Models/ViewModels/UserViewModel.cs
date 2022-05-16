@@ -1,11 +1,9 @@
-﻿using EvoNaplo.Infrastructure.Models.Entities;
+﻿using EvoNaplo.Infrastructure.Models.DTO;
+using EvoNaplo.Infrastructure.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace EvoNaplo.ApplicationCore.Domains.Users.Models
 {
-    /// <summary>
-    /// This class is used to represent a database entry in the users table
-    /// </summary>
     public class UserViewModel 
     {
         public int Id { get; set; }
@@ -15,10 +13,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Models
         public string Email { get; set; }
         public RoleType Role { get; set; }
 
-        public UserViewModel()
-        {
-
-        }
+        public UserViewModel() {}
 
         public UserViewModel(UserViewModel user)
         {
