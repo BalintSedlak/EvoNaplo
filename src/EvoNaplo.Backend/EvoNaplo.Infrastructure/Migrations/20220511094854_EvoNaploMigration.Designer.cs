@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EvoNaplo.Infrastructure.Migrations
 {
     [DbContext(typeof(EvoNaploContext))]
-    [Migration("20220508144815_EvoNaploMigration")]
+    [Migration("20220511094854_EvoNaploMigration")]
     partial class EvoNaploMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,10 +44,6 @@ namespace EvoNaplo.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SourceLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Technologies")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -213,6 +209,26 @@ namespace EvoNaplo.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjectComments");
+                });
+
+            modelBuilder.Entity("EvoNaplo.Infrastructure.Models.TableConnectors.ProjectTechnologies", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Technology")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectTechnologies");
                 });
 
             modelBuilder.Entity("EvoNaplo.Infrastructure.Models.TableConnectors.StudentComment", b =>
