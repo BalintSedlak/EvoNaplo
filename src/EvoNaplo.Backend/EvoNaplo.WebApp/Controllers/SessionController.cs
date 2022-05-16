@@ -3,6 +3,7 @@ using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Models.DTO;
 using EvoNaplo.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Http;
+using EvoNaplo.ApplicationCore.Domains.Users.Models;
 
 namespace EvoNaplo.WebApp.Controllers
 {
@@ -38,6 +39,21 @@ namespace EvoNaplo.WebApp.Controllers
             {
                 var statuscode = StatusCode(ex.HttpStatusCode.ConvertToInt(), ex.Message);
                 return statuscode;
+            }
+        }
+
+        //TODO: Registration validation (i.e., check the email address is in the database already)
+        [HttpPost("Registration")]
+        public void Registration([FromBody] UserViewModel user)
+        {
+            try
+            {
+                _authFacade.RegisterNewUser(user);
+            }
+            catch (ServiceException ex)
+            {
+                var statuscode = StatusCode(ex.HttpStatusCode.ConvertToInt(), ex.Message);
+                Console.WriteLine(statuscode);
             }
         }
 
