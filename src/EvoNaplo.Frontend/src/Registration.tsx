@@ -65,7 +65,7 @@ const Registration = () => {
         if (errorsReceived === false) {
             if (returnedEmail.exists === false) {
                 setEmailExists(false);
-                fetch('https://localhost:7043/api/Student/AddStudent', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
+                fetch('http://localhost:7043/api/Session/Registration', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
                     .then(res => {
                         if (res.status === 200) {
                             setSuccess(true);
