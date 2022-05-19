@@ -1,9 +1,50 @@
-import React from 'react'
 import styled from 'styled-components';
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
-import { GlobalFilter } from './Filters/GlobalFilter';
-import { ProjectFilter } from './Filters/ProjectFilter';
-import { SemesterFilter } from './Filters/SemesterFilter';
+
+
+
+interface Data {
+  name: string;
+  email: string;
+  telephone: string;
+  project: string;
+  mentors: string;
+  date: string;
+  facebook: string;
+  scholarship: string;
+  internship: string;
+  participation_rate: string;
+  semester: string;
+}
+
+const data: Data[] = [
+  {
+    name: "Kis Béla",
+    email: "kisbela@email.com",
+    telephone: "0630666666",
+    project: "EvoNaplo",
+    mentors: "ASD, DAS",
+    date: "Péntek 14:00",
+    facebook: "Yes",
+    scholarship: "Yes",
+    internship: "Yes",
+    participation_rate: "50%",
+    semester: "2022/1"
+  },
+  {
+    name: "Nagy Béla",
+    email: "nagybela@email.com",
+    telephone: "0650666666",
+    project: "EvoRPG",
+    mentors: "DAS",
+    date: "Szerda 10:00",
+    facebook: "No",
+    scholarship: "Yes",
+    internship: "No",
+    participation_rate: "93%",
+    semester: "2021/2"
+  },
+]
 
 const columns: Column<Data>[] = [
   {
@@ -12,14 +53,24 @@ const columns: Column<Data>[] = [
     Filter: ""
   },
   {
-    Header: "Semester",
-    accessor: "semester",
-    Filter: SemesterFilter
+    Header: "Email",
+    accessor: "email",
+    Filter: ""
+  },
+  {
+    Header: "Telephone",
+    accessor: "telephone",
+    Filter: ""
   },
   {
     Header: "Project",
     accessor: "project",
-    Filter: ProjectFilter
+    Filter: ""
+  },
+  {
+    Header: "Mentors",
+    accessor: "mentors",
+    Filter: ""
   },
   {
     Header: "Date",
@@ -27,70 +78,42 @@ const columns: Column<Data>[] = [
     Filter: ""
   },
   {
-    Header: "Status",
-    accessor: "status",
+    Header: "Facebook csoportban van?",
+    accessor: "facebook",
     Filter: ""
-  }
+  },
+  {
+    Header: "Scholarship",
+    accessor: "scholarship",
+    Filter: ""
+  },
+  {
+    Header: "Internship",
+    accessor: "internship",
+    Filter: ""
+  },
+  {
+    Header: "Participation Rate",
+    accessor: "participation_rate",
+    Filter: ""
+  },
+  {
+    Header: "Semester",
+    accessor: "semester",
+    Filter: ""
+  },
+
 ];
-
-interface Data {
-  name: string;
-  semester: string;
-  project: string;
-  date: string;
-  status: string;
-}
-
-const data: Data[] = [
-  {
-    name: "Kis Béla",
-    semester: "2022/1",
-    project: "EvoNaplo",
-    date: "1. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
-  },
-  {
-    name: "Kis Béla",
-    semester: "2022/1",
-    project: "EvoNaplo",
-    date: "1. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
-  },
-  {
-    name: "Nagy Béla",
-    semester: "2022/1",
-    project: "EvoNaplo",
-    date: "2. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
-  },
-  {
-    name: "Kis Béla",
-    semester: "2021/1",
-    project: "EvoNaplo",
-    date: "3. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
-  },
-  {
-    name: "Kis Béla",
-    semester: "2021/1",
-    project: "EvoRPG",
-    date: "3. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
-  },
-];
-
-
 
 const Styles = styled.div`
 td, th {
-  border: 3px solid #ddd;
-  padding: 2rem;
-  width: 800px;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  width: 700px;
 }
 `
 
-const ListAttendances = () => {
-
+const ListStudents = () => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -98,17 +121,16 @@ const ListAttendances = () => {
     rows,
     prepareRow,
     state,
-    setGlobalFilter
-  } = useTable<Data>({ columns, data }, useFilters, useGlobalFilter, useSortBy);
+  } = useTable<Data>({ columns, data }, useSortBy);
 
-  const { globalFilter } = state;
+  
 
   return (
     <>
       <div className='mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
         <Styles>
-          <div className='m-3' style={{ display: 'flex', justifyContent: 'center'}}>
-            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+          <div className='m-3' style={{ display: 'flex', justifyContent: 'center' }}>
+
           </div>
           <table {...getTableProps()}>
             <thead>
@@ -118,7 +140,6 @@ const ListAttendances = () => {
                     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                       {console.log(column.getSortByToggleProps())}
                       {column.render("Header")}
-                      <div className='m-2'>{column.canFilter ? column.render('Filter') : null}</div>
                       <span>
                         {" "}
                         {column.isSorted
@@ -152,4 +173,4 @@ const ListAttendances = () => {
   )
 }
 
-export default ListAttendances
+export default ListStudents

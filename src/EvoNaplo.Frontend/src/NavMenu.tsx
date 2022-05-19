@@ -34,10 +34,10 @@ const ListAttendancesLink = (id: number) => {
     }
 }
 
-const ListStudentLink = (id: number) => {
+const ListStudentsLink = (id: number) => {
     if(id < 1)
     {
-        return <Nav.Link href="/Components/ListStudent/ListStudent">ListStudents</Nav.Link>
+        return <Nav.Link href="/Components/ListStudents/ListStudents">ListStudents</Nav.Link>
     }
 }
 
@@ -61,7 +61,7 @@ export default function NavMenu({session}: {session: ISession}) {
                         {LoginLink(session.id)}
                         {RegistrationLink(session.id)}
                         {ListAttendancesLink(session.id)}
-                        {ListStudentLink(session.id)}
+                        {ListStudentsLink(session.id)}
                         <NavDropdown title="Prototypes" id="basic-nav-dropdown">
                             {SemesterOpeningLink(session.id)}
                             <NavDropdown.Divider />
