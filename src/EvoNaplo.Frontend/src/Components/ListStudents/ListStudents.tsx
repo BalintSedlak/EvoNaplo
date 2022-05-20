@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
-
+import {NameFilter} from './NameFilter'
+import { SemesterFilter } from './SemesterFilter';
 
 
 interface Data {
@@ -50,7 +51,7 @@ const columns: Column<Data>[] = [
   {
     Header: "Name",
     accessor: "name",
-    Filter: ""
+    Filter: NameFilter
   },
   {
     Header: "Email",
@@ -108,8 +109,8 @@ const columns: Column<Data>[] = [
 const Styles = styled.div`
 td, th {
   border: 1px solid #ddd;
-  padding: 1rem;
-  width: 700px;
+  padding: 0.7rem;
+  width: 650px;
 }
 `
 
@@ -121,9 +122,10 @@ const ListStudents = () => {
     rows,
     prepareRow,
     state,
-  } = useTable<Data>({ columns, data }, useSortBy);
+    setGlobalFilter
+  } = useTable<Data>({ columns, data },useFilters, useGlobalFilter, useSortBy);
 
-  
+  const { globalFilter } = state;
 
   return (
     <>
@@ -131,6 +133,9 @@ const ListStudents = () => {
         <Styles>
           <div className='m-3' style={{ display: 'flex', justifyContent: 'center' }}>
 
+          </div>
+          <div className='m-3' style={{ display: 'flex', justifyContent: 'center'}}>
+            <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
           <table {...getTableProps()}>
             <thead>
@@ -140,6 +145,7 @@ const ListStudents = () => {
                     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                       {console.log(column.getSortByToggleProps())}
                       {column.render("Header")}
+                      <div className='m-2'>{column.canFilter ? column.render('Filter') : null}</div>
                       <span>
                         {" "}
                         {column.isSorted
