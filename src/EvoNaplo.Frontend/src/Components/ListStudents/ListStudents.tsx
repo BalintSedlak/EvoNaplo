@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
-import {NameFilter} from './NameFilter'
+import { NameFilter } from './NameFilter'
 import { SemesterFilter } from './SemesterFilter';
+import { ProjectFilter } from './ProjectFilter';
 
 
 interface Data {
@@ -123,7 +124,7 @@ const ListStudents = () => {
     prepareRow,
     state,
     setGlobalFilter
-  } = useTable<Data>({ columns, data },useFilters, useGlobalFilter, useSortBy);
+  } = useTable<Data>({ columns, data }, useFilters, useGlobalFilter, useSortBy);
 
   const { globalFilter } = state;
 
@@ -131,12 +132,17 @@ const ListStudents = () => {
     <>
       <div className='mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
         <Styles>
+
           <div className='m-3' style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className='m-2'>
+              <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
+            </div>
+            <div className='m-2'>
+              <ProjectFilter filter={globalFilter} setFilter={setGlobalFilter} />
+            </div>
 
           </div>
-          <div className='m-3' style={{ display: 'flex', justifyContent: 'center'}}>
-            <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
-          </div>
+
           <table {...getTableProps()}>
             <thead>
               {headerGroups.map(headerGroup => (

@@ -117,7 +117,7 @@ const ListAttendances = () => {
                   {headerGroup.headers.map(column => (
                     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                       {console.log(column.getSortByToggleProps())}
-                      {column.render("Header")}
+                      {<strong>{column.render("Header")}</strong>}
                       <div className='m-2'>{column.canFilter ? column.render('Filter') : null}</div>
                       <span>
                         {" "}
