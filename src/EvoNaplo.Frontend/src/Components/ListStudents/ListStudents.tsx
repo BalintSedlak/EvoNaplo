@@ -3,6 +3,7 @@ import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-
 import { NameFilter } from './NameFilter'
 import { SemesterFilter } from './SemesterFilter';
 import { ProjectFilter } from './ProjectFilter';
+import { ScholarshipFilter } from './ScholarshipFilter';
 
 
 interface Data {
@@ -34,6 +35,19 @@ const data: Data[] = [
     semester: "2022/1"
   },
   {
+    name: "Kis Béla",
+    email: "kisbela@email.com",
+    telephone: "0630666666",
+    project: "EvoNaplo",
+    mentors: "ASD, DAS",
+    date: "Péntek 14:00",
+    facebook: "Yes",
+    scholarship: "Yes",
+    internship: "Yes",
+    participation_rate: "50%",
+    semester: "2021/1"
+  },
+  {
     name: "Nagy Béla",
     email: "nagybela@email.com",
     telephone: "0650666666",
@@ -45,6 +59,19 @@ const data: Data[] = [
     internship: "No",
     participation_rate: "93%",
     semester: "2021/2"
+  },
+  {
+    name: "Közepes Béla",
+    email: "kozepesbela@email.com",
+    telephone: "0650666666",
+    project: "EvoFlix",
+    mentors: "DAS",
+    date: "Szerda 10:00",
+    facebook: "No",
+    scholarship: "No",
+    internship: "No",
+    participation_rate: "13%",
+    semester: "2022/1"
   },
 ]
 
@@ -67,7 +94,7 @@ const columns: Column<Data>[] = [
   {
     Header: "Project",
     accessor: "project",
-    Filter: ""
+    Filter: ProjectFilter
   },
   {
     Header: "Mentors",
@@ -87,7 +114,7 @@ const columns: Column<Data>[] = [
   {
     Header: "Scholarship",
     accessor: "scholarship",
-    Filter: ""
+    Filter: ScholarshipFilter
   },
   {
     Header: "Internship",
@@ -128,6 +155,7 @@ const ListStudents = () => {
 
   const { globalFilter } = state;
 
+
   return (
     <>
       <div className='mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
@@ -137,10 +165,6 @@ const ListStudents = () => {
             <div className='m-2'>
               <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
             </div>
-            <div className='m-2'>
-              <ProjectFilter filter={globalFilter} setFilter={setGlobalFilter} />
-            </div>
-
           </div>
 
           <table {...getTableProps()}>

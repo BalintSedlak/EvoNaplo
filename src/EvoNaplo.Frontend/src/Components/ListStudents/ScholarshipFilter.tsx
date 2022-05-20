@@ -1,13 +1,12 @@
 import React from 'react'
 
 const options = [
-    { value: '', label: 'All Project' },
-    { value: 'EvoNaplo', label: 'EvoNaplo' },
-    { value: 'EvoRPG', label: 'EvoRPG' },
-    { value: 'EvoFlix', label: 'EvoFlix' },
+    { value: '', label: 'All' },
+    { value: 'Yes', label: 'Yes' },
+    { value: 'No', label: 'No' },
 ]
 
-export const ProjectFilter = ({ column }) => {
+export const ScholarshipFilter = ({ column }) => {
     const { filterValue, setFilter } = column;
     return (
         <>
