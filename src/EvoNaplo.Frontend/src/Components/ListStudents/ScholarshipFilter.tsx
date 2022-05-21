@@ -3,6 +3,7 @@ import React from 'react'
 const options = [
     { value: '', label: 'All' },
     { value: 'Yes', label: 'Yes' },
+    { value: 'Maybe', label: 'Maybe' },
     { value: 'No', label: 'No' },
 ]
 

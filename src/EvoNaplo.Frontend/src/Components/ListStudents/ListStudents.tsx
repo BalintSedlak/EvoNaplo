@@ -29,7 +29,7 @@ const data: Data[] = [
     mentors: "ASD, DAS",
     date: "Péntek 14:00",
     facebook: "Yes",
-    scholarship: "Yes",
+    scholarship: "Maybe",
     internship: "Yes",
     participation_rate: "50%",
     semester: "2022/1"
@@ -77,7 +77,7 @@ const data: Data[] = [
 
 const columns: Column<Data>[] = [
   {
-    Header: "Name",
+    Header: "Név",
     accessor: "name",
     Filter: NameFilter
   },

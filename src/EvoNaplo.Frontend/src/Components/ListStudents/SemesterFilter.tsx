@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const options = [
-    { value: '', label: 'All Semester' },
     { value: '2022/1', label: 'Actual' },
     { value: '2021/2', label: '2021/2' },
     { value: '2021/1', label: '2021/1' },
+    { value: '', label: 'All Semester' },
 ]
 
 export const SemesterFilter = ({filter, setFilter}) => {
+
+    useEffect(()=>{setFilter("2022/1");},[])
+
     return (
         <>
             <span>
@@ -16,7 +19,6 @@ export const SemesterFilter = ({filter, setFilter}) => {
                         <option value={option.value} >{option.label}</option>
                     ))}
                 </select>
-
             </span>
         </>
 
