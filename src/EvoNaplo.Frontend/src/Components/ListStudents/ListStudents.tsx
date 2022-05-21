@@ -28,9 +28,9 @@ const data: Data[] = [
     project: "EvoNaplo",
     mentors: "ASD, DAS",
     date: "Péntek 14:00",
-    facebook: "Yes",
+    facebook: "Igen",
     scholarship: "Kap",
-    internship: "Yes",
+    internship: "Nem",
     participation_rate: "50%",
     semester: "2022/1"
   },
@@ -41,9 +41,9 @@ const data: Data[] = [
     project: "EvoNaplo",
     mentors: "ASD, DAS",
     date: "Péntek 14:00",
-    facebook: "Yes",
+    facebook: "Igen",
     scholarship: "Jelenetkezett",
-    internship: "Yes",
+    internship: "Igen",
     participation_rate: "50%",
     semester: "2021/1"
   },
@@ -54,9 +54,9 @@ const data: Data[] = [
     project: "EvoRPG",
     mentors: "DAS",
     date: "Szerda 10:00",
-    facebook: "No",
+    facebook: "Nem",
     scholarship: "Jelenetkezett",
-    internship: "No",
+    internship: "Igen",
     participation_rate: "93%",
     semester: "2021/2"
   },
@@ -67,9 +67,9 @@ const data: Data[] = [
     project: "EvoFlix",
     mentors: "DAS",
     date: "Szerda 10:00",
-    facebook: "No",
+    facebook: "Igen",
     scholarship: "Nincs",
-    internship: "No",
+    internship: "Nem",
     participation_rate: "13%",
     semester: "2022/1"
   },
@@ -87,22 +87,22 @@ const columns: Column<Data>[] = [
     Filter: ""
   },
   {
-    Header: "Telephone",
+    Header: "Telefonszám",
     accessor: "telephone",
     Filter: ""
   },
   {
-    Header: "Project",
+    Header: "Projekt",
     accessor: "project",
     Filter: ProjectFilter
   },
   {
-    Header: "Mentors",
+    Header: "Mentorok",
     accessor: "mentors",
     Filter: ""
   },
   {
-    Header: "Date",
+    Header: "Időpont",
     accessor: "date",
     Filter: ""
   },
@@ -112,17 +112,17 @@ const columns: Column<Data>[] = [
     Filter: ""
   },
   {
-    Header: "Scholarship",
+    Header: "Ösztöndíjra jelentkezett?",
     accessor: "scholarship",
     Filter: ScholarshipFilter
   },
   {
-    Header: "Internship",
+    Header: "Nyári gyakorlatra jelentkezett?",
     accessor: "internship",
     Filter: ""
   },
   {
-    Header: "Participation Rate",
+    Header: "Részvétel aránya",
     accessor: "participation_rate",
     Filter: ""
   },
@@ -136,7 +136,7 @@ const columns: Column<Data>[] = [
 
 const Styles = styled.div`
 td, th {
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   padding: 0.5rem;
   width: 600px;
 }
