@@ -2,9 +2,9 @@ import React from 'react'
 
 const options = [
     { value: '', label: 'All' },
-    { value: 'Yes', label: 'Yes' },
-    { value: 'Maybe', label: 'Maybe' },
-    { value: 'No', label: 'No' },
+    { value: 'Kap', label: 'Kap' },
+    { value: 'Jelenetkezett', label: 'Jelentkezett' },
+    { value: 'Nincs', label: 'Nincs' },
 ]
 
 export const ScholarshipFilter = ({ column }) => {

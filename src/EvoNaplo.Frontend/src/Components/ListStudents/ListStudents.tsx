@@ -29,7 +29,7 @@ const data: Data[] = [
     mentors: "ASD, DAS",
     date: "Péntek 14:00",
     facebook: "Yes",
-    scholarship: "Maybe",
+    scholarship: "Kap",
     internship: "Yes",
     participation_rate: "50%",
     semester: "2022/1"
@@ -42,7 +42,7 @@ const data: Data[] = [
     mentors: "ASD, DAS",
     date: "Péntek 14:00",
     facebook: "Yes",
-    scholarship: "Yes",
+    scholarship: "Jelenetkezett",
     internship: "Yes",
     participation_rate: "50%",
     semester: "2021/1"
@@ -55,7 +55,7 @@ const data: Data[] = [
     mentors: "DAS",
     date: "Szerda 10:00",
     facebook: "No",
-    scholarship: "Yes",
+    scholarship: "Jelenetkezett",
     internship: "No",
     participation_rate: "93%",
     semester: "2021/2"
@@ -68,7 +68,7 @@ const data: Data[] = [
     mentors: "DAS",
     date: "Szerda 10:00",
     facebook: "No",
-    scholarship: "No",
+    scholarship: "Nincs",
     internship: "No",
     participation_rate: "13%",
     semester: "2022/1"
@@ -137,8 +137,8 @@ const columns: Column<Data>[] = [
 const Styles = styled.div`
 td, th {
   border: 1px solid #ddd;
-  padding: 0.7rem;
-  width: 650px;
+  padding: 0.5rem;
+  width: 600px;
 }
 `
 
