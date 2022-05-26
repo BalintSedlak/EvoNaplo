@@ -58,14 +58,18 @@ const Registration = () => {
         setErrors(returnedErrors);
         let errorsReceived = CheckIfErrorsReceived(returnedErrors);
 
+        /*
         const returnedEmail: IEmailExists = await fetch('https://localhost:7043/api/Student/EmailExists/?email=' + user.email)
             .then(response => response.json())
             .then(json => { return json })
+        */
 
+
+        /*
         if (errorsReceived === false) {
             if (returnedEmail.exists === false) {
                 setEmailExists(false);
-                fetch('https://localhost:7043/api/Student/AddStudent', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
+                fetch('http://localhost:7043/api/Session/Registration', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
                     .then(res => {
                         if (res.status === 200) {
                             setSuccess(true);
@@ -88,8 +92,36 @@ const Registration = () => {
             }
             else
             {
-                setEmailExists(true);
+                setEmailExists(true);í
             }
+        }
+        else {
+            setSuccess(false);
+        }
+        */
+
+        if (errorsReceived === false) {
+            fetch('http://localhost:7043/api/Session/Registration', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
+                .then(res => {
+                    if (res.status === 200) {
+                        setSuccess(true);
+                        setUser({
+                            firstname: '',
+                            lastname: '',
+                            email: '',
+                            password: '',
+                            password2: ''
+                        });
+                    }
+                    else {
+                        alert("Nem sikerült, sorry");
+                        setSuccess(false);
+                    }
+                })
+                .catch(function (error) {
+                    setSuccess(false);
+                });
+
         }
         else {
             setSuccess(false);
