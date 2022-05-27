@@ -25,10 +25,13 @@ jobs:
         dotnet-version: 6.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: src/EvoNaplo.Backend
     - name: Build
       run: dotnet build --configuration Release
+      working-directory: src/EvoNaplo.Backend
     - name: Test with the dotnet CLI
       run: dotnet test
+      working-directory: src/EvoNaplo.Backend
     - uses: actions/upload-artifact@v2
       with:
        name: EvoNaplo
