@@ -13,6 +13,7 @@ import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpenin
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
 import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
 import ListAttendances from './Components/ListAttendances/ListAttendances';
+import ListStudents from './Components/ListStudents/ListStudents';
 
 function App() {
   const [session, setSession] = useState<ISession>({
@@ -55,6 +56,7 @@ function App() {
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView />} />
           <Route path='/Components/ListAttendances/ListAttendances' element={<ListAttendances/>}/>
+          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents/>}/>
         </Routes>
       </Container>
     </BrowserRouter>

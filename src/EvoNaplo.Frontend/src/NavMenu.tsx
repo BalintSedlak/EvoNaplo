@@ -1,4 +1,3 @@
-import React, { Component, useEffect, useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import ISession from './ISession';
 
@@ -35,6 +34,14 @@ const ListAttendancesLink = (id: number) => {
     }
 }
 
+const ListStudentsLink = (id: number) => {
+    if(id < 1)
+    {
+        return <Nav.Link href="/Components/ListStudents/ListStudents">ListStudents</Nav.Link>
+    }
+}
+
+
 const AddAttendanceViewLink = (id: number) => {
     // if(id > 0)
     // {
@@ -54,6 +61,7 @@ export default function NavMenu({session}: {session: ISession}) {
                         {LoginLink(session.id)}
                         {RegistrationLink(session.id)}
                         {ListAttendancesLink(session.id)}
+                        {ListStudentsLink(session.id)}
                         <NavDropdown title="Prototypes" id="basic-nav-dropdown">
                             {SemesterOpeningLink(session.id)}
                             <NavDropdown.Divider />
