@@ -1,8 +1,8 @@
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
-import { NameFilter } from './NameFilter'
-import { SemesterFilter } from './SemesterFilter';
-import { ProjectFilter } from './ProjectFilter';
-import { ScholarshipFilter } from './ScholarshipFilter';
+import { NameFilter } from './Filters/NameFilter'
+import { SemesterFilter } from './Filters/SemesterFilter';
+import { ProjectFilter } from './Filters/ProjectFilter';
+import { ScholarshipFilter } from './Filters/ScholarshipFilter';
 import classes from './ListStudent.module.css'
 
 
