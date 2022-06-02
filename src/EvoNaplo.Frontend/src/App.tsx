@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { DoesImplementISession } from './Helpers';
+import { Container } from 'react-bootstrap';
+
 import './App.css';
 import Home from './Home';
 import Login from './Login';
 import Registration from './Registration';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavMenu from './NavMenu';
 import ISession from './ISession';
-import { DoesImplementISession } from './Helpers';
-import { Container } from 'react-bootstrap';
 import './Forms.css';
 import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
