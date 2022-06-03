@@ -10,7 +10,7 @@ const LoginLink = (id: number) => {
 const RegistrationLink = (id: number) => {
     if(id < 1)
     {
-        return <Nav.Link href="/Registration">Registration</Nav.Link>
+        return <Nav.Link href="/Components/Registration/Registration">Registration</Nav.Link>
     }
 }
 const SemesterOpeningLink = (id: number) => {

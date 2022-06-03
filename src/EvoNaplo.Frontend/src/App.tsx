@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 import './App.css';
 import Home from './Home';
 import Login from './Login';
-import Registration from './Registration';
+import Registration from './Components/Registration/Registration';
 import NavMenu from './NavMenu';
 import ISession from './ISession';
 import './Forms.css';
@@ -52,7 +52,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home session={session} />} />
           <Route path='/Login' element={<Login />} />
-          <Route path='/Registration' element={<Registration />} />
+          <Route path='/Components/Registration/Registration' element={<Registration />} />
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView />} />
