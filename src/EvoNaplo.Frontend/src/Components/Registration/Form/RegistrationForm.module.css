@@ -1,0 +1,12 @@
+.headerText{
+    text-align: center;
+    padding: 20px;
+}
+
+.ErrorParagraph
+{
+    position:absolute;
+    margin-bottom: 1rem;
+    color: red;
+    font-size: 10px;
+}

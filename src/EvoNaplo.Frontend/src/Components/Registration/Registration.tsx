@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { RegistrationForm } from './RegistrationForm'
+import { IRegistration } from "./Form/IRegistration";
+import { RegistrationForm } from './Form/RegistrationForm'
+import classes from './Registration.module.css'
 
 /*
 - The registration logic
@@ -8,10 +9,7 @@ import { RegistrationForm } from './RegistrationForm'
 
 const Registration = () => {
 
-
-  useEffect(() => { }, []);
-
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (user: IRegistration) => {
     /*
       e.preventDefault()
 
@@ -52,10 +50,10 @@ const Registration = () => {
 
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-
     <>
-      <RegistrationForm />
+      <div className={classes.RegistrationFormCard}>
+        <RegistrationForm onRegistration={onSubmit} />
+      </div>
     </>
   );
 }

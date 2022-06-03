@@ -11,10 +11,10 @@ export default function ValidateInfo(values: IRegistration) {
     };
 
     if (IsNullOrWhitespace(values.firstname)) {
-        errors.firstname = "Email required";
+        errors.firstname = "Firstname is required";
     }
     if (IsNullOrWhitespace(values.lastname)) {
-        errors.lastname = "Email required";
+        errors.lastname = "Lastname is required";
     }
     if (IsNullOrWhitespace(values.email)) {
         errors.email = "Email required";
@@ -22,8 +22,8 @@ export default function ValidateInfo(values: IRegistration) {
     if (IsNullOrWhitespace(values.password)) {
         errors.password = "Password required";
     }
-    if (IsNullOrWhitespace(values.password2)) {
-        errors.password2 = "Email required";
+    if (IsNullOrWhitespace(values.password2) || values.password !== values.password2) {
+        errors.password2 = "Password is not matched";
     }
     return errors;
 }

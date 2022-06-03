@@ -1,4 +1,4 @@
-import ISession from "../../ISession";
+import ISession from "../../../ISession";
 
 export function IsNullOrWhitespace(input: string) {
     return !input || !input.trim();
