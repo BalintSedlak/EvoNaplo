@@ -10,6 +10,7 @@ import classes from './Registration.module.css'
 const Registration = () => {
 
   const onSubmit = async (user: IRegistration) => {
+    console.log(user);
     /*
       e.preventDefault()
 

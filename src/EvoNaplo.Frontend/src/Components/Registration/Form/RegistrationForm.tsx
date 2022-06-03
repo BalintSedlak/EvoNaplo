@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { IsNullOrWhitespace } from './Helpers';
 import { IRegistration } from './IRegistration';
 import validate from "./RegistrationValidation";
@@ -7,7 +7,9 @@ import classes from './RegistrationForm.module.css'
 export const RegistrationForm = (props) => {
 
   const [formIsValid, setFormIsValid] = useState(false);
+
   const [success, setSuccess] = useState(false);
+
   const [user, setUser] = useState<IRegistration>({
     firstname: '',
     lastname: '',
@@ -24,10 +26,16 @@ export const RegistrationForm = (props) => {
     password2: ''
   });
 
+  const firstnameRef = useRef<HTMLInputElement | null>();
+  const lastnameRef = useRef<HTMLInputElement | null>();
+  const emailRef = useRef<HTMLInputElement | null>();
+  const passwordRef = useRef<HTMLInputElement | null>();
+  const password2Ref = useRef<HTMLInputElement | null>();
 
-  
 
-  const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUser({
       ...user,
       [e.target.name]: e.target.value
@@ -36,13 +44,64 @@ export const RegistrationForm = (props) => {
     const returnedErrors = validate(user);
     let errorsReceived = CheckIfErrorsReceived(returnedErrors);
 
-    if(errorsReceived === false){
+    const enteredFirstname = firstnameRef.current.value;
+    const enteredLastname = lastnameRef.current.value;
+    const enteredEmail = emailRef.current.value;
+    const enteredPassword = passwordRef.current.value;
+    const enteredPassword2 = password2Ref.current.value;
+
+    if (IsNullOrWhitespace(enteredFirstname) || enteredFirstname.length < 3) {
+      errors.firstname = "Firstname is required";
+    }
+    else {
+      errors.firstname = "";
+    }
+
+    if (IsNullOrWhitespace(enteredLastname) || enteredLastname.length < 3 ) {
+      errors.lastname = "Lastname is required";
+    } else {
+      errors.lastname = "";
+    }
+
+    if (IsNullOrWhitespace(enteredEmail) || enteredEmail.length < 3 ) {
+      errors.email = "Email required";
+    } else {
+      errors.email = "";
+    }
+
+    if (IsNullOrWhitespace(enteredPassword) || enteredPassword.length < 3 ) {
+      errors.password = "Password required";
+    } else {
+      errors.password = "";
+    }
+
+    if (enteredPassword !== enteredPassword2) {
+      errors.password2 = "The 2 password is not matched";
+    }
+    if (enteredPassword === enteredPassword2) {
+      errors.password2 = "";
+    }
+
+    if (errorsReceived === false) {
+      setFormIsValid(true);
+    } else {
       setFormIsValid(false);
-    }else{
+      console.log(errorsReceived)
+    }
+
+    /*
+    const returnedErrors = validate(user);
+    setErrors(returnedErrors);
+    let errorsReceived = CheckIfErrorsReceived(returnedErrors);
+
+    if (errorsReceived === false) {
+      setFormIsValid(false);
+    } else {
       setFormIsValid(true);
     }
-    
+
     console.log(user);
+    */
   }
 
   function CheckIfErrorsReceived(param: IRegistration) {
@@ -62,9 +121,8 @@ export const RegistrationForm = (props) => {
   }
 
   const submitHandler = (event) => {
+    console.log(user);
     event.preventDefault();
-    
-
   }
 
   const ErrorMessage = (param: string) => {
@@ -94,20 +152,20 @@ export const RegistrationForm = (props) => {
         {/* register your input into the hook by invoking the "register" function */}
         <div className='p-2'>
           Firstname:
-          <input type="text" name="firstname" value={user.firstname} placeholder="Joseph" onChange={HandleChange} />
+          <input ref={firstnameRef} type="text" name="firstname" value={user.firstname} placeholder="Joseph" onChange={handleInputChange} />
           {ErrorMessage("firstname")}
         </div>
 
         <div className='p-2'>
           Lastname:
-          <input type="text" name="lastname" value={user.lastname} placeholder="Smith" onChange={HandleChange} />
+          <input ref={lastnameRef} type="text" name="lastname" value={user.lastname} placeholder="Smith" onChange={handleInputChange} />
           {ErrorMessage("lastname")}
         </div>
 
 
         <div className='p-2'>
           Email:
-          <input type="text" name="email" value={user.email} placeholder="example@mail.com" onChange={HandleChange} />
+          <input ref={emailRef} type="text" name="email" value={user.email} placeholder="example@mail.com" onChange={handleInputChange} />
           {ErrorMessage("email")}
           {/*<p className={classes.ErrorParagraph}>Email already exist</p>*/}
         </div>
@@ -115,19 +173,19 @@ export const RegistrationForm = (props) => {
 
         <div className='p-2'>
           Password:
-          <input type="password" name="password" value={user.password} placeholder="••••••••" onChange={HandleChange} />
+          <input ref={passwordRef} type="password" name="password" value={user.password} placeholder="••••••••" onChange={handleInputChange} />
           {ErrorMessage("password")}
         </div>
 
 
         <div className='p-2'>
           Confirm password:
-          <input type="password" name="password2" value={user.password2} placeholder="••••••••" onChange={HandleChange} />
+          <input ref={password2Ref} type="password" name="password2" value={user.password2} placeholder="••••••••" onChange={handleInputChange} />
           {ErrorMessage("password2")}
         </div>
 
 
-        <input type="submit" />
+        <input type="submit" disabled={!formIsValid}/>
       </form>
     </>
   )

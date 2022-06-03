@@ -1,5 +1,5 @@
 .RegistrationFormCard {
-    
+
     position: absolute;
     top: 50%;
     right: 50%;
@@ -15,7 +15,8 @@
     position: center;
 }
 
-.RegistrationFormCard input[type="text"], input[type="password"] {
+.RegistrationFormCard input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 6px 10px;
     margin: 5px 0;
@@ -24,9 +25,11 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-    .RegistrationFormCard input[type="text"]:focus, input[type="password"]:focus {
-        outline: none;
-    }
+
+.RegistrationFormCard input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+}
 
 .RegistrationFormCard input[type="submit"] {
     margin: 10px 0;
@@ -44,7 +47,8 @@
     width: 100%;
 }
 
-    .RegistrationFormCard input[type="submit"]:hover {
-        background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
-        background-color: #5cb811;
-    }
+.RegistrationFormCard input[type="submit"]:hover {
+    background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+    background-color: #5cb811;
+}
+

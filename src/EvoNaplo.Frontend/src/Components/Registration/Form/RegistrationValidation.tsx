@@ -10,7 +10,7 @@ export default function ValidateInfo(values: IRegistration) {
         password2: ""
     };
 
-    if (IsNullOrWhitespace(values.firstname)) {
+    if (IsNullOrWhitespace(values.firstname) || values.firstname.length < 1) {
         errors.firstname = "Firstname is required";
     }
     if (IsNullOrWhitespace(values.lastname)) {
@@ -23,7 +23,8 @@ export default function ValidateInfo(values: IRegistration) {
         errors.password = "Password required";
     }
     if (IsNullOrWhitespace(values.password2) || values.password !== values.password2) {
-        errors.password2 = "Password is not matched";
+        errors.password2 = "Password2 is empty";
+        console.log(values.password !== values.password2)
     }
     return errors;
 }
