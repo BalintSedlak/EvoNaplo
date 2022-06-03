@@ -1,4 +1,3 @@
-import { isNonNullExpression } from "typescript";
 import ISession from "../../ISession";
 
 export function IsNullOrWhitespace(input: string) {
