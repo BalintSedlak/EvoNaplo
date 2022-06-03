@@ -184,7 +184,7 @@ export const RegistrationForm = (props) => {
           {ErrorMessage("password2")}
         </div>
 
-
+        {/**ne legyen disabled */}
         <input type="submit" disabled={!formIsValid}/>
       </form>
     </>
