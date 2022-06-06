@@ -1,13 +1,7 @@
 import { useForm } from "react-hook-form";
+import { IRegistration } from "./IRegistration";
 import classes from './RegistrationForm.module.css'
 
-interface IFormInput {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  password2: string;
-}
 
 export const RegistrationForm = (props) => {
 
@@ -17,11 +11,12 @@ export const RegistrationForm = (props) => {
     watch,
     getValues,
     formState: { errors }
-  } = useForm<IFormInput>();
+  } = useForm<IRegistration>();
 
-  const onSubmit = (data: IFormInput) => {
-    alert(JSON.stringify(data));
-  }; 
+  const onSubmit = (data: IRegistration) => {
+    //alert(JSON.stringify(data));
+    props.onRegistration(data);
+  };
 
 
   return (
@@ -31,21 +26,22 @@ export const RegistrationForm = (props) => {
         <label>First Name</label>
         <input
           type="text"
-          {...register("firstName", {
+          {...register("firstname", {
             required: true,
             maxLength: 20,
             minLength: 3,
             pattern: /^[A-Za-záéúőóüö]+$/i
           })}
+          placeholder="Joseph"
         />
-        {errors?.firstName?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
-        {errors?.firstName?.type === "minLength" && (
+        {errors?.firstname?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
+        {errors?.firstname?.type === "minLength" && (
           <p className={classes.ErrorParagraph}>First name cannot be less than 3 characters</p>
         )}
-        {errors?.firstName?.type === "maxLength" && (
+        {errors?.firstname?.type === "maxLength" && (
           <p className={classes.ErrorParagraph}>First name cannot exceed 20 characters</p>
         )}
-        {errors?.firstName?.type === "pattern" && (
+        {errors?.firstname?.type === "pattern" && (
           <p className={classes.ErrorParagraph}>Alphabetical characters only</p>
         )}
 
@@ -53,21 +49,22 @@ export const RegistrationForm = (props) => {
         <label>Last Name</label>
         <input
           type="text"
-          {...register("lastName", {
+          {...register("lastname", {
             required: true,
             maxLength: 20,
             minLength: 3,
             pattern: /^[A-Za-záéúőóüö]+$/i
           })}
+          placeholder="Smith"
         />
-        {errors?.lastName?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
-        {errors?.lastName?.type === "minLength" && (
+        {errors?.lastname?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
+        {errors?.lastname?.type === "minLength" && (
           <p className={classes.ErrorParagraph}>Last name cannot be less than 3 characters</p>
         )}
-        {errors?.lastName?.type === "maxLength" && (
+        {errors?.lastname?.type === "maxLength" && (
           <p className={classes.ErrorParagraph}>Last name cannot exceed 20 characters</p>
         )}
-        {errors?.lastName?.type === "pattern" && (
+        {errors?.lastname?.type === "pattern" && (
           <p className={classes.ErrorParagraph}>Alphabetical characters only</p>
         )}
 
@@ -76,18 +73,19 @@ export const RegistrationForm = (props) => {
           type="text"
           {...register("email", {
             required: true,
-            maxLength: 20,
+            maxLength: 50,
             minLength: 3,
             pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
             //email already in database
           })}
+          placeholder="example@mail.com"
         />
         {errors?.email?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
         {errors?.email?.type === "minLength" && (
           <p className={classes.ErrorParagraph}>Email cannot be less than 3 characters</p>
         )}
         {errors?.email?.type === "maxLength" && (
-          <p className={classes.ErrorParagraph}>Email cannot exceed 20 characters</p>
+          <p className={classes.ErrorParagraph}>Email cannot exceed 50 characters</p>
         )}
         {errors?.email?.type === "pattern" && (
           <p className={classes.ErrorParagraph}>Not good email address</p>
@@ -101,6 +99,7 @@ export const RegistrationForm = (props) => {
             maxLength: 20,
             minLength: 3
           })}
+          placeholder="••••••••"
         />
         {errors?.password?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
         {errors?.password?.type === "minLength" && (
@@ -117,8 +116,8 @@ export const RegistrationForm = (props) => {
             required: true,
             maxLength: 20,
             minLength: 3,
-
           })}
+          placeholder="••••••••"
         />
         {errors?.password2?.type === "required" && <p className={classes.ErrorParagraph}>This field is required</p>}
         {errors?.password2?.type === "minLength" && (
