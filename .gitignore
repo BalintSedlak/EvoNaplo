@@ -32,7 +32,7 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
-
+.Migrations/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -333,3 +333,6 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 /EvoNaplo.Infrastructure/Migrations
+src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations/
+src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations/20220511094854_EvoNaploMigration.Designer.cs
+src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations/20220511094854_EvoNaploMigration.cs
