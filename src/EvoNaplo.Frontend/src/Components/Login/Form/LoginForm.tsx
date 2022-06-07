@@ -8,13 +8,11 @@ export const LoginForm = (props) => {
   const {
     register,
     handleSubmit,
-    watch,
-    getValues,
     formState: { errors }
   } = useForm<ILogin>();
 
   const onSubmit = (data: ILogin) => {
-    props.onRegistration(data);
+    props.onLogin(data);
   };
 
 

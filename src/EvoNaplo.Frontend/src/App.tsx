@@ -23,6 +23,7 @@ function App() {
     role: ''
   });
 
+  /*
   useEffect(() => {
     fetch('https://localhost:7043/api/Session', {
       method: 'GET',
@@ -44,11 +45,12 @@ function App() {
   function ResponseHasSessionStructure(prop: any): prop is ISession {
     return typeof (prop) == 'number';
   }
-
+  */
+ 
   return (
     <BrowserRouter>
       <NavMenu session={session} />
-      <Container style={{padding:"60px"}}>
+      <Container style={{ padding: "60px" }}>
         <Routes>
           <Route path='/' element={<Home session={session} />} />
           <Route path='/Components/Login/Login' element={<Login />} />
@@ -56,8 +58,8 @@ function App() {
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView />} />
-          <Route path='/Components/ListAttendances/ListAttendances' element={<ListAttendances/>}/>
-          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents/>}/>
+          <Route path='/Components/ListAttendances/ListAttendances' element={<ListAttendances />} />
+          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents />} />
         </Routes>
       </Container>
     </BrowserRouter>

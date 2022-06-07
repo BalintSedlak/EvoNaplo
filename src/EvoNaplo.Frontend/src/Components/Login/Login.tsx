@@ -1,11 +1,12 @@
+import { ILogin } from './Form/ILogin';
 import { LoginForm } from './Form/LoginForm';
 import classes from './Login.module.css'
 
 const Login = () => {
 
 
-    const onSubmit = (e: any) => {
-        e.preventDefault();
+    const onSubmit = (user: ILogin) => {
+        console.log(user);
         /*
         const returnedErrors = validate(user);
         setErrors(returnedErrors);
@@ -41,7 +42,7 @@ const Login = () => {
     return (
         <>
             <div className={classes.LoginFormCard}>
-                <LoginForm onRegistration={onSubmit} />
+                <LoginForm onLogin={onSubmit} />
             </div>
         </>
     );
