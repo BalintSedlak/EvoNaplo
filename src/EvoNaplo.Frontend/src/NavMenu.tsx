@@ -3,7 +3,7 @@ import ISession from './ISession';
 
 const LoginLink = (id: number) => {
     if (id < 1) {
-        return <Nav.Link href="/Login">Login</Nav.Link>
+        return <Nav.Link href="/Components/Login/Login">Login</Nav.Link>
     }
 }
 const RegistrationLink = (id: number) => {

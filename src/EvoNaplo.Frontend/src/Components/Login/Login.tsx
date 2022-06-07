@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import validate from "./LoginValidation";
-import { ILogin } from "./ILogin";
-import { IsNullOrWhitespace } from "./Helpers";
+import { ILogin } from './ILogin';
+import { IsNullOrWhitespace } from "../../Helpers";
 
 const Login = () => {
     const [user, setUser] = useState<ILogin>(

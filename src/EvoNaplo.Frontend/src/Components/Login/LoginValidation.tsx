@@ -1,5 +1,5 @@
 import { ILogin } from "./ILogin";
-import { IsNullOrWhitespace } from "./Helpers";
+import { IsNullOrWhitespace } from "../../Helpers";
 
 export default function ValidateInfo(values: ILogin) {
     let errors = {

@@ -14,7 +14,6 @@ export const RegistrationForm = (props) => {
   } = useForm<IRegistration>();
 
   const onSubmit = (data: IRegistration) => {
-    //alert(JSON.stringify(data));
     props.onRegistration(data);
   };
 
