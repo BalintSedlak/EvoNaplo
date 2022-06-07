@@ -1,4 +1,4 @@
-import { ILogin } from "./ILogin";
+import { ILogin } from "./Form/ILogin";
 import { IsNullOrWhitespace } from "../../Helpers";
 
 export default function ValidateInfo(values: ILogin) {
