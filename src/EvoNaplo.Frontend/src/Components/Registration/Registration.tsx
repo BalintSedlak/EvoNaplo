@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IRegistration } from "./Form/IRegistration";
 import { RegistrationForm } from './Form/RegistrationForm'
 import classes from './Registration.module.css'
@@ -9,43 +10,26 @@ import classes from './Registration.module.css'
 
 const Registration = () => {
 
+  const [success, setSuccess] = useState(false);
   const onSubmit = async (user: IRegistration) => {
     console.log(user);
-    /*
-      e.preventDefault()
-
-      const returnedErrors = validate(user);
-      setErrors(returnedErrors);
-      let errorsReceived = CheckIfErrorsReceived(returnedErrors);
 
 
-      if (errorsReceived === false) {
-          fetch('http://localhost:7043/api/Session/Registration', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
-              .then(res => {
-                  if (res.status === 200) {
-                      setSuccess(true);
-                      setUser({
-                          firstname: '',
-                          lastname: '',
-                          email: '',
-                          password: '',
-                          password2: ''
-                      });
-                  }
-                  else {
-                      alert("Nem sikerült, sorry");
-                      setSuccess(false);
-                  }
-              })
-              .catch(function (error) {
-                  setSuccess(false);
-              });
+    fetch('http://localhost:7043/api/Session/Registration', { mode: "cors", method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
+      .then(res => {
+        if (res.status === 200) {
+          setSuccess(true);
+        }
+        else {
+          alert("Nem sikerült, sorry");
 
-      }
-      else {
-          setSuccess(false);
-      }
-      */
+        }
+      })
+      .catch(function (error) {
+        setSuccess(false);
+      });
+
+
   }
 
 
