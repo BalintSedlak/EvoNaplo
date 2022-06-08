@@ -333,6 +333,5 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 /EvoNaplo.Infrastructure/Migrations
-src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations/
-src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations/20220511094854_EvoNaploMigration.Designer.cs
-src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations/20220511094854_EvoNaploMigration.cs
+src/EvoNaplo.Backend/EvoNaplo.Infrastructure/Migrations
+
