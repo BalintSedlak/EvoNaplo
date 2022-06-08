@@ -1,0 +1,18 @@
+.base {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.globalFilter {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.listAttendanceTable td,
+.listAttendanceTable th {
+    border: 3px solid #ddd;
+    padding: 2rem;
+    margin: auto;
+}

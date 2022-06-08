@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components';
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
-import { GlobalFilter } from './Filters/GlobalFilter';
-import { ProjectFilter } from './Filters/ProjectFilter';
-import { SemesterFilter } from './Filters/SemesterFilter';
+import { ListAttendancesGlobalFilter } from './Filters/ListAttendancesGlobalFilter';
+import { ListAttendancesProjectFilter } from './Filters/ListAttendancesProjectFilter';
+import { ListAttendancesSemesterFilter } from './Filters/ListAttendancesSemesterFilter';
+import classes from './ListAttendances.module.css'
 
 const columns: Column<Data>[] = [
   {
@@ -14,12 +14,12 @@ const columns: Column<Data>[] = [
   {
     Header: "Semester",
     accessor: "semester",
-    Filter: SemesterFilter
+    Filter: ListAttendancesSemesterFilter
   },
   {
     Header: "Project",
     accessor: "project",
-    Filter: ProjectFilter
+    Filter: ListAttendancesProjectFilter
   },
   {
     Header: "Date",
@@ -39,6 +39,7 @@ interface Data {
   project: string;
   date: string;
   status: string;
+  id:string;
 }
 
 const data: Data[] = [
@@ -47,47 +48,43 @@ const data: Data[] = [
     semester: "2022/1",
     project: "EvoNaplo",
     date: "1. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
+    status: "online",
+    id:'1'
   },
   {
     name: "Kis Béla",
     semester: "2022/1",
     project: "EvoNaplo",
     date: "1. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
+    status: "online",
+    id:'1'
   },
   {
     name: "Nagy Béla",
     semester: "2022/1",
     project: "EvoNaplo",
     date: "2. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
+    status: "online",
+    id:'1'
   },
   {
     name: "Kis Béla",
     semester: "2021/1",
     project: "EvoNaplo",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
+    status: "online",
+    id:'1'
   },
   {
     name: "Kis Béla",
     semester: "2021/1",
     project: "EvoRPG",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online"
+    status: "online",
+    id:'1'
   },
 ];
 
-
-
-const Styles = styled.div`
-td, th {
-  border: 1px solid #ddd;
-  padding: 2rem;
-  width: 800px;
-}
-`
 
 const ListAttendances = () => {
 
@@ -105,19 +102,19 @@ const ListAttendances = () => {
 
   return (
     <>
-      <div className='mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
-        <Styles>
-          <div className='m-3' style={{ display: 'flex', justifyContent: 'center'}}>
-            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <div className={classes.base}>
+        
+          <div className={classes.globalFilter}>
+            <ListAttendancesGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
-          <table {...getTableProps()}>
+          <table {...getTableProps()} className={classes.listAttendanceTable}>
             <thead>
               {headerGroups.map(headerGroup => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map(column => (
                     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                       {console.log(column.getSortByToggleProps())}
-                      {column.render("Header")}
+                      {<strong>{column.render("Header")}</strong>}
                       <div className='m-2'>{column.canFilter ? column.render('Filter') : null}</div>
                       <span>
                         {" "}
@@ -145,8 +142,6 @@ const ListAttendances = () => {
               })}
             </tbody>
           </table>
-
-        </Styles>
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ProjectFilter = ({ column }) => {
+export const ListAttendancesProjectFilter = ({ column }) => {
     const {filterValue, setFilter} = column;
     return (
         <span>
