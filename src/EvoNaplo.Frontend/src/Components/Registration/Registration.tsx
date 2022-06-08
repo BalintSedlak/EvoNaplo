@@ -15,7 +15,7 @@ const Registration = () => {
     console.log(user);
 
 
-    fetch('http://localhost:7043/api/Session/Registration', { method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
+    fetch('http://localhost:7043/api/Session/Registration', { mode: "cors", method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
       .then(res => {
         if (res.status === 200) {
           setSuccess(true);
