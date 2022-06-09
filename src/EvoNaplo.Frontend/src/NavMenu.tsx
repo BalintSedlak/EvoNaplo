@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import ISession from './ISession';
 
 const LoginLink = (id: number) => {
@@ -40,8 +40,11 @@ const AddAttendanceViewLink = (id: number) => {
 
 
 export default function NavMenu({ session }: { session: ISession }) {
-    
-    
+    const navigate = useNavigate();
+    const navigateToLogin = () => {
+        navigate('/Components/Login/Login', {replace: true});
+    }
+    console.log(session)
 
     const handleLogout = () => {
         fetch('http://localhost:7043/api/Session/Logout', {
@@ -55,8 +58,8 @@ export default function NavMenu({ session }: { session: ISession }) {
             .then(function (data) {
                 if (data.status === 200) {
                     alert("Cookie deleted");
-                    
-                    
+                    console.log("Before navigation")
+                    navigateToLogin();
                 }
                 else {
 

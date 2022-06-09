@@ -5,19 +5,13 @@ import classes from './Login.module.css'
 import { useEffect, useState } from 'react';
 
 const Login = () => {
-    //const [loginStatus, setLoginStatus] = useState<boolean>(false);
+   
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        
-    })
+
 
     const onSubmit = (user: ILogin) => {
         
         console.log(user);
-
-        //const returnedErrors = validate(user);
-
 
         fetch('http://localhost:7043/api/Session/Login', {
             method: 'POST',
@@ -30,8 +24,7 @@ const Login = () => {
         })
             .then(function (data) {
                 if (data.status === 200) {
-                    //alert("Bent vagy more!");
-
+                    navigate('/Components/Login/Login', {replace: true});
                 }
                 else {
 
