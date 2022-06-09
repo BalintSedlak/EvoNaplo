@@ -60,10 +60,10 @@ export default function NavMenu({ session }: { session: ISession }) {
         })
             .then(function (data) {
                 if (data.status === 200) {
-                    alert("Cookie deleted");
+                    //alert("Cookie deleted");
                     console.log("Before navigation")
-                    //navigateToLogin();
-                    window.location.reload()
+                    window.location.reload();
+                    navigateToLogin();
                 }
                 else {
 
