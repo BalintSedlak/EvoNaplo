@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { DoesImplementISession } from './Helpers';
 import { Container } from 'react-bootstrap';
 
@@ -23,9 +23,10 @@ function App() {
     role: ''
   });
 
-  /*
+
   useEffect(() => {
-    fetch('https://localhost:7043/api/Session', {
+ 
+    fetch('http://localhost:7043/api/Session', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -40,25 +41,21 @@ function App() {
           setSession(json as ISession)
         }
       })
-  }, []);
+  }, [session.id]);
 
-  function ResponseHasSessionStructure(prop: any): prop is ISession {
-    return typeof (prop) == 'number';
-  }
-  */
- 
+
   return (
     <BrowserRouter>
       <NavMenu session={session} />
       <Container style={{ padding: "60px" }}>
         <Routes>
           <Route path='/' element={<Home session={session} />} />
-          <Route path='/Components/Login/Login' element={<Login />} />
-          <Route path='/Components/Registration/Registration' element={<Registration />} />
+          <Route path='/Components/Login/Login' element={session.id < 1 ? <Login/> : <Navigate to="/" />} />
+          <Route path='/Components/Registration/Registration' element={session.id < 1 ? <Registration /> : <Navigate to="/" />} />
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
-          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView />} />
-          <Route path='/Components/ListAttendances/ListAttendances' element={<ListAttendances />} />
+          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
+          <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances /> } />
           <Route path='/Components/ListStudents/ListStudents' element={<ListStudents />} />
         </Routes>
       </Container>
