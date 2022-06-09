@@ -1,11 +1,19 @@
 import { ILogin } from './Form/ILogin';
 import { LoginForm } from './Form/LoginForm';
+import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css'
+import { useEffect, useState } from 'react';
 
 const Login = () => {
-
+    //const [loginStatus, setLoginStatus] = useState<boolean>(false);
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        
+    })
 
     const onSubmit = (user: ILogin) => {
+        
         console.log(user);
 
         //const returnedErrors = validate(user);
@@ -22,7 +30,8 @@ const Login = () => {
         })
             .then(function (data) {
                 if (data.status === 200) {
-                    alert("Bent vagy more!");
+                    //alert("Bent vagy more!");
+
                 }
                 else {
 
