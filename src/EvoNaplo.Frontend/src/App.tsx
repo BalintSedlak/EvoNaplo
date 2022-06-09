@@ -41,7 +41,7 @@ function App() {
           setSession(json as ISession)
         }
       })
-  }, []);
+  }, [session.id]);
 
 
   return (
@@ -50,8 +50,8 @@ function App() {
       <Container style={{ padding: "60px" }}>
         <Routes>
           <Route path='/' element={<Home session={session} />} />
-          <Route path='/Components/Login/Login' element={session.id === -1 ? <Login /> : <Navigate to="/" />} />
-          <Route path='/Components/Registration/Registration' element={session.id === -1 ? <Registration /> : <Navigate to="/" />} />
+          <Route path='/Components/Login/Login' element={session.id < 1 ? <Login/> : <Navigate to="/" />} />
+          <Route path='/Components/Registration/Registration' element={session.id < 1 ? <Registration /> : <Navigate to="/" />} />
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />

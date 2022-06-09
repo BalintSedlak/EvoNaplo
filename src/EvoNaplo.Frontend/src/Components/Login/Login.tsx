@@ -2,12 +2,10 @@ import { ILogin } from './Form/ILogin';
 import { LoginForm } from './Form/LoginForm';
 import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css'
-import { useEffect, useState } from 'react';
 
 const Login = () => {
    
     const navigate = useNavigate();
-
 
     const onSubmit = (user: ILogin) => {
         
@@ -24,7 +22,7 @@ const Login = () => {
         })
             .then(function (data) {
                 if (data.status === 200) {
-                    navigate('/Components/Login/Login', {replace: true});
+                    navigate('/', {replace: true});
                 }
                 else {
 
