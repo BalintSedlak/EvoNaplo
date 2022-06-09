@@ -22,6 +22,7 @@ const Login = () => {
         })
             .then(function (data) {
                 if (data.status === 200) {
+                    window.location.reload()
                     navigate('/', {replace: true});
                 }
                 else {

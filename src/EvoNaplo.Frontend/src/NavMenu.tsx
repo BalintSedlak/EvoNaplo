@@ -43,6 +43,7 @@ const AddAttendanceViewLink = (id: number) => {
 
 export default function NavMenu({ session }: { session: ISession }) {
     const navigate = useNavigate();
+
     const navigateToLogin = () => {
         navigate('/Components/Login/Login', {replace: true});
     }
@@ -61,7 +62,8 @@ export default function NavMenu({ session }: { session: ISession }) {
                 if (data.status === 200) {
                     alert("Cookie deleted");
                     console.log("Before navigation")
-                    navigateToLogin();
+                    //navigateToLogin();
+                    window.location.reload()
                 }
                 else {
 
