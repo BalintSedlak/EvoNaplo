@@ -26,6 +26,7 @@ export default function Home({ session }: { session: ISession }) {
         );
     }
     return (
+        //Redirect
         <div className="alert alert-warning">You must be logged in to continue.</div>
     );
 };
