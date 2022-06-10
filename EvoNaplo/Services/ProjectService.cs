@@ -11,9 +11,9 @@ namespace EvoNaplo.Services
     public class ProjectService
     {
         private readonly EvoNaploContext _evoNaploContext;
-        private readonly ILogger<AttendanceSheetService> _logger;
+        private readonly ILogger<ProjectService> _logger;
 
-        public ProjectService(ILogger<AdminService> logger,EvoNaploContext EvoNaploContext)
+        public ProjectService(ILogger<ProjectService> logger,EvoNaploContext EvoNaploContext)
         {
             _logger = logger;
             _evoNaploContext = EvoNaploContext;

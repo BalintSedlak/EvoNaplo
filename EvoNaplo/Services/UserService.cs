@@ -12,9 +12,9 @@ namespace EvoNaplo.Services
     public class UserService
     {
         private readonly EvoNaploContext _evoNaploContext;
-        private readonly ILogger<AttendanceSheetService> _logger;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(ILogger<AdminService> logger,EvoNaploContext EvoNaploContext)
+        public UserService(ILogger<UserService> logger,EvoNaploContext EvoNaploContext)
         {
             _logger = logger;
             _evoNaploContext = EvoNaploContext;

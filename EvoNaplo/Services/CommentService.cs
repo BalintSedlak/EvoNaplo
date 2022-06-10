@@ -11,9 +11,9 @@ namespace EvoNaplo.Services
     public class CommentService
     {
         private readonly EvoNaploContext _evoNaploContext;
-        private readonly ILogger<AttendanceSheetService> _logger;
+        private readonly ILogger<CommentService> _logger;
 
-        public CommentService(ILogger<AdminService> logger,EvoNaploContext EvoNaploContext)
+        public CommentService(ILogger<CommentService> logger,EvoNaploContext EvoNaploContext)
         {
             _logger = logger;
             _evoNaploContext = EvoNaploContext;
