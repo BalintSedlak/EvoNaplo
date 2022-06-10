@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import Home from './Home';
-import Login from './Login';
-import Registration from './Registration';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import NavMenu from './NavMenu';
-import ISession from './ISession';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { DoesImplementISession } from './Helpers';
 import { Container } from 'react-bootstrap';
+
+import './App.css';
+import Home from './Home';
+import Login from './Components/Login/Login';
+import Registration from './Components/Registration/Registration';
+import NavMenu from './NavMenu';
+import ISession from './ISession';
 import './Forms.css';
 import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
@@ -22,8 +23,10 @@ function App() {
     role: ''
   });
 
+
   useEffect(() => {
-    fetch('https://localhost:7043/api/Session', {
+ 
+    fetch('http://localhost:7043/api/Session', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -38,25 +41,22 @@ function App() {
           setSession(json as ISession)
         }
       })
-  }, []);
+  }, [session.id]);
 
-  function ResponseHasSessionStructure(prop: any): prop is ISession {
-    return typeof (prop) == 'number';
-  }
 
   return (
     <BrowserRouter>
       <NavMenu session={session} />
-      <Container style={{padding:"60px"}}>
+      <Container style={{ padding: "60px" }}>
         <Routes>
           <Route path='/' element={<Home session={session} />} />
-          <Route path='/Login' element={<Login />} />
-          <Route path='/Registration' element={<Registration />} />
+          <Route path='/Components/Login/Login' element={session.id < 1 ? <Login/> : <Navigate to="/" />} />
+          <Route path='/Components/Registration/Registration' element={session.id < 1 ? <Registration /> : <Navigate to="/" />} />
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
-          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView />} />
-          <Route path='/Components/ListAttendances/ListAttendances' element={<ListAttendances/>}/>
-          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents/>}/>
+          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
+          <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances /> } />
+          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents />} />
         </Routes>
       </Container>
     </BrowserRouter>

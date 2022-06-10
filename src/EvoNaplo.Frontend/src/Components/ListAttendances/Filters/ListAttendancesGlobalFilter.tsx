@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const GlobalFilter = ({filter, setFilter}) => {
+export const ListAttendancesGlobalFilter = ({filter, setFilter}) => {
   return (
     <span>
         Search: {' '}

@@ -22,13 +22,20 @@ namespace EvoNaplo.WebApp.Controllers
         public IActionResult Login([FromBody] LoginViewModel loginDTO)
         {
             //TODO: Move to Service 
+            //Response.Cookies.Append("testCookie", "Cookie content");
+
             try
             {
                 string jwt = _authFacade.Login(loginDTO);
 
                 Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
-                    HttpOnly = true
+                    //TODO: HELP HERE
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.None,
+                    Secure = true,
+                    IsEssential = true,
+                    Domain = "localhost"
                 });
                 return Ok(new
                 {
@@ -96,7 +103,15 @@ namespace EvoNaplo.WebApp.Controllers
         public IActionResult Logout()
         {
             //TODO: Move to Service 
-            Response.Cookies.Delete("jwt");
+            Response.Cookies.Delete("jwt", new CookieOptions
+            {
+                //TODO: HELP HERE
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                Secure = true,
+                IsEssential = true,
+                Domain = "localhost"
+            });
 
             return Ok(new
             {

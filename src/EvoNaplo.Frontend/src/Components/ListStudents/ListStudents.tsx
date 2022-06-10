@@ -1,9 +1,9 @@
-import styled from 'styled-components';
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
-import { NameFilter } from './NameFilter'
-import { SemesterFilter } from './SemesterFilter';
-import { ProjectFilter } from './ProjectFilter';
-import { ScholarshipFilter } from './ScholarshipFilter';
+import { NameFilter } from './Filters/NameFilter'
+import { SemesterFilter } from './Filters/SemesterFilter';
+import { ProjectFilter } from './Filters/ProjectFilter';
+import { ScholarshipFilter } from './Filters/ScholarshipFilter';
+import classes from './ListStudent.module.css'
 
 
 interface Data {
@@ -134,13 +134,6 @@ const columns: Column<Data>[] = [
 
 ];
 
-const Styles = styled.div`
-td, th {
-  border: 2px solid #ddd;
-  padding: 0.5rem;
-  width: 600px;
-}
-`
 
 const ListStudents = () => {
   const {
@@ -158,52 +151,49 @@ const ListStudents = () => {
 
   return (
     <>
-      <div className='mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
-        <Styles>
+      <div className={classes.base}>
 
-          <div className='m-3' style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className='m-2'>
-              <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
-            </div>
-          </div>
+        <div className={classes.globalFilter}>
+          <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        </div>
 
-          <table {...getTableProps()}>
-            <thead>
-              {headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map(column => (
-                    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                      {console.log(column.getSortByToggleProps())}
-                      {column.render("Header")}
-                      <div className='m-2'>{column.canFilter ? column.render('Filter') : null}</div>
-                      <span>
-                        {" "}
-                        {column.isSorted
-                          ? column.isSortedDesc
-                            ? ""
-                            : ""
-                          : ""}{" "}
-                      </span>
-                    </th>
-                  ))}
+
+        <table {...getTableProps()} className={classes.studentTable}>
+          <thead>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                    {console.log(column.getSortByToggleProps())}
+                    {column.render("Header")}
+                    <div>{column.canFilter ? column.render('Filter') : null}</div>
+                    <span>
+                      {" "}
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? ""
+                          : ""
+                        : ""}{" "}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row, i) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} onClick={() => console.log(row.original)}>
+                  {row.cells.map(cell => {
+                    return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                  })}
                 </tr>
-              ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-              {rows.map((row, i) => {
-                prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()} onClick={() => console.log(row.original)}>
-                    {row.cells.map(cell => {
-                      return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+              );
+            })}
+          </tbody>
+        </table>
 
-        </Styles>
       </div>
     </>
   )

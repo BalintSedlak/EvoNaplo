@@ -7,7 +7,7 @@ const options = [
     { value: '2022/2', label: '2022/2' },
 ]
 
-export const SemesterFilter = ({ column }) => {
+export const ListAttendancesSemesterFilter = ({ column }) => {
     const { filterValue, setFilter } = column;
     return (
         <>
