@@ -62,8 +62,8 @@ export default function NavMenu({ session }: { session: ISession }) {
                 if (data.status === 200) {
                     //alert("Cookie deleted");
                     console.log("Before navigation")
+                    navigate('/Components/Login/Login', {replace: true});
                     window.location.reload();
-                    navigateToLogin();
                 }
                 else {
 
