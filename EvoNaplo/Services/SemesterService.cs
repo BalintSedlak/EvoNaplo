@@ -19,10 +19,10 @@ namespace EvoNaplo.Services
         }
         public async Task<IEnumerable<Semester>> AddSemester(Semester semester)
         {
-            _logger.LogInformation($"{semester} hozzaadasa kovetkezik.")
+            _logger.LogInformation($"{semester} hozzaadasa kovetkezik.");
             await _evoNaploContext.Semesters.AddAsync(semester);
             _evoNaploContext.SaveChanges();
-            _logger.LogInformation($"Semester hozzaadasa megtortent.")
+            _logger.LogInformation($"Semester hozzaadasa megtortent.");
             return _evoNaploContext.Semesters.ToList();
         }
         public IEnumerable<SemesterDTO> GetSemesters()
@@ -61,23 +61,23 @@ namespace EvoNaplo.Services
         }
         public async Task<IEnumerable<Semester>> EditSemester(Semester semester)
         {
-            _logger.LogInformation($"{semester} modositasa kovetkezik.")
+            _logger.LogInformation($"{semester} modositasa kovetkezik.");
             var SemesterToEdit = await _evoNaploContext.Semesters.FindAsync(semester.Id);
             SemesterToEdit.StartDate = semester.StartDate;
             SemesterToEdit.EndDate = semester.EndDate;
             SemesterToEdit.IsAppliable = semester.IsAppliable;
             _evoNaploContext.SaveChanges();
-            _logger.LogInformation($"Semester modositasa megtortent.")
+            _logger.LogInformation($"Semester modositasa megtortent.");
             return _evoNaploContext.Semesters.ToList();
         }
 
         public async Task<IEnumerable<Semester>> DeleteSemester(int id)
         {
-            _logger.LogInformation($"{id} semester torlese kovetkezik.")
+            _logger.LogInformation($"{id} semester torlese kovetkezik.");
             var semesterToDelete = await _evoNaploContext.Semesters.FindAsync(id);
             _evoNaploContext.Remove(semesterToDelete);
             _evoNaploContext.SaveChanges();
-            _logger.LogInformation($"Semester torlese megtortent.")
+            _logger.LogInformation($"Semester torlese megtortent.");
             return _evoNaploContext.Semesters.ToList();
         }
 

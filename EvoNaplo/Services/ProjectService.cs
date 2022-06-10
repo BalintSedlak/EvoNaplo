@@ -53,11 +53,11 @@ namespace EvoNaplo.Services
             
             if (_evoNaploContext.Semesters.ToList().Count > 0)
             {
-                _logger.LogInformation($"{project} hozzaadasa kovetkezik.")
+                _logger.LogInformation($"{project} hozzaadasa kovetkezik.");
                 project.SemesterId = _evoNaploContext.Semesters.Max(s => s.Id);
                 await _evoNaploContext.Projects.AddAsync(project);
                 _evoNaploContext.SaveChanges();
-                _logger.LogInformation($"Project hozzaadasa megtortent.")
+                _logger.LogInformation($"Project hozzaadasa megtortent.");
             }
             
         }
@@ -88,23 +88,23 @@ namespace EvoNaplo.Services
         }
         public async Task<IEnumerable<Project>> EditProject(Project project)
         {
-            _logger.LogInformation($"{project} modositasa kovetkezik.")
+            _logger.LogInformation($"{project} modositasa kovetkezik.");
             var ProjectToEdit = await _evoNaploContext.Projects.FindAsync(project.Id);
             ProjectToEdit.ProjectName = project.ProjectName;
             ProjectToEdit.Description = project.Description;
             ProjectToEdit.SourceLink = project.SourceLink;
             ProjectToEdit.Technologies = project.Technologies;
             _evoNaploContext.SaveChanges();
-            _logger.LogInformation($"Project modositasa megtortent.")
+            _logger.LogInformation($"Project modositasa megtortent.");
             return _evoNaploContext.Projects.ToList();
         }
         public async Task<IEnumerable<Project>> DeleteProject(int id)
         {
-            _logger.LogInformation($"{id} project torlese kovetkezik.")
+            _logger.LogInformation($"{id} project torlese kovetkezik.");
             var projectToDelete = await _evoNaploContext.Projects.FindAsync(id);
             _evoNaploContext.Remove(projectToDelete);
             _evoNaploContext.SaveChanges();
-            _logger.LogInformation($"Project torlese megtortent.")
+            _logger.LogInformation($"Project torlese megtortent.");
             return _evoNaploContext.Projects.ToList();
         }
 

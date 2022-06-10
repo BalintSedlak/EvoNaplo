@@ -64,11 +64,11 @@ namespace EvoNaplo.Services
 
         internal async Task EditUserRole(User user, User.RoleTypes newRole)
         {
-            _logger.LogInformation($"{user} user role modositasa kovetkezik.")
+            _logger.LogInformation($"{user} user role modositasa kovetkezik.");
                 var UserToEdit = await _evoNaploContext.Users.FindAsync(user.Id);
                 UserToEdit.Role = newRole;
                 _evoNaploContext.SaveChanges();
-            _logger.LogInformation($"User role modositasa megtortent.")
+            _logger.LogInformation($"User role modositasa megtortent.");
         }
 
         public IEnumerable<UserDTO> ListActiveAdmins()
@@ -135,7 +135,7 @@ namespace EvoNaplo.Services
 
         public async Task<IEnumerable<User>> EditUser(User user)
         {
-            _logger.LogInformation($"{user} user modositasa kovetkezik.")
+            _logger.LogInformation($"{user} user modositasa kovetkezik.");
             var UserToEdit = await _evoNaploContext.Users.FindAsync(user.Id);
             UserToEdit.Email = user.Email;
             UserToEdit.FirstName = user.FirstName;
@@ -144,19 +144,19 @@ namespace EvoNaplo.Services
             UserToEdit.Password = user.Password;
             _evoNaploContext.SaveChanges();
             var Users = _evoNaploContext.Users.Where(m => m.Role == UserToEdit.Role);
-            _logger.LogInformation($"User modositasa megtortent.")
+            _logger.LogInformation($"User modositasa megtortent.");
             return Users.ToList();
         }
 
         public async Task<IEnumerable<User>> DeleteUser(int id)
         {
-            _logger.LogInformation($"{id} user torlese kovetkezik.")
+            _logger.LogInformation($"{id} user torlese kovetkezik.");
             var studentToDelete = await _evoNaploContext.Users.FindAsync(id);
             var role = studentToDelete.Role;
             _evoNaploContext.Users.Remove(studentToDelete);
             _evoNaploContext.SaveChanges();
             var students = _evoNaploContext.Users.Where(m => m.Role == role);
-            _logger.LogInformation($"User torlese megtortent.")
+            _logger.LogInformation($"User torlese megtortent.");
             return students.ToList();
         }
 
