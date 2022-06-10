@@ -12,19 +12,23 @@ namespace EvoNaplo.Services
     public class StudentService
     {
         private readonly EvoNaploContext _evoNaploContext;
+        private readonly ILogger<StudentService> _logger;
 
-        public StudentService(EvoNaploContext EvoNaploContext)
+        public StudentService(ILogger<StudentService> logger,EvoNaploContext EvoNaploContext)
         {
+            _logger = logger;
             _evoNaploContext = EvoNaploContext;
         }
         
         public async Task<IEnumerable<User>> AddStudent(User user)
         {
+            _logger.LogInformation($"{user} hozzaadasa kovetkezik.");
             user.Role = User.RoleTypes.Student;
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await _evoNaploContext.Users.AddAsync(user);
             _evoNaploContext.SaveChanges();
             var students = _evoNaploContext.Users.Where(m => m.Role == User.RoleTypes.Student);
+            _logger.LogInformation($"Student hozzaadasa megtortent.");
             return students.ToList();
         }
 
@@ -90,11 +94,13 @@ namespace EvoNaplo.Services
 
         public async Task<IEnumerable<User>> DeleteUser(int id)
         {
+            _logger.LogInformation($"{id} student torlese kovetkezik.");
             var studentToDelete = await _evoNaploContext.Users.FindAsync(id);
             var role = studentToDelete.Role;
             _evoNaploContext.Users.Remove(studentToDelete);
             _evoNaploContext.SaveChanges();
             var students = _evoNaploContext.Users.Where(m => m.Role == role);
+            _logger.LogInformation($"Student torlese megtortent.");
             return students.ToList();
         }
     }

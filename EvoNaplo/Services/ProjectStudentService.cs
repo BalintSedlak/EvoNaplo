@@ -15,9 +15,11 @@ namespace EvoNaplo.Services
     {
         private readonly EvoNaploContext _evoNaploContext;
         private readonly UserService _userService;
+        private readonly ILogger<ProjectStudentService> _logger;
 
-        public ProjectStudentService(EvoNaploContext EvoNaploContext, UserService userService)
+        public ProjectStudentService(ILogger<ProjectStudentService> logger,EvoNaploContext EvoNaploContext, UserService userService)
         {
+            _logger = logger;
             _evoNaploContext = EvoNaploContext;
             _userService = userService;
         }
@@ -82,6 +84,7 @@ namespace EvoNaplo.Services
         {
             try
             {
+                _logger.LogInformation($"{studentToProjectDTO} modisitasa kovetkezik.");
                 var userProjecToEdit = _evoNaploContext.UserProjects.FirstOrDefault(u => u.UserId == studentToProjectDTO.studentId && u.ProjectId == studentToProjectDTO.fromProjectId);
 
                 if (userProjecToEdit == null)
@@ -90,6 +93,7 @@ namespace EvoNaplo.Services
                 }
                 userProjecToEdit.ProjectId = studentToProjectDTO.toProjectId;
                 _evoNaploContext.SaveChanges();
+                _logger.LogInformation($"StudentOnProject modisitasa megtortent.");
                 return true;
             }
             catch (Exception)
@@ -109,8 +113,10 @@ namespace EvoNaplo.Services
 
         public async Task LeaveProjectAsStudent(int studentId, int projectId)
         {
+            _logger.LogInformation($"{studentId},{studprojectIdentId} elhagyasa kovetkezik.");
             var rowToDelete = _evoNaploContext.UserProjects.First(row => row.UserId == studentId && row.ProjectId == projectId);
             _evoNaploContext.UserProjects.Remove(rowToDelete);
+            _logger.LogInformation($"ProjectAsStudent elhagyas megtortent.");
         }
     }
 }
