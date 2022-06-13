@@ -17,6 +17,7 @@ import ListAttendances from './Components/ListAttendances/ListAttendances';
 import ListStudents from './Components/ListStudents/ListStudents';
 
 function App() {
+
   const [session, setSession] = useState<ISession>({
     id: -1,
     name: '',
@@ -38,10 +39,10 @@ function App() {
       .then(response => response.json())
       .then(json => {
         if (DoesImplementISession(json)) {
-          setSession(json as ISession)
+          setSession(session => ({...session, id:json.id  }))
         }
       })
-  }, [session.id]);
+  }, [session]);
 
 
   return (
@@ -56,7 +57,7 @@ function App() {
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
           <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances /> } />
-          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents />} />
+          <Route path='/Components/ListStudents/ListStudents' element={<ListStudents session={session}/>} />
         </Routes>
       </Container>
     </BrowserRouter>

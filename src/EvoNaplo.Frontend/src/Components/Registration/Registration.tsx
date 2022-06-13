@@ -1,13 +1,10 @@
 import { useState } from "react";
+import { Navigate } from 'react-router-dom';
 import ISession from "../../ISession";
 import { IRegistration } from "./Form/IRegistration";
 import { RegistrationForm } from './Form/RegistrationForm'
 import classes from './Registration.module.css'
 
-/*
-- The registration logic
-- Render the registration form
-*/
 
 export default function Registration({ session }: { session: ISession }) {
 
@@ -40,6 +37,6 @@ export default function Registration({ session }: { session: ISession }) {
     );
   }
   else {
-    return <div></div>
+    return <Navigate to="/" />
   }
 }

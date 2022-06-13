@@ -44,9 +44,7 @@ const AddAttendanceViewLink = (id: number) => {
 export default function NavMenu({ session }: { session: ISession }) {
     const navigate = useNavigate();
 
-    const navigateToLogin = () => {
-        navigate('/Components/Login/Login', {replace: true});
-    }
+    
     console.log(session)
 
     const handleLogout = () => {
