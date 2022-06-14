@@ -6,6 +6,7 @@ import { ProjectFilter } from './Filters/ProjectFilter';
 import { ScholarshipFilter } from './Filters/ScholarshipFilter';
 import classes from './ListStudent.module.css'
 import ISession from "../../ISession";
+import { UnauthorizedModal } from "../UI/UnauthorizedModal";
 
 
 interface Data {
@@ -138,9 +139,6 @@ const columns: Column<Data>[] = [
 
 
 const ListStudents = ({ session }: { session: ISession }) => {
-
-    
-  
     const {
       getTableProps,
       getTableBodyProps,
@@ -207,7 +205,7 @@ const ListStudents = ({ session }: { session: ISession }) => {
   }
 
   else {
-    return <Navigate to="/" />
+    return <UnauthorizedModal/>
   }
 }
 

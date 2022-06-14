@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import ISession from '../../ISession';
 import { ListAttendancesGlobalFilter } from './Filters/ListAttendancesGlobalFilter';
 import { ListAttendancesProjectFilter } from './Filters/ListAttendancesProjectFilter';
 import { ListAttendancesSemesterFilter } from './Filters/ListAttendancesSemesterFilter';
@@ -86,7 +87,7 @@ const data: Data[] = [
 ];
 
 
-const ListAttendances = () => {
+const ListAttendances = ({ session }: { session: ISession }) => {
 
   const {
     getTableProps,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ISession from './ISession';
 import { Sun } from 'react-bootstrap-icons';
+import { UnauthorizedModal } from './Components/UI/UnauthorizedModal';
 
 export default function Home({ session }: { session: ISession }) {
     if (session.id > 0) {
@@ -27,6 +28,6 @@ export default function Home({ session }: { session: ISession }) {
     }
     return (
         //Redirect
-        <div className="alert alert-warning">You must be logged in to continue.</div>
+        <UnauthorizedModal/>
     );
 };

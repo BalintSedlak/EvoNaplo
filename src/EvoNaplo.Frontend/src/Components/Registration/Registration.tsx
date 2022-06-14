@@ -9,7 +9,7 @@ import classes from './Registration.module.css'
 export default function Registration({ session }: { session: ISession }) {
 
   const [success, setSuccess] = useState(false);
-  if (session.id > 0) {
+  if (session.id < 0) {
     const onSubmit = async (user: IRegistration) => {
       console.log(user);
 

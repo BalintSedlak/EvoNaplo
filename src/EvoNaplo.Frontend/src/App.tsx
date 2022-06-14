@@ -9,7 +9,6 @@ import Login from './Components/Login/Login';
 import Registration from './Components/Registration/Registration';
 import NavMenu from './NavMenu';
 import ISession from './ISession';
-import './Forms.css';
 import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
 import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
@@ -56,7 +55,7 @@ function App() {
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
-          <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances /> } />
+          <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances session={session}/> } />
           <Route path='/Components/ListStudents/ListStudents' element={<ListStudents session={session}/>} />
         </Routes>
       </Container>
