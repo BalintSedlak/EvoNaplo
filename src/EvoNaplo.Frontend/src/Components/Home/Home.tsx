@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import ISession from './ISession';
+import ISession from '../../ISession';
 import { Sun } from 'react-bootstrap-icons';
-import { UnauthorizedModal } from './Components/UI/UnauthorizedModal';
+import { UnauthorizedModal } from '../UI/UnauthorizedModal';
 
 export default function Home({ session }: { session: ISession }) {
     if (session.id > 0) {

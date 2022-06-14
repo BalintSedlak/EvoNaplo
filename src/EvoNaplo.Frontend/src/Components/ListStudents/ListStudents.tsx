@@ -139,6 +139,7 @@ const columns: Column<Data>[] = [
 
 
 const ListStudents = ({ session }: { session: ISession }) => {
+
     const {
       getTableProps,
       getTableBodyProps,

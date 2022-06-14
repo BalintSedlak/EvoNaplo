@@ -4,10 +4,10 @@ import { DoesImplementISession } from './Helpers';
 import { Container } from 'react-bootstrap';
 
 import './App.css';
-import Home from './Home';
+import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Registration from './Components/Registration/Registration';
-import NavMenu from './NavMenu';
+import NavMenu from './Components/UI/NavMenu';
 import ISession from './ISession';
 import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
