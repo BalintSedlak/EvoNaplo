@@ -14,6 +14,7 @@ import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
 import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
 import ListAttendances from './Components/ListAttendances/ListAttendances';
 import ListStudents from './Components/ListStudents/ListStudents';
+import { StudentProfile } from './Components/StudentProfile/StudentProfile';
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
           <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances session={session}/> } />
           <Route path='/Components/ListStudents/ListStudents' element={<ListStudents session={session}/>} />
+          <Route path='/Components/StudentProfile/StudentProfile' element={<StudentProfile session={session}/>} />
         </Routes>
       </Container>
     </BrowserRouter>
