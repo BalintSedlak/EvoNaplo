@@ -1,5 +1,7 @@
 import React from 'react'
 import { useTable, Column, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import ISession from '../../ISession';
+import { UnauthorizedModal } from '../UI/UnauthorizedModal';
 import { ListAttendancesGlobalFilter } from './Filters/ListAttendancesGlobalFilter';
 import { ListAttendancesProjectFilter } from './Filters/ListAttendancesProjectFilter';
 import { ListAttendancesSemesterFilter } from './Filters/ListAttendancesSemesterFilter';
@@ -39,7 +41,7 @@ interface Data {
   project: string;
   date: string;
   status: string;
-  id:string;
+  id: string;
 }
 
 const data: Data[] = [
@@ -49,7 +51,7 @@ const data: Data[] = [
     project: "EvoNaplo",
     date: "1. Hét - 2022.05.01.- 2022.05.08.",
     status: "online",
-    id:'1'
+    id: '1'
   },
   {
     name: "Kis Béla",
@@ -57,7 +59,7 @@ const data: Data[] = [
     project: "EvoNaplo",
     date: "1. Hét - 2022.05.01.- 2022.05.08.",
     status: "online",
-    id:'1'
+    id: '1'
   },
   {
     name: "Nagy Béla",
@@ -65,7 +67,7 @@ const data: Data[] = [
     project: "EvoNaplo",
     date: "2. Hét - 2022.05.01.- 2022.05.08.",
     status: "online",
-    id:'1'
+    id: '1'
   },
   {
     name: "Kis Béla",
@@ -73,7 +75,7 @@ const data: Data[] = [
     project: "EvoNaplo",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",
     status: "online",
-    id:'1'
+    id: '1'
   },
   {
     name: "Kis Béla",
@@ -81,29 +83,30 @@ const data: Data[] = [
     project: "EvoRPG",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",
     status: "online",
-    id:'1'
+    id: '1'
   },
 ];
 
 
-const ListAttendances = () => {
+const ListAttendances = ({ session }: { session: ISession }) => {
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state,
-    setGlobalFilter
-  } = useTable<Data>({ columns, data }, useFilters, useGlobalFilter, useSortBy);
+    const {
+      getTableProps,
+      getTableBodyProps,
+      headerGroups,
+      rows,
+      prepareRow,
+      state,
+      setGlobalFilter
+    } = useTable<Data>({ columns, data }, useFilters, useGlobalFilter, useSortBy);
 
-  const { globalFilter } = state;
+    if (session.id > 0) {
+    const { globalFilter } = state;
 
-  return (
-    <>
-      <div className={classes.base}>
-        
+    return (
+      <>
+        <div className={classes.base}>
+
           <div className={classes.globalFilter}>
             <ListAttendancesGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
@@ -142,9 +145,13 @@ const ListAttendances = () => {
               })}
             </tbody>
           </table>
-      </div>
-    </>
-  )
+        </div>
+      </>
+    )
+  }
+  else {
+    return <UnauthorizedModal/>
+  }
 }
 
 export default ListAttendances

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import AddAttendanceEntry from './AddAttendanceEntry';
 
 const AddAttendanceView = () => {

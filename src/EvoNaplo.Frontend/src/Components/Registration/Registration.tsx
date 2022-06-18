@@ -1,46 +1,41 @@
-import { useState } from "react";
+import { useNavigate, Navigate } from 'react-router-dom';
+import ISession from "../../ISession";
+import { UnauthorizedModal } from '../UI/UnauthorizedModal';
 import { IRegistration } from "./Form/IRegistration";
 import { RegistrationForm } from './Form/RegistrationForm'
 import classes from './Registration.module.css'
 
-/*
-- The registration logic
-- Render the registration form
-*/
 
-const Registration = () => {
+export default function Registration({ session }: { session: ISession }) {
+  const navigate = useNavigate();
+  //console.log(session);
+  if (session.id < 0) {
+    const onSubmit = async (user: IRegistration) => {
+      console.log(user);
 
-  const [success, setSuccess] = useState(false);
-  const onSubmit = async (user: IRegistration) => {
-    console.log(user);
+      fetch('http://localhost:7043/api/Session/Registration', { mode: "cors", method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
+        .then(res => {
+          if (res.status === 200) {
+            navigate('/Components/Login/Login', {replace: true});
+          }
+          else {
+            alert("Something went wrong");
 
-
-    fetch('http://localhost:7043/api/Session/Registration', { mode: "cors", method: 'POST', body: JSON.stringify(user), headers: { "Content-Type": "application/json" } })
-      .then(res => {
-        if (res.status === 200) {
-          setSuccess(true);
-        }
-        else {
-          alert("Nem sikerült, sorry");
-
-        }
-      })
-      .catch(function (error) {
-        setSuccess(false);
-      });
-
-
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    return (
+      <>
+        <div className={classes.RegistrationFormCard}>
+          <RegistrationForm onRegistration={onSubmit} />
+        </div>
+      </>
+    );
   }
-
-
-
-  return (
-    <>
-      <div className={classes.RegistrationFormCard}>
-        <RegistrationForm onRegistration={onSubmit} />
-      </div>
-    </>
-  );
+  else {
+    return <Navigate to="/" />
+  }
 }
-
-export default Registration;

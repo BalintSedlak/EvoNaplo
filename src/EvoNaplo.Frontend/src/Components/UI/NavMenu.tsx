@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
-import ISession from './ISession';
+import ISession from '../../ISession';
 
 const LoginLink = (id: number) => {
 
@@ -44,10 +44,8 @@ const AddAttendanceViewLink = (id: number) => {
 export default function NavMenu({ session }: { session: ISession }) {
     const navigate = useNavigate();
 
-    const navigateToLogin = () => {
-        navigate('/Components/Login/Login', {replace: true});
-    }
-    console.log(session)
+    
+    //console.log(session)
 
     const handleLogout = () => {
         fetch('http://localhost:7043/api/Session/Logout', {

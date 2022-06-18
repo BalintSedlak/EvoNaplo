@@ -4,6 +4,8 @@ import { SemesterFilter } from './Filters/SemesterFilter';
 import { ProjectFilter } from './Filters/ProjectFilter';
 import { ScholarshipFilter } from './Filters/ScholarshipFilter';
 import classes from './ListStudent.module.css'
+import ISession from "../../ISession";
+import { UnauthorizedModal } from "../UI/UnauthorizedModal";
 
 
 interface Data {
@@ -135,68 +137,76 @@ const columns: Column<Data>[] = [
 ];
 
 
-const ListStudents = () => {
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state,
-    setGlobalFilter
-  } = useTable<Data>({ columns, data }, useFilters, useGlobalFilter, useSortBy);
+const ListStudents = ({ session }: { session: ISession }) => {
 
-  const { globalFilter } = state;
+    const {
+      getTableProps,
+      getTableBodyProps,
+      headerGroups,
+      rows,
+      prepareRow,
+      state,
+      setGlobalFilter
+    } = useTable<Data>({ columns, data }, useFilters, useGlobalFilter, useSortBy);
 
-
-  return (
-    <>
-      <div className={classes.base}>
-
-        <div className={classes.globalFilter}>
-          <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        </div>
+    if (session.id > 0) {
+      
+    const { globalFilter } = state;
 
 
-        <table {...getTableProps()} className={classes.studentTable}>
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    {console.log(column.getSortByToggleProps())}
-                    {column.render("Header")}
-                    <div>{column.canFilter ? column.render('Filter') : null}</div>
-                    <span>
-                      {" "}
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? ""
-                          : ""
-                        : ""}{" "}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()} onClick={() => console.log(row.original)}>
-                  {row.cells.map(cell => {
-                    return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-                  })}
+    return (
+      <>
+        <div className={classes.base}>
+
+          <div className={classes.globalFilter}>
+            <SemesterFilter filter={globalFilter} setFilter={setGlobalFilter} />
+          </div>
+
+
+          <table {...getTableProps()} className={classes.studentTable}>
+            <thead>
+              {headerGroups.map(headerGroup => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(column => (
+                    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                      {/*console.log(column.getSortByToggleProps())*/}
+                      {column.render("Header")}
+                      <div>{column.canFilter ? column.render('Filter') : null}</div>
+                      <span>
+                        {" "}
+                        {column.isSorted
+                          ? column.isSortedDesc
+                            ? ""
+                            : ""
+                          : ""}{" "}
+                      </span>
+                    </th>
+                  ))}
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()} onClick={() => console.log(row.original)}>
+                    {row.cells.map(cell => {
+                      return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
 
-      </div>
-    </>
-  )
+        </div>
+      </>
+    )
+  }
+
+  else {
+    return <UnauthorizedModal/>
+  }
 }
 
 export default ListStudents
