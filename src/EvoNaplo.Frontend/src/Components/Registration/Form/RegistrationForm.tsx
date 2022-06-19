@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IRegistration } from "./IRegistration";
 import classes from './RegistrationForm.module.css'
@@ -14,8 +14,14 @@ export const RegistrationForm = (props) => {
     formState: { errors }
   } = useForm<IRegistration>();
 
+  
   const [emailExists, setEmailExists] = useState(false);
   
+ 
+  fetch('api/Session/EmailIsValid?email=' + watch("email"))
+            .then(response => response.json())
+            .then(json => setEmailExists(json))
+
   const onSubmit = (data: IRegistration) => {
     props.onRegistration(data);
   };
@@ -78,7 +84,7 @@ export const RegistrationForm = (props) => {
             maxLength: 50,
             minLength: 3,
             pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-            emailIsValid: emailExists
+            
             //email already in database
           })}
           placeholder="example@mail.com"
