@@ -32,7 +32,6 @@ namespace EvoNaplo.WebApp.Controllers
 
                 Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
-                    //TODO: HELP HERE
                     HttpOnly = true,
                     SameSite = SameSiteMode.None,
                     Secure = true,
@@ -67,7 +66,7 @@ namespace EvoNaplo.WebApp.Controllers
                     _authFacade.RegisterNewUser(user);
                     return Ok("Registered succesfully");
                 }
-                
+
             }
             catch (ServiceException ex)
             {
@@ -75,6 +74,31 @@ namespace EvoNaplo.WebApp.Controllers
                 Console.WriteLine(statuscode);
                 return BadRequest("Something went wrong");
             }
+        }
+
+        [HttpGet("EmailIsValid")]
+        public async Task<bool> EmailIsValidAsync(String email)
+        {
+            try
+            {
+                var users = await _userFacade.GetAllUser();
+
+                if (users.Any(u => u.Email == email))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (ServiceException ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+           
         }
 
         [HttpGet]
