@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ILogin } from "./ILogin";
 import classes from './LoginForm.module.css'
@@ -8,8 +9,17 @@ export const LoginForm = (props) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors }
   } = useForm<ILogin>();
+
+    const [emailExists, setEmailExists] = useState(false);
+    
+    useEffect(() => {
+        fetch('http://localhost:7043/api/Session/EmailIsValid?email=' + watch("email"))
+          .then(response => response.json())
+          .then(json => setEmailExists(json))
+      }, [watch('email')])
 
   const onSubmit = (data: ILogin) => {
     props.onLogin(data);
