@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ProgressBar } from 'react-bootstrap';
 import ProfileComment from './ProfileComment';
 import ProgressBySemester from './ProgressBySemester';
 import Scholarship from './Scholarship';
@@ -7,7 +6,7 @@ import './UserPageView.css'
 
 
 //export default function UserPageView(props) {
-const ViewStudentProfile = () => {
+export const ViewStudentProfile = () => {
     const [student, setStudent] = useState(
         {
             fullname: "Teszt Benő",
@@ -54,4 +53,3 @@ const ViewStudentProfile = () => {
         </div>
     );
 }
-export default ViewStudentProfile;
