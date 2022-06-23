@@ -3,8 +3,6 @@ import { EditStudentInformation } from './EditStudentProfileItems/EditStudentInf
 
 export const EditStudentProfile = () => {
   return (
-    <>
       <EditStudentInformation/>
-    </>
   )
 }
