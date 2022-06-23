@@ -1,6 +1,6 @@
 import AddAttendanceEntry from './AddAttendanceEntry';
 
-const AddAttendanceView = () => {
+const AddAttendanceView2 = () => {
     const students = [
         {
             fullname: "Név1",
@@ -47,4 +47,4 @@ const AddAttendanceView = () => {
     )
 }    
 
-export default AddAttendanceView;
+export default AddAttendanceView2;

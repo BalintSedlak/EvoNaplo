@@ -11,9 +11,10 @@ import NavMenu from './Components/UI/NavMenu';
 import ISession from './ISession';
 import SemesterOpeningView from './Prototypes/SemesterOpeningView/SemesterOpeningView';
 import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
-import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
 import ListAttendances from './Components/ListAttendances/ListAttendances';
 import ListStudents from './Components/ListStudents/ListStudents';
+import AddAttendanceView2 from './Prototypes/AddAttendanceView/AddAttendanceView';
+import { AddAttendanceView } from './Components/AddAttendanceView/AddAttendanceView';
 
 function App() {
 
@@ -54,9 +55,10 @@ function App() {
           <Route path='/Components/Registration/Registration' element={session.id < 1 ? <Registration session={session}/> : <Navigate to="/" />} />
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
-          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
+          <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView2 /> } />
           <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances session={session}/> } />
           <Route path='/Components/ListStudents/ListStudents' element={<ListStudents session={session}/>} />
+          <Route path='/Components/AddAttendanceView/AddAttendanceView' element={<AddAttendanceView session={session}/>} />
         </Routes>
       </Container>
     </BrowserRouter>
