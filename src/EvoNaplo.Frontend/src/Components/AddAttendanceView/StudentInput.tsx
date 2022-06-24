@@ -9,12 +9,16 @@ export const StudentInput = (props) => {
   const [selectAttendance, setSelectAttendance] = useState("");
 
   useEffect(() => {
-    if (selectAttendance !== "Open to select the week") {
+    if (selectAttendance) {
       console.log(
         `${props.studentName} on project id: ${props.project} in ${props.week} is ${selectAttendance}`
       );
     }
-  }, [selectAttendance]);
+  }, [selectAttendance, props.studentName, props.project, props.week]);
+
+  useEffect(() => {
+    setSelectAttendance("");
+  },[props.project])
 
   const handleAttendanceChange = (e) => {
     //console.log(e.target.value);
@@ -40,6 +44,7 @@ export const StudentInput = (props) => {
             <Form.Select
               className="mt-2"
               onChange={(e) => handleAttendanceChange(e)}
+              value={selectAttendance}
             >
               <option>Open to select the week</option>
               {ATTENDANCE_TYPE.map((x) => (
