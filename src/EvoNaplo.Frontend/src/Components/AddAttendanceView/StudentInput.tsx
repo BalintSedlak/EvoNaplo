@@ -18,7 +18,7 @@ export const StudentInput = (props) => {
 
   useEffect(() => {
     setSelectAttendance("");
-  },[props.project])
+  },[props.project, props.week])
 
   const handleAttendanceChange = (e) => {
     //console.log(e.target.value);
