@@ -5,7 +5,7 @@ import { StudentInput } from "./StudentInput";
 const DUMMY_DATA = [
   {
     projectId: 1,
-    students: ["Kis Béla", "Nagy Béla", "Közepes Béla"],
+    students: ["Kis Bélus", "Nagy Bélus", "Közepes Béla"],
   },
   {
     projectId: 2,
