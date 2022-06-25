@@ -41,6 +41,15 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Services
         {
             var students = _userRepository.GetAll().Where(m => m.Role == RoleType.Student);
             List<UserDTO> result = new List<UserDTO>();
+            foreach (var student in students)
+            {
+                var userDTO = new UserDTO();
+                userDTO.Email = student.Email;
+                userDTO.Role = student.Role;
+                userDTO.Name = student.FirstName + " " + student.LastName;
+                userDTO.Id = student.Id;
+                result.Add(userDTO);
+            }
 
             return result;
         }
