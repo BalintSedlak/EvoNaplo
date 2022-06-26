@@ -14,9 +14,9 @@ namespace EvoNaplo.ApplicationCore.Domains.Projects.Facades
             _projectService = projectService;
         }
 
-        public void AddProject(ProjectEntity project)
+        public async Task AddProject(ProjectEntity project)
         {
-            _projectService.AddProject(project);
+            await _projectService.AddProject(project);
         }
 
         public void DeleteProject(int id)

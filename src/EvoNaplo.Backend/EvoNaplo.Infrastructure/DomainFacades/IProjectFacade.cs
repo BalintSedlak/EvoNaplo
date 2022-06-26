@@ -6,7 +6,7 @@ namespace EvoNaplo.Infrastructure.DomainFacades
     public interface IProjectFacade
     {
         IEnumerable<ProjectDTO> GetProjects();
-        void AddProject(ProjectEntity project);
+        Task AddProject(ProjectEntity project);
         IEnumerable<ProjectDTO> GetProjectsOfCurrentSemseter();
         ProjectDTO GetProjectById(int id);
         ProjectEntity GetProjectToEditById(int id);

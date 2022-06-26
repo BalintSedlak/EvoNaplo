@@ -25,10 +25,10 @@ namespace EvoNaplo.WebApp.Controllers
         }
 
         [HttpPost("AddProject")]
-        public IActionResult PostAddProject([FromBody] ProjectEntity project)
+        public async Task<IActionResult> PostAddProject([FromBody] ProjectEntity project)
         {
-            _projectFacade.AddProject(project);
-            return StatusCode(StatusCodes.Status200OK);
+            await _projectFacade.AddProject(project);
+            return Ok();
         }
 
         [HttpGet("ProjectsOfCurrentSemester")]

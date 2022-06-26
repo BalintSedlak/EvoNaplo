@@ -49,7 +49,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Projects.Services
             //{
                 //project.SemesterId = _projectRepository.Semesters.Max(s => s.Id);
                 _projectRepository.Add(project);
-                _projectRepository.SaveChangesAsync();
+                await _projectRepository.SaveChangesAsync();
             //}
         }
 

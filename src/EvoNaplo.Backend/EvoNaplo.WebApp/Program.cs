@@ -11,6 +11,8 @@ using EvoNaplo.Infrastructure.DataAccess;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Helpers;
+using EvoNaplo.Infrastructure.Models.Entities;
+using EvoNaplo.Infrastructure.Models.TableConnectors;
 using EvoNaplo.WebApp.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,6 +46,10 @@ builder.Services.AddScoped<ProjectService>();
 builder.Services.AddScoped<IRepository<CommentEntity>, Repository<CommentEntity>>();
 builder.Services.AddScoped<ICommentFacade, CommentFacade>();
 builder.Services.AddScoped<CommentService>();
+
+builder.Services.AddScoped<IRepository<Attendance>, Repository<Attendance>>();
+builder.Services.AddScoped<IRepository<AttendanceSheet>, Repository<AttendanceSheet>>();
+builder.Services.AddScoped<AttendanceService>();
 
 builder.Services.AddScoped<UserHelper>();
 

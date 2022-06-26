@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EvoNaplo.Infrastructure.DataAccess;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EvoNaplo.Infrastructure.Models.Entities
 {
-    public class AttendanceSheet
+    public class AttendanceSheet : IEntity
     {
         [Key]
         public int Id { get; set; }
