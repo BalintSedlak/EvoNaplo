@@ -13,7 +13,7 @@ const DUMMY_DATA = [
   },
 ];
 
-const WEEK = ["1. Hét", "2. Hét", "3. Hét"];
+const WEEK = ["1. Hét", "2. Hét", "3. Hét", "4. Hét", "5. Hét", "6. Hét", "7. Hét"];
 
 export const AddAttendanceForm = (props) => {
   const [selectedProject, setSelectedProject] = useState("");
