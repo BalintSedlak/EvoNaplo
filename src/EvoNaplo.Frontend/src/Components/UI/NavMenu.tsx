@@ -42,7 +42,7 @@ const AddAttendanceViewLink = (id: number) => {
 
 const ListAuthorizedLink = (id: number) => {
     if (id > 0) {
-        return <Nav.Link href="/Prototypes/ListAuthorized">ListAuthorized</Nav.Link>
+        return <NavDropdown.Item href="/Prototypes/ListAuthorized">ListAuthorized</NavDropdown.Item>
     }
 }
 

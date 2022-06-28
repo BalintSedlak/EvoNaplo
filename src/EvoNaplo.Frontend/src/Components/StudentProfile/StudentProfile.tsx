@@ -3,7 +3,7 @@ import { ButtonGroup, ToggleButton } from 'react-bootstrap';
 import ISession from '../../ISession';
 import { UnauthorizedModal } from '../UI/UnauthorizedModal';
 import { EditStudentProfile } from './EditStudentProfile/EditStudentProfile';
-import { ViewStudentProfile } from './ViewStudentProfile/ViewStudentProfile';
+import  ViewStudentProfile  from './ViewStudentProfile/ViewStudentProfile';
 import classes from './StudentProfile.module.css'
 
 //https://localhost:3000/Components/StudentProfile/StudentProfile
