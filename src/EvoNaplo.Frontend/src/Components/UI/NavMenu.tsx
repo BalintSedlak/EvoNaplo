@@ -40,6 +40,17 @@ const AddAttendanceViewLink = (id: number) => {
     }
 }
 
+const ListAuthorizedLink = (id: number) => {
+    if (id > 0) {
+        return <Nav.Link href="/Prototypes/ListAuthorized">ListAuthorized</Nav.Link>
+    }
+}
+
+const AddStudentLink = (id: number) => {
+    if (id > 0) {
+        return <Nav.Link href="'/Components/StudentProfile/AddStudent/AddStudent'">AddStudent</Nav.Link>
+    }
+}
 
 export default function NavMenu({ session }: { session: ISession }) {
     const navigate = useNavigate();
@@ -85,10 +96,13 @@ export default function NavMenu({ session }: { session: ISession }) {
                         {RegistrationLink(session.id)}
                         {ListAttendancesLink(session.id)}
                         {ListStudentsLink(session.id)}
+                        {AddStudentLink(session.id)}
                         {session.id > 0 && <NavDropdown title="Prototypes" id="basic-nav-dropdown">
                             {SemesterOpeningLink(session.id)}
                             <NavDropdown.Divider />
                             {AddAttendanceViewLink(session.id)}
+                            <NavDropdown.Divider />
+                            {ListAuthorizedLink(session.id)}
                         </NavDropdown>}
                         {session.id > 0 && <Nav.Link className="justify-content-end" onClick={handleLogout}>Logout</Nav.Link>}
                     </Nav>
