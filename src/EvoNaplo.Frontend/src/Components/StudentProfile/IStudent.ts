@@ -6,6 +6,6 @@ export default interface IStudent {
   studies: string;
   technologies: string;
   fbGroup: boolean;
-  scholarship: string;
+  scholarship: boolean;
   internship: boolean;
 }

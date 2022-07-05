@@ -29,6 +29,7 @@
   border-width: 0 0 2px;
   border-color: rgb(151, 151, 197);
   width: 50%;
+  appearance: none;
 }
 
 .formElements input[type="text"]:focus {

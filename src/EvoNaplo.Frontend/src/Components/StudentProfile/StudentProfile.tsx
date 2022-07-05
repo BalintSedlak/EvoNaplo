@@ -9,15 +9,24 @@ import IStudent from "./IStudent";
 
 //https://localhost:3000/Components/StudentProfile/StudentProfile
 //props: student id
-export const StudentProfile = ({ session }: { session: ISession }) => {
+
+interface IStudentProfile {
+  studentId: number;
+}
+
+export const StudentProfile = (
+  { session }: { session: ISession },
+  props: IStudentProfile
+) => {
   const [editStudentProfile, setEditStudentProfile] = useState("1");
 
+  //Itt lesz a useeffect ami az id alapján lekérdezi az adatott a backend-ről
   const [student, setStudent] = useState<IStudent>({
     id: 1,
     fullName: "Teszt Benő",
     studies: "2020.09.03. - 2023.06.10.",
     technologies: "java, javascript",
-    scholarship: "Nem jelentkezett",
+    scholarship: true,
     email: "teveklub@freemail.hu",
     phoneNumber: "+36363636363",
     fbGroup: true,
@@ -53,12 +62,11 @@ export const StudentProfile = ({ session }: { session: ISession }) => {
           </ButtonGroup>
         </div>
         <div>
-          {/*szebb lenne ha magán a komponensen belűl változna a dolog, egyelőre legyen szétszedve a 2 mert egyszerűbb most még úgy megcsinálni*/}
           {editStudentProfile === "1" ? (
-            <ViewStudentProfile />
+            <ViewStudentProfile studentData={student} />
           ) : (
             <div>
-              <EditStudentProfile/>
+              <EditStudentProfile studentData={student} />
             </div>
           )}
         </div>

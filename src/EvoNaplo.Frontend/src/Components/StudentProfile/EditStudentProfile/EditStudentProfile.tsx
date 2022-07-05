@@ -1,8 +1,13 @@
 import React from 'react'
+import IStudent from '../IStudent';
 import { EditStudentInformation } from './EditStudentProfileItems/EditStudentInformation'
 
-export const EditStudentProfile = () => {
+interface IEditStudentProfile{
+  studentData: IStudent;
+}
+
+export const EditStudentProfile = (props:IEditStudentProfile) => {
   return (
-      <EditStudentInformation/>
+      <EditStudentInformation studentData={props.studentData}/>
   )
 }
