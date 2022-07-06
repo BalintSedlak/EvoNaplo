@@ -11,5 +11,6 @@ namespace EvoNaplo.Infrastructure.DomainFacades
     {
         List<StudentEntity> GetAllStudent();
         StudentEntity EditStudent(StudentEntity student);
+        StudentEntity GetStudentEntityById(int id);
     }
 }
