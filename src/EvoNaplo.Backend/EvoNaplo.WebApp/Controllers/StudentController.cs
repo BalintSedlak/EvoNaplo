@@ -1,4 +1,5 @@
-﻿using EvoNaplo.Infrastructure.DomainFacades;
+﻿using EvoNaplo.Infrastructure.DataAccess.Entities;
+using EvoNaplo.Infrastructure.DomainFacades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,24 @@ namespace EvoNaplo.WebApp.Controllers
         public StudentController(IStudentFacade studentFacade)
         {
             _studentFacade = studentFacade;
+        }
+
+        [HttpGet("Students")]
+        public IEnumerable<StudentEntity> GetStudents()
+        {
+            return _studentFacade.GetAllStudent();
+        }
+
+        [HttpGet("GetStudentById")]
+        public StudentEntity GetStudent(int id)
+        {
+            return _studentFacade.GetStudentEntityById(id);
+        }
+
+        [HttpPut("EditStudent")]
+        public StudentEntity EditStudent(StudentEntity updatedStudent)
+        {
+            return _studentFacade.EditStudent(updatedStudent);
         }
     }
 }

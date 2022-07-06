@@ -1,5 +1,3 @@
-using EvoNaplo.ApplicationCore.Domains.AttendanceSheets.Facades;
-using EvoNaplo.ApplicationCore.Domains.AttendanceSheets.Services;
 using EvoNaplo.ApplicationCore.Domains.Auth.Facades;
 using EvoNaplo.ApplicationCore.Domains.Auth.Services;
 using EvoNaplo.ApplicationCore.Domains.Comments.Facades;
@@ -30,7 +28,6 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IRepository<UserEntity>, Repository<UserEntity>>();
 builder.Services.AddScoped<IUserFacade, UserFacade>();
 builder.Services.AddScoped<MentorService>();
-builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<UserService>();
 
@@ -49,13 +46,9 @@ builder.Services.AddScoped<IRepository<CommentEntity>, Repository<CommentEntity>
 builder.Services.AddScoped<ICommentFacade, CommentFacade>();
 builder.Services.AddScoped<CommentService>();
 
-builder.Services.AddScoped<IRepository<Attendance>, Repository<Attendance>>();
-builder.Services.AddScoped<IAttendanceFacade, AttendanceFacade>();
-builder.Services.AddScoped<AttendanceService>();
-
-builder.Services.AddScoped<IRepository<AttendanceSheet>, Repository<AttendanceSheet>>();
-builder.Services.AddScoped<IAttendanceSheetFacade, AttendanceSheetFacade>();
-builder.Services.AddScoped<AttendanceSheetService>();
+builder.Services.AddScoped<IRepository<StudentEntity>, Repository<StudentEntity>>();
+builder.Services.AddScoped<IStudentFacade, StudentFacade>();
+builder.Services.AddScoped<StudentService>();
 
 builder.Services.AddScoped<UserHelper>();
 
