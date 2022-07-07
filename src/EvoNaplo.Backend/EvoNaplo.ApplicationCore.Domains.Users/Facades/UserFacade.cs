@@ -30,9 +30,9 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
         {
             switch (roleType)
             {
-                case RoleType.Student:
-                    return _studentService.ListStudents();
-                    break;
+                //case RoleType.Student:
+                //    return _studentService.ListStudents();
+                //    break;
                 case RoleType.Mentor:
                     return await _mentorService.ListMentorsAsync();
                 case RoleType.Admin:

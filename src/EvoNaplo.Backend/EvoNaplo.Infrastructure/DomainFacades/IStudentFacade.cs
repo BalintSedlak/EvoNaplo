@@ -9,7 +9,7 @@ namespace EvoNaplo.Infrastructure.DomainFacades
 {
     public interface IStudentFacade
     {
-        List<StudentEntity> GetAllStudent();
+        IEnumerable<StudentEntity> GetAllStudent();
         StudentEntity EditStudent(StudentEntity student);
         StudentEntity GetStudentEntityById(int id);
     }
