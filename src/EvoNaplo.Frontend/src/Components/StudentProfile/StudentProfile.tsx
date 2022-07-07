@@ -10,28 +10,22 @@ import IStudent from "./IStudent";
 //https://localhost:3000/Components/StudentProfile/StudentProfile
 //props: student id
 
-interface IStudentProfile {
-  studentId: number;
-}
 
-export const StudentProfile = (
-  { session }: { session: ISession },
-  props: IStudentProfile
-) => {
+export const StudentProfile = ({ session }: { session: ISession }) => {
   const [editStudentProfile, setEditStudentProfile] = useState("1");
   const [student, setStudent] = useState<IStudent>({
     id: 0,
-    fullName: "Teszt Benő",
-    studies: "2020.09.03. - 2023.06.10.",
-    technologies: "java, javascript",
+    fullName: "",
+    studies: "",
+    technologies: "",
     scholarship: true,
-    email: "teveklub@freemail.hu",
-    phoneNumber: "+36363636363",
+    email: "",
+    phoneNumber: "",
     fbGroup: true,
     internship: false,
   });
   const [students, setStudents] = useState<Array<IStudent>>([]);
-  const [activeDropdownElementId, setActiveDropdownElementId] = useState("");
+  const [activeDropdownElementId, setActiveDropdownElementId] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:7043/api/Student/Students")
@@ -40,15 +34,29 @@ export const StudentProfile = (
   }, []);
 
   useEffect(() => {
-
-    fetch(`http://localhost:7043/api/Student/GetStudentById?id=${activeDropdownElementId}`)
-      .then((response) => response.json())
-      .then((json) => setStudent(json));
-
-  }, [activeDropdownElementId])
+    if (activeDropdownElementId > 0) {
+      fetch(`http://localhost:7043/api/Student/GetStudentById?id=${activeDropdownElementId}`)
+        .then((response) => response.json())
+        .then((json) => setStudent(json));
+    }
+    else {
+      setStudent({
+        id: 0,
+        fullName: "",
+        studies: "",
+        technologies: "",
+        scholarship: true,
+        email: "",
+        phoneNumber: "",
+        fbGroup: true,
+        internship: false,
+      })
+    }
+  }, [activeDropdownElementId, student])
 
 
   if (session.id > 0) {
+
     const buttonElements = [
       { name: "View", value: "1" },
       { name: "Edit", value: "2" },

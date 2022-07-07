@@ -44,7 +44,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
     setFbGroup(props.studentData.fbGroup);
     setScholarship(props.studentData.scholarship);
     setInternship(props.studentData.internship);
-  }, []);
+  }, [props]);
 
   const fullNameChangeHandler = (event) => {
     setFullName(event.target.value);
