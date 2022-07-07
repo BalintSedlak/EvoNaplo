@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ButtonGroup, ToggleButton } from "react-bootstrap";
+import React, { useDebugValue, useEffect, useState } from "react";
+import { ButtonGroup, Dropdown, ToggleButton } from "react-bootstrap";
 import ISession from "../../ISession";
 import { UnauthorizedModal } from "../UI/UnauthorizedModal";
 import { EditStudentProfile } from "./EditStudentProfile/EditStudentProfile";
@@ -19,10 +19,9 @@ export const StudentProfile = (
   props: IStudentProfile
 ) => {
   const [editStudentProfile, setEditStudentProfile] = useState("1");
-
   //Itt lesz a useeffect ami az id alapján lekérdezi az adatott a backend-ről
   const [student, setStudent] = useState<IStudent>({
-    id: 1,
+    id: 0,
     fullName: "Teszt Benő",
     studies: "2020.09.03. - 2023.06.10.",
     technologies: "java, javascript",
@@ -31,6 +30,27 @@ export const StudentProfile = (
     phoneNumber: "+36363636363",
     fbGroup: true,
     internship: false,
+  });
+  //const [students, setStudents] = useState<Array<IStudent>>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:7043/api/Student/Students", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Connection: "keep-alive",
+      },
+      credentials: "include",
+    })
+      .then(function (data) {
+        if (data.status === 200) {
+          console.log(data[0]);
+        } else {
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 
   if (session.id > 0) {
@@ -60,16 +80,23 @@ export const StudentProfile = (
               </ToggleButton>
             ))}
           </ButtonGroup>
+
+          <select className={classes.dropDown}>
+            <option value="">Válasz egy profilt</option>
+          </select>
         </div>
-        <div>
-          {editStudentProfile === "1" ? (
-            <ViewStudentProfile studentData={student} />
-          ) : (
-            <div>
-              <EditStudentProfile studentData={student} />
-            </div>
-          )}
-        </div>
+
+        {student.id > 0 && (
+          <div>
+            {editStudentProfile === "1" ? (
+              <ViewStudentProfile studentData={student} />
+            ) : (
+              <div>
+                <EditStudentProfile studentData={student} />
+              </div>
+            )}
+          </div>
+        )}
       </>
     );
   } else {
