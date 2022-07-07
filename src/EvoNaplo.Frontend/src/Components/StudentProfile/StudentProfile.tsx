@@ -31,7 +31,7 @@ export const StudentProfile = ({ session }: { session: ISession }) => {
     fetch("http://localhost:7043/api/Student/Students")
       .then((response) => response.json())
       .then((json) => setStudents(json));
-  }, []);
+  });
 
   useEffect(() => {
     if (activeDropdownElementId > 0) {
@@ -52,7 +52,7 @@ export const StudentProfile = ({ session }: { session: ISession }) => {
         internship: false,
       })
     }
-  }, [activeDropdownElementId, student])
+  }, [activeDropdownElementId])
 
 
   if (session.id > 0) {

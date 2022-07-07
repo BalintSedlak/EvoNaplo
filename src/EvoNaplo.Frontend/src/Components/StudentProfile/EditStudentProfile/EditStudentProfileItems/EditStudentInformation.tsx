@@ -5,6 +5,7 @@ import IStudent from "../../IStudent";
 
 interface IEditStudentInformationProps {
   studentData: IStudent;
+  onEditStudentHandler: (student: IStudent) => void;
 }
 
 export const EditStudentInformation = (props: IEditStudentInformationProps) => {
@@ -32,7 +33,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
       scholarship: scholarship,
       internship: internship
     }
-    console.log(userData);
+    props.onEditStudentHandler(userData);
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
     setFbGroup(props.studentData.fbGroup);
     setScholarship(props.studentData.scholarship);
     setInternship(props.studentData.internship);
-  }, [props]);
+  }, [props.studentData]);
 
   const fullNameChangeHandler = (event) => {
     setFullName(event.target.value);
