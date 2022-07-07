@@ -19,7 +19,6 @@ export const StudentProfile = (
   props: IStudentProfile
 ) => {
   const [editStudentProfile, setEditStudentProfile] = useState("1");
-  //Itt lesz a useeffect ami az id alapján lekérdezi az adatott a backend-ről
   const [student, setStudent] = useState<IStudent>({
     id: 0,
     fullName: "Teszt Benő",
@@ -31,27 +30,23 @@ export const StudentProfile = (
     fbGroup: true,
     internship: false,
   });
-  //const [students, setStudents] = useState<Array<IStudent>>([]);
+  const [students, setStudents] = useState<Array<IStudent>>([]);
+  const [activeDropdownElementId, setActiveDropdownElementId] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:7043/api/Student/Students", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Connection: "keep-alive",
-      },
-      credentials: "include",
-    })
-      .then(function (data) {
-        if (data.status === 200) {
-          console.log(data[0]);
-        } else {
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  });
+    fetch("http://localhost:7043/api/Student/Students")
+      .then((response) => response.json())
+      .then((json) => setStudents(json));
+  }, []);
+
+  useEffect(() => {
+
+    fetch(`http://localhost:7043/api/Student/GetStudentById?id=${activeDropdownElementId}`)
+      .then((response) => response.json())
+      .then((json) => setStudent(json));
+
+  }, [activeDropdownElementId])
+
 
   if (session.id > 0) {
     const buttonElements = [
@@ -59,7 +54,9 @@ export const StudentProfile = (
       { name: "Edit", value: "2" },
     ];
 
-    //TODO: fetch the student data from backend with the given id
+    const studentChangeHandler = (event) => {
+      setActiveDropdownElementId(event.target.value);
+    }
 
     return (
       <>
@@ -81,8 +78,12 @@ export const StudentProfile = (
             ))}
           </ButtonGroup>
 
-          <select className={classes.dropDown}>
-            <option value="">Válasz egy profilt</option>
+          <select className={classes.dropDown} onChange={studentChangeHandler}>
+            <option value="0">Válasz egy profilt</option>
+            {students.map(e =>
+              <option key={e.id} value={e.id}>{e.id} - {e.fullName}</option>
+            )
+            }
           </select>
         </div>
 
