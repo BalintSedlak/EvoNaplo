@@ -12,9 +12,9 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
         {
             _studentService = studentService;
         }
-        public StudentEntity EditStudent(StudentEntity student)
+        public async Task<StudentEntity> EditStudent(StudentEntity student)
         {
-            return _studentService.UpdateStudent(student);
+            return await _studentService.UpdateStudent(student);
         }
 
         public IEnumerable<StudentEntity> GetAllStudent()

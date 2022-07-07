@@ -23,10 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Do
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Comments", "EvoNaplo.ApplicationCore.Domains.Comments\EvoNaplo.ApplicationCore.Domains.Comments.csproj", "{5A17A651-B08D-4882-BC46-9D743C63F90E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Attendances", "EvoNaplo.ApplicationCore.Domains.Attendances\EvoNaplo.ApplicationCore.Domains.Attendances.csproj", "{688D86E0-F19B-4B76-91CB-168263170EFF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoNaplo.ApplicationCore.Domains.AttendanceSheets", "EvoNaplo.ApplicationCore.Domains.AttendanceSheets\EvoNaplo.ApplicationCore.Domains.AttendanceSheets.csproj", "{912FD20F-A352-48C8-8B1D-587F0226C003}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,14 +69,6 @@ Global
 		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{688D86E0-F19B-4B76-91CB-168263170EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{688D86E0-F19B-4B76-91CB-168263170EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{688D86E0-F19B-4B76-91CB-168263170EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{688D86E0-F19B-4B76-91CB-168263170EFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{912FD20F-A352-48C8-8B1D-587F0226C003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{912FD20F-A352-48C8-8B1D-587F0226C003}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{912FD20F-A352-48C8-8B1D-587F0226C003}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{912FD20F-A352-48C8-8B1D-587F0226C003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

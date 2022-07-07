@@ -39,11 +39,11 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Services
             return _studentRepository.GetById(id);
         }
 
-        internal StudentEntity UpdateStudent(StudentEntity updatedStudent)
+        internal async Task<StudentEntity> UpdateStudent(StudentEntity updatedStudent)
         {
             _studentRepository.Update(updatedStudent);
             var student = _studentRepository.GetById(updatedStudent.Id);
-            _studentRepository.SaveChangesAsync();
+            await _studentRepository.SaveChangesAsync();
             return student;
         }
 

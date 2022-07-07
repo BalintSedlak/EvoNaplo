@@ -29,9 +29,9 @@ namespace EvoNaplo.WebApp.Controllers
         }
 
         [HttpPut("EditStudent")]
-        public StudentEntity EditStudent(StudentEntity updatedStudent)
+        public async Task<StudentEntity> EditStudent(StudentEntity updatedStudent)
         {
-            return _studentFacade.EditStudent(updatedStudent);
+            return await _studentFacade.EditStudent(updatedStudent);
         }
     }
 }
