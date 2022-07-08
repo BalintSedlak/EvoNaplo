@@ -12,10 +12,12 @@ namespace EvoNaplo.WebApp.Controllers
     public class SessionController : ControllerBase
     {
         private readonly IAuthFacade _authFacade;
+        private readonly IUserFacade _userFacade;
 
-        public SessionController(IAuthFacade authFacade)
+        public SessionController(IAuthFacade authFacade, IUserFacade userFacade)
         {
             _authFacade = authFacade;
+            _userFacade = userFacade;
         }
 
         [HttpPost("Login")]
@@ -30,7 +32,6 @@ namespace EvoNaplo.WebApp.Controllers
 
                 Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
-                    //TODO: HELP HERE
                     HttpOnly = true,
                     SameSite = SameSiteMode.None,
                     Secure = true,
@@ -51,17 +52,53 @@ namespace EvoNaplo.WebApp.Controllers
 
         //TODO: Registration validation (i.e., check the email address is in the database already)
         [HttpPost("Registration")]
-        public void Registration([FromBody] UserViewModel user)
+        public async Task<IActionResult> Registration([FromBody] UserViewModel user)
         {
             try
             {
-                _authFacade.RegisterNewUser(user);
+                var users = await _userFacade.GetAllUser();
+                if (users.Any(u => u.Email == user.Email))
+                {
+                    return Conflict("A user with the given email already exists");
+                }
+                else
+                {
+                    _authFacade.RegisterNewUser(user);
+                    return Ok("Registered succesfully");
+                }
+
             }
             catch (ServiceException ex)
             {
                 var statuscode = StatusCode(ex.HttpStatusCode.ConvertToInt(), ex.Message);
                 Console.WriteLine(statuscode);
+                return BadRequest("Something went wrong");
             }
+        }
+
+        [HttpGet("EmailIsValid")]
+        public async Task<bool> EmailIsValidAsync(String email)
+        {
+            try
+            {
+                var users = await _userFacade.GetAllUser();
+
+                if (users.Any(u => u.Email == email))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (ServiceException ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+           
         }
 
         [HttpGet]
