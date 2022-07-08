@@ -11,6 +11,8 @@ using EvoNaplo.Infrastructure.DataAccess;
 using EvoNaplo.Infrastructure.DataAccess.Entities;
 using EvoNaplo.Infrastructure.DomainFacades;
 using EvoNaplo.Infrastructure.Helpers;
+using EvoNaplo.Infrastructure.Models.Entities;
+using EvoNaplo.Infrastructure.Models.TableConnectors;
 using EvoNaplo.WebApp.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +28,6 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IRepository<UserEntity>, Repository<UserEntity>>();
 builder.Services.AddScoped<IUserFacade, UserFacade>();
 builder.Services.AddScoped<MentorService>();
-builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<UserService>();
 
@@ -44,6 +45,10 @@ builder.Services.AddScoped<ProjectService>();
 builder.Services.AddScoped<IRepository<CommentEntity>, Repository<CommentEntity>>();
 builder.Services.AddScoped<ICommentFacade, CommentFacade>();
 builder.Services.AddScoped<CommentService>();
+
+builder.Services.AddScoped<IRepository<StudentEntity>, Repository<StudentEntity>>();
+builder.Services.AddScoped<IStudentFacade, StudentFacade>();
+builder.Services.AddScoped<StudentService>();
 
 builder.Services.AddScoped<UserHelper>();
 
