@@ -7,14 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Remove="appsettings.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="appsettings.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
 		<PackageReference Include="Mapster" Version="7.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.WebApiCompatShim" Version="2.2.0" />
