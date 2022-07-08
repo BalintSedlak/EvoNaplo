@@ -7,6 +7,7 @@ import { ViewStudentProfile } from "./ViewStudentProfile/ViewStudentProfile";
 import classes from "./StudentProfile.module.css";
 import IStudent from "./IStudent";
 
+
 //https://localhost:3000/Components/StudentProfile/StudentProfile
 //props: student id
 
