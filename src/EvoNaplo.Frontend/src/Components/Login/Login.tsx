@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css'
 
 const Login = () => {
-   
+
     const navigate = useNavigate();
 
     const onSubmit = (user: ILogin) => {
-        
+
         console.log(user);
 
         fetch('http://localhost:7043/api/Session/Login', {
@@ -23,7 +23,7 @@ const Login = () => {
             .then(function (data) {
                 if (data.status === 200) {
                     window.location.reload()
-                    navigate('/', {replace: true});
+                    navigate('/', { replace: true });
                 }
                 else {
 
@@ -32,10 +32,7 @@ const Login = () => {
             .catch(function (error) {
                 console.log(error);
             });
-
-
     }
-
 
     return (
         <>
