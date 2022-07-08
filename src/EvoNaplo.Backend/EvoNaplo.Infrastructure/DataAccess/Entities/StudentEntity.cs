@@ -6,27 +6,12 @@ namespace EvoNaplo.Infrastructure.DataAccess.Entities
     {
         [Key]
         public int Id { get; set; }
-        
         [Required]
-        public string FullName { get; set; }
-        
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
         [Required]
         public string Email { get; set; }
-        
-        [Required]
-        public string PhoneNumber {get; set; }
-
-        [Required]
-        public string Technologies { get; set; }
-
-        [Required]
-        public bool Scholarship { get; set; }
-
-        [Required]
-        public bool FbGroup { get; set; }
-
-        [Required]
-        public bool Internship { get; set; }
 
         public StudentEntity() {}
     }

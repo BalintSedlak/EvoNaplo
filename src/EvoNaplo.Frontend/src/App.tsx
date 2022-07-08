@@ -14,10 +14,7 @@ import ListStudentsView from './Prototypes/ListStudentsView/ListStudentsView';
 import AddAttendanceView from './Prototypes/AddAttendanceView/AddAttendanceView';
 import ListAttendances from './Components/ListAttendances/ListAttendances';
 import ListStudents from './Components/ListStudents/ListStudents';
-import { StudentProfile } from './Components/StudentProfile/StudentProfile';
-import ListAuthorized from './Prototypes/ListAuthorized/ListAuthorized';
-import AddStudent from './Components/StudentProfile/AddStudent/AddStudent';
-import CalendarComponent from './Prototypes/CalendarView/CalendarComponent'
+
 function App() {
 
   const [session, setSession] = useState<ISession>({
@@ -58,12 +55,8 @@ function App() {
           <Route path='/Prototypes/SemesterOpeningView' element={<SemesterOpeningView />} />
           <Route path='/Prototypes/ListStudentsView' element={<ListStudentsView />} />
           <Route path='/Prototypes/AddAttendanceView' element={<AddAttendanceView /> } />
-          <Route path='/Prototypes/ListAuthorized' element={<ListAuthorized session={session}/> } />
           <Route path='/Components/ListAttendances/ListAttendances' element={ <ListAttendances session={session}/> } />
           <Route path='/Components/ListStudents/ListStudents' element={<ListStudents session={session}/>} />
-          <Route path='/Components/StudentProfile/StudentProfile' element={<StudentProfile session={session}/>} />
-          <Route path='/Components/StudentProfile/AddStudent/AddStudent' element={<AddStudent session={session}/>} />
-          <Route path='/Prototypes/CalendarView/CalendarComponent' element={<CalendarComponent session={session}/> } />
         </Routes>
       </Container>
     </BrowserRouter>
