@@ -20,6 +20,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
     [TestFixture]
     public class UserFacadeTest
     {
+        /*
         private UserHelper _userHelper;
 
         private IUserFacade _userFacade;
@@ -121,5 +122,6 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest
             //Assert
             Assert.AreEqual(expectedNumberOfMentors, actualNumberOfMentors.Count());
         }
+        */
     }
 }
