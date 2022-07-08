@@ -24,6 +24,7 @@ export const StudentProfile = ({ session }: { session: ISession }) => {
     fbGroup: true,
     internship: false,
   });
+
   const [students, setStudents] = useState<Array<IStudent>>([]);
   const [activeDropdownElementId, setActiveDropdownElementId] = useState(0);
 

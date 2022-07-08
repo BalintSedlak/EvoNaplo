@@ -81,3 +81,9 @@
 .card {
   margin-top: 3rem;
 }
+
+.ErrorParagraph
+{
+    color: red;
+    font-size: 10px;
+}

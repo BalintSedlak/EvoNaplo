@@ -19,21 +19,34 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
   const [scholarship, setScholarship] = useState(true);
   const [internship, setInternship] = useState(true);
 
+  /*
+  const [hasError, setHasError] = useState(false);
+  const [fullNameError, setFullNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [technologiesError, setTechnologiesError] = useState(false);
+  const [fbGroupError, setFbGroupError] = useState(false);
+  const [scholarshipError, setScholarshipError] = useState(false);
+  const [internshipError, setInternshipError] = useState(false);
+*/
+
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-
-    const userData: IStudent = {
-      id: id,
-      fullName: fullName,
-      email: email,
-      phoneNumber: phoneNumber,
-      technologies: technologies,
-      studies: '',
-      fbGroup: fbGroup,
-      scholarship: scholarship,
-      internship: internship
+    if (dataChange) {
+      const userData: IStudent = {
+        id: id,
+        fullName: fullName,
+        email: email,
+        phoneNumber: phoneNumber,
+        technologies: technologies,
+        studies: "",
+        fbGroup: fbGroup,
+        scholarship: scholarship,
+        internship: internship,
+      };
+      props.onEditStudentHandler(userData);
+      setDataChange(false);
     }
-    props.onEditStudentHandler(userData);
   };
 
   useEffect(() => {
@@ -49,7 +62,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
 
   const fullNameChangeHandler = (event) => {
     setFullName(event.target.value);
-    if(event.target.value !== props.studentData.fullName){
+    if (event.target.value !== props.studentData.fullName) {
       setDataChange(true);
       return;
     }
@@ -58,7 +71,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
 
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
-    if(event.target.value !== props.studentData.email){
+    if (event.target.value !== props.studentData.email) {
       setDataChange(true);
       return;
     }
@@ -67,7 +80,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
 
   const phoneNumberChangeHandler = (event) => {
     setPhoneNumber(event.target.value);
-    if(event.target.value !== props.studentData.phoneNumber){
+    if (event.target.value !== props.studentData.phoneNumber) {
       setDataChange(true);
       return;
     }
@@ -76,7 +89,7 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
 
   const technologiesChangeHandler = (event) => {
     setTechnologies(event.target.value);
-    if(event.target.value !== props.studentData.technologies){
+    if (event.target.value !== props.studentData.technologies) {
       setDataChange(true);
       return;
     }
@@ -84,8 +97,13 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
   };
 
   const fbGroupChangeHandler = (event) => {
-    setFbGroup(event.target.value);
-    if(event.target.value !== props.studentData.fbGroup){
+    if (event.target.value === "true") {
+      setFbGroup(true);
+    } else {
+      setFbGroup(false);
+    }
+
+    if (event.target.value !== props.studentData.fbGroup) {
       setDataChange(true);
       return;
     }
@@ -93,8 +111,13 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
   };
 
   const scholarshipChangeHandler = (event) => {
-    setScholarship(event.target.value);
-    if(event.target.value !== props.studentData.scholarship){
+    if (event.target.value === "true") {
+      setScholarship(true);
+    } else {
+      setScholarship(false);
+    }
+
+    if (event.target.value !== props.studentData.scholarship) {
       setDataChange(true);
       return;
     }
@@ -102,8 +125,13 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
   };
 
   const internshipChangeHandler = (event) => {
-    setInternship(event.target.value);
-    if(event.target.value !== props.studentData.internship){
+    if (event.target.value === "true") {
+      setInternship(true);
+    } else {
+      setInternship(false);
+    }
+
+    if (event.target.value !== props.studentData.internship) {
       setDataChange(true);
       return;
     }
@@ -125,6 +153,8 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
                   type="text"
                   placeholder="Név"
                   value={fullName}
+                  minLength={3}
+                  required
                   onChange={fullNameChangeHandler}
                 />
               </div>
@@ -140,6 +170,8 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
                 <input
                   type="text"
                   placeholder="Telefonszám"
+                  minLength={3}
+                  required
                   value={phoneNumber}
                   onChange={phoneNumberChangeHandler}
                 />
@@ -149,6 +181,8 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
                   type="text"
                   placeholder="Technológiák"
                   value={technologies}
+                  minLength={3}
+                  required
                   onChange={technologiesChangeHandler}
                 />
               </div>
@@ -193,7 +227,10 @@ export const EditStudentInformation = (props: IEditStudentInformationProps) => {
                 </select>
               </div>
 
-              <input className={dataChange && classes.dataChanged} type="submit" />
+              <input
+                className={dataChange && classes.dataChanged}
+                type="submit"
+              />
             </div>
           </form>
         </Card.Body>

@@ -9,6 +9,7 @@ interface IEditStudentProfile{
 export const EditStudentProfile = (props:IEditStudentProfile) => {
 
   const handleEdit = (student: IStudent) => {
+    
     fetch("http://localhost:7043/api/Student/EditStudent", {
       mode: "cors",
       method: "PUT",
@@ -17,6 +18,7 @@ export const EditStudentProfile = (props:IEditStudentProfile) => {
     })
       .then((res) => {
         if (res.status === 200) {
+          alert(student.fullName+" successfully modified!")
         } else {
           alert("Something went wrong");
         }
