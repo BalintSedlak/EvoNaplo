@@ -17,36 +17,36 @@ let mentors: Data[] = [
     telephone: "363636363",
   },
   {
-    fullname: "Kun Géza",
-    email: "sdasd@email.com",
+    fullname: "Nehéz Károly",
+    email: "karoly@email.com",
     telephone: "363636363",
   },
   {
-    fullname: "Lo Nyál",
-    email: "sxdax@email.com",
+    fullname: "Kis István",
+    email: "istvanx@email.com",
     telephone: "363636363",
   },
   {
-    fullname: "Tron Béla",
-    email: "grgrw@email.com",
+    fullname: "Tám Béla",
+    email: "bela@email.com",
     telephone: "363636363",
   },
   {
-    fullname: "Mun Gnu",
-    email: "triv@gmail.com",
+    fullname: "Lassú Anet",
+    email: "anett@gmail.com",
     telephone: "363636363",
   },
 ];
 
 const admins: Data[] = [
   {
-    fullname: "Uku Lele",
-    email: "g31232w@email.com",
+    fullname: "Kis Géza",
+    email: "géza@email.com",
     telephone: "31242412",
   },
   {
-    fullname: "Kéla Taylor",
-    email: "wdww@email.com",
+    fullname: "Nagy István",
+    email: "istván@email.com",
     telephone: "3312321312",
   }
 ];

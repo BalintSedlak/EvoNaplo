@@ -17,7 +17,7 @@ import ListStudents from './Components/ListStudents/ListStudents';
 import { StudentProfile } from './Components/StudentProfile/StudentProfile';
 import ListAuthorized from './Prototypes/ListAuthorized/ListAuthorized';
 import AddStudent from './Components/StudentProfile/AddStudent/AddStudent';
-
+import CalendarComponent from './Prototypes/CalendarView/CalendarComponent'
 function App() {
 
   const [session, setSession] = useState<ISession>({
@@ -63,6 +63,7 @@ function App() {
           <Route path='/Components/ListStudents/ListStudents' element={<ListStudents session={session}/>} />
           <Route path='/Components/StudentProfile/StudentProfile' element={<StudentProfile session={session}/>} />
           <Route path='/Components/StudentProfile/AddStudent/AddStudent' element={<AddStudent session={session}/>} />
+          <Route path='/Prototypes/CalendarView/CalendarComponent' element={<CalendarComponent session={session}/> } />
         </Routes>
       </Container>
     </BrowserRouter>
