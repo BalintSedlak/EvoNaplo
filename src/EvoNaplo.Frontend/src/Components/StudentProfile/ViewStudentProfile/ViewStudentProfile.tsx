@@ -30,7 +30,7 @@ export const ViewStudentProfile = (props: IViewStudentProfile) => {
     setFbGroup(props.studentData.fbGroup);
     setScholarship(props.studentData.scholarship);
     setInternship(props.studentData.internship);
-  }, [props.studentData]);
+  }, [props.studentData, props.studentData.id]);
 
   return (
     <>
