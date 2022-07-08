@@ -43,11 +43,13 @@ namespace EvoNaplo.ApplicationCore.Domains.Auth.Facades
             return user;
         }
 
+
         public UserViewModel RegisterNewUser(UserViewModel userViewModel)
         {
             try
             {
                 userViewModel.Password = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password);
+                userViewModel.Role = Infrastructure.Models.Entities.RoleType.Admin;
                 _userFacade.AddUserAsync(userViewModel);
             }
             catch (Exception ex)
