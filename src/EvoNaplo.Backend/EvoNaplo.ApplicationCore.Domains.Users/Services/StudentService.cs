@@ -55,26 +55,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Services
         //    await _userRepository.SaveChangesAsync();
         //}
 
-        //public IEnumerable<UserDTO> ListStudents()
-        //{
-        //    var mostRecentSmesterId = _userRepository.Semesters.Max(semester => semester.Id);
-        //    var UsersOnSemester = _userRepository.UsersOnSemester.Where(usersOnSemester => usersOnSemester.SemesterId == mostRecentSmesterId);
-        //    var students = _userRepository.Users.Where(m => m.Role == RoleType.Student);
-        //    List<UserDTO> result = new List<UserDTO>();
-        //    foreach (var student in students)
-        //    {
-        //        if (UsersOnSemester.Any(usersOnSemester => usersOnSemester.UserId == student.Id))
-        //        {
-        //            result.Add(new UserDTO(student, true));
-        //        }
-        //        else
-        //        {
-        //            result.Add(new UserDTO(student, false));
-        //        }
-        //    }
-        //    return result;
-        //}
-
+       
         //public async Task<IEnumerable<User>> EditStudent(int id, StudentDto studentDto)
         //{
         //    _logger.LogInformation($"{id} ID-vel rendelkező diák keresése");
