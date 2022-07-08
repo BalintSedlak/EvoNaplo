@@ -59,7 +59,7 @@ namespace EvoNaplo.ApplicationCore.Domains.Users.Facades
 
             result.AddRange(await GetAllUserFromRoleTypeAsync(RoleType.Admin));
             result.AddRange(await GetAllUserFromRoleTypeAsync(RoleType.Mentor));
-            result.AddRange(await GetAllUserFromRoleTypeAsync(RoleType.Student));
+            //result.AddRange(await GetAllUserFromRoleTypeAsync(RoleType.Student));
 
             return result.AsQueryable();
         }
