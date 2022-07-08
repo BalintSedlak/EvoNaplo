@@ -26,7 +26,7 @@ const Login = () => {
                     navigate('/', {replace: true});
                 }
                 else {
-
+                    alert("Something went wrong")
                 }
             })
             .catch(function (error) {
