@@ -27,6 +27,12 @@ const ListAttendancesLink = (id: number) => {
     }
 }
 
+const StudentsProfileLink = (id: number) => {
+    if (id > 0) {
+        return <Nav.Link href="/Components/StudentProfile/StudentProfile">Students</Nav.Link>
+    }
+}
+
 const ListStudentsLink = (id: number) => {
     if (id > 0) {
         return <Nav.Link href="/Components/ListStudents/ListStudents">ListStudents</Nav.Link>
@@ -42,7 +48,7 @@ const AddAttendanceViewLink = (id: number) => {
 
 const ListAuthorizedLink = (id: number) => {
     if (id > 0) {
-        return <Nav.Link href="/Prototypes/ListAuthorized">ListAuthorized</Nav.Link>
+        return <NavDropdown.Item href="/Prototypes/ListAuthorized">ListAuthorized</NavDropdown.Item>
     }
 }
 
@@ -96,7 +102,7 @@ export default function NavMenu({ session }: { session: ISession }) {
                         {RegistrationLink(session.id)}
                         {ListAttendancesLink(session.id)}
                         {ListStudentsLink(session.id)}
-                        {AddStudentLink(session.id)}
+                        {StudentsProfileLink(session.id)}
                         {session.id > 0 && <NavDropdown title="Prototypes" id="basic-nav-dropdown">
                             {SemesterOpeningLink(session.id)}
                             <NavDropdown.Divider />

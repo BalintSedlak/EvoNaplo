@@ -84,11 +84,24 @@ namespace EvoNaplo.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<bool>("FbGroup")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
+                    b.Property<bool>("Internship")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Scholarship")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Technologies")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -46,7 +46,7 @@ interface Data {
 
 const data: Data[] = [
   {
-    name: "Kis Béla",
+    name: "Kis István",
     semester: "2022/1",
     project: "EvoNaplo",
     date: "1. Hét - 2022.05.01.- 2022.05.08.",
@@ -54,15 +54,7 @@ const data: Data[] = [
     id: '1'
   },
   {
-    name: "Kis Béla",
-    semester: "2022/1",
-    project: "EvoNaplo",
-    date: "1. Hét - 2022.05.01.- 2022.05.08.",
-    status: "online",
-    id: '1'
-  },
-  {
-    name: "Nagy Béla",
+    name: "Kis István",
     semester: "2022/1",
     project: "EvoNaplo",
     date: "2. Hét - 2022.05.01.- 2022.05.08.",
@@ -70,7 +62,47 @@ const data: Data[] = [
     id: '1'
   },
   {
+    name: "Kis István",
+    semester: "2022/1",
+    project: "EvoNaplo",
+    date: "3. Hét - 2022.05.08.- 2022.05.15.",
+    status: "online",
+    id: '1'
+  },
+  {
     name: "Kis Béla",
+    semester: "2022/1",
+    project: "EvoNaplo",
+    date: "1. Hét - 2022.05.15.- 2022.05.22.",
+    status: "online",
+    id: '1'
+  },
+  {
+    name: "Nagy Antal",
+    semester: "2022/1",
+    project: "EvoNaplo",
+    date: "2. Hét - 2022.05.01.- 2022.05.08.",
+    status: "online",
+    id: '1'
+  },
+  {
+    name: "Nagy Antal",
+    semester: "2022/2",
+    project: "EvoNaplo",
+    date: "1. Hét - 2022.05.01.- 2022.05.08.",
+    status: "online",
+    id: '1'
+  },
+  {
+    name: "Nagy Antal",
+    semester: "2022/2",
+    project: "EvoNaplo",
+    date: "2. Hét - 2022.05.08.- 2022.05.15.",
+    status: "online",
+    id: '1'
+  },
+  {
+    name: "Kis Miklós",
     semester: "2021/1",
     project: "EvoNaplo",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",
@@ -78,7 +110,7 @@ const data: Data[] = [
     id: '1'
   },
   {
-    name: "Kis Béla",
+    name: "Kis Géza",
     semester: "2021/1",
     project: "EvoRPG",
     date: "3. Hét - 2022.05.01.- 2022.05.08.",

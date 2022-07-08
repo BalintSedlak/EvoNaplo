@@ -1,0 +1,89 @@
+.formElements {
+  margin: 0.7rem 2rem;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.formElements input[type="text"] {
+  margin-left: 2rem;
+  padding-left: 0rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(151, 151, 197);
+  width: 50%;
+}
+
+.formElements input[type="email"] {
+  margin-left: 2rem;
+  padding-left: 0rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(151, 151, 197);
+  width: 50%;
+}
+
+.formElements select {
+  margin-left: 2rem;
+  padding-left: 0rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(151, 151, 197);
+  width: 50%;
+}
+
+.formElements input[type="text"]:focus {
+  border-color: green;
+}
+
+.formElements input[type="email"]:focus {
+  border-color: green;
+}
+
+.formElements select:focus {
+  border-color: green;
+}
+
+.formElement input {
+  text-align: center;
+  margin: 0.8rem 0;
+}
+
+.formElement label {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  text-align: center;
+}
+
+.formElements input[type="submit"] {
+  margin: 2rem 0;
+  box-shadow: inset 0px 1px 0px 0px #caefab;
+  background: linear-gradient(to bottom, #d3d837 5%, #b4b667 100%);
+  background-color: #b4b667;
+  border-radius: 6px;
+  border: 1px solid #268a16;
+  display: inline-block;
+  cursor: pointer;
+  color: #f8f9fa;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #aade7c;
+  width: 100%;
+}
+
+.formElements input[type="submit"].dataChanged {
+  background: linear-gradient(to bottom, #caac28 15%, #ebad03 100%);
+  background-color: #ebad03;
+  border: 1px solid #ebad03;
+  color: #f8f9fa;
+  font-weight: 800;
+}
+
+.card {
+  margin-top: 3rem;
+}
+
+.ErrorParagraph
+{
+    color: red;
+    font-size: 10px;
+}
