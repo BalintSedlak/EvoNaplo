@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IRegistration } from "./IRegistration";
 import classes from './RegistrationForm.module.css'
@@ -13,17 +12,6 @@ export const RegistrationForm = (props) => {
     getValues,
     formState: { errors }
   } = useForm<IRegistration>();
-
-
-  const [emailExists, setEmailExists] = useState(false);
-
-
-  useEffect(() => {
-    fetch('http://localhost:7043/api/Session/EmailIsValid?email=' + watch("email"))
-      .then(response => response.json())
-      .then(json => setEmailExists(json))
-  }, [watch('email')])
-
 
   const onSubmit = (data: IRegistration) => {
     props.onRegistration(data);
@@ -86,8 +74,8 @@ export const RegistrationForm = (props) => {
             required: true,
             maxLength: 50,
             minLength: 3,
-            pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-            validate: value => emailExists === true
+            pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
+            //email already in database
           })}
           placeholder="example@mail.com"
         />
@@ -99,10 +87,8 @@ export const RegistrationForm = (props) => {
           <p className={classes.ErrorParagraph}>Email cannot exceed 50 characters</p>
         )}
         {errors?.email?.type === "pattern" && (
-          <p className={classes.ErrorParagraph}>Not good email format</p>
+          <p className={classes.ErrorParagraph}>Not good email address</p>
         )}
-        {/*errors?.email?.type === "validate" &&  <p className={classes.ErrorParagraph}>Email is already in the database</p>*/}
-        {!emailExists &&  <p className={classes.ErrorParagraph}>Email is already in the database</p>}
 
         <label>Password</label>
         <input
