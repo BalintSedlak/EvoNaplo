@@ -53,7 +53,7 @@ export const StudentProfile = ({ session }: { session: ISession }) => {
         internship: false,
       });
     }
-  }, [activeDropdownElementId]);
+  }, [activeDropdownElementId, editStudentProfile]);
 
   if (session.id > 0) {
     const buttonElements = [
