@@ -3,8 +3,8 @@ import React from 'react'
 const options = [
     { value: '', label: 'All' },
     { value: '2021/1', label: '2021/1' },
+    { value: '2021/2', label: '2021/2' },
     { value: '2022/1', label: '2022/1' },
-    { value: '2022/2', label: '2022/2' },
 ]
 
 export const ListAttendancesSemesterFilter = ({ column }) => {

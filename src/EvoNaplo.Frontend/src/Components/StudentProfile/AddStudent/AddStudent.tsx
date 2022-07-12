@@ -16,10 +16,9 @@ const AddStudent = ({ session }: { session: ISession }) => {
     <div className={classes.AddStudentCard}>
       <h1 className={classes.headerText}>Diák hozzáadás</h1>
       <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
-        <label>
-          <tr>
-            <th>Név</th>
-          </tr>
+        <div>
+          <label>Név</label>
+
           <input
             type="text"
             {...register("fullname", {
@@ -30,9 +29,9 @@ const AddStudent = ({ session }: { session: ISession }) => {
           {errors?.fullname?.type === "required" && (
             <p className={classes.ErrorParagraph}>This field is required</p>
           )}
-          <tr>
-            <th>Tanulmányok</th>
-          </tr>
+
+          <label>Tanulmányok</label>
+
           <input
             type="text"
             {...register("studies", {
@@ -43,9 +42,9 @@ const AddStudent = ({ session }: { session: ISession }) => {
           {errors?.studies?.type === "required" && (
             <p className={classes.ErrorParagraph}>This field is required</p>
           )}
-          <tr>
-            <th>Technológiák</th>
-          </tr>
+
+          <label>Technológiák</label>
+
           <input
             type="text"
             {...register("technology", { required: true })}
@@ -54,9 +53,9 @@ const AddStudent = ({ session }: { session: ISession }) => {
           {errors?.technology?.type === "required" && (
             <p className={classes.ErrorParagraph}>This field is required</p>
           )}
-          <tr>
-            <th>Csapat</th>
-          </tr>
+
+          <label>Csapat</label>
+
           <select
             className={classes.SelectTeam}
             {...register("team", { required: true })}
@@ -72,9 +71,9 @@ const AddStudent = ({ session }: { session: ISession }) => {
           {errors?.team?.type === "required" && (
             <p className={classes.ErrorParagraph}>This field is required</p>
           )}
-          <tr>
-            <th>Email</th>
-          </tr>
+
+          <label>Email</label>
+
           <input
             type="text"
             {...register("email", {
@@ -89,9 +88,9 @@ const AddStudent = ({ session }: { session: ISession }) => {
           {errors?.email?.type === "pattern" && (
             <p className={classes.ErrorParagraph}>Nem megfelelő e-mail cím.</p>
           )}
-          <tr>
-            <th>Telefonszám</th>
-          </tr>
+
+          <label>Telefonszám</label>
+
           <input
             type="text"
             {...register("phone", {
@@ -110,10 +109,14 @@ const AddStudent = ({ session }: { session: ISession }) => {
             </p>
           )}
           {data}
-        </label>
-        <div>
-            <th>Hozzáadás a mostani szemeszterhez <input className="m-0" type="checkbox" value="true" /></th> 
+
+          <div>
+            <th>
+              Hozzáadás a mostani szemeszterhez{" "}
+              <input className="m-0" type="checkbox" value="true" />
+            </th>
           </div>
+        </div>
         <input type="submit" value="Submit" />
       </form>
     </div>

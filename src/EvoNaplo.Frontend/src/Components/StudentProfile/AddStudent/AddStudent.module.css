@@ -41,6 +41,7 @@ select.SelectTeam {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .AddStudentCard input[type="submit"] {
@@ -77,9 +78,13 @@ select.SelectTeam {
   user-select: none;
 }
 
-.container input {
-  position: absolute;
-  opacity: 0;
+.AddStudentCard input {
+  max-width: 450px;
+  cursor: pointer;
+}
+
+.AddStudentCard select {
+  max-width: 450px;
   cursor: pointer;
 }
 
