@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.WebApp", "EvoNaplo.WebApp\EvoNaplo.WebApp.csproj", "{291B5F8A-0874-446A-BE93-D8DAB80C9510}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest", "EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest\EvoNaplo.ApplicationCore.Domains.Users.IntegrationTest.csproj", "{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.TestHelper", "EvoNaplo.TestHelper\EvoNaplo.TestHelper.csproj", "{E78E5F54-A7C8-4062-9561-132A8C5DCEBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Users", "EvoNaplo.ApplicationCore.Domains.Users\EvoNaplo.ApplicationCore.Domains.Users.csproj", "{34D11B5D-93D5-40D6-A04A-DAAACF24F862}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Infrastructure", "EvoNaplo.Infrastructure\EvoNaplo.Infrastructure.csproj", "{02F1B3EF-A43C-40A7-9083-1102F73E289E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.Infrastructure.UnitTest", "EvoNaplo.Infrastructure.UnitTest\EvoNaplo.Infrastructure.UnitTest.csproj", "{8F20896F-72A2-44AA-81DA-7358993D9948}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Auth", "EvoNaplo.ApplicationCore.Domains.Auth\EvoNaplo.ApplicationCore.Domains.Auth.csproj", "{6F5531D8-35B8-49A8-8600-71CFF0B80297}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Semesters", "EvoNaplo.ApplicationCore.Domains.Semesters\EvoNaplo.ApplicationCore.Domains.Semesters.csproj", "{3C12E9E8-C3D0-4704-AE6F-A811A320F297}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Projects", "EvoNaplo.ApplicationCore.Domains.Projects\EvoNaplo.ApplicationCore.Domains.Projects.csproj", "{26D725AE-9E97-4DAC-9964-69DD987AD5CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvoNaplo.ApplicationCore.Domains.Comments", "EvoNaplo.ApplicationCore.Domains.Comments\EvoNaplo.ApplicationCore.Domains.Comments.csproj", "{5A17A651-B08D-4882-BC46-9D743C63F90E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{291B5F8A-0874-446A-BE93-D8DAB80C9510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291B5F8A-0874-446A-BE93-D8DAB80C9510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291B5F8A-0874-446A-BE93-D8DAB80C9510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291B5F8A-0874-446A-BE93-D8DAB80C9510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF52655-C8ED-4C6D-B4DB-C29BC3B1348F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E78E5F54-A7C8-4062-9561-132A8C5DCEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78E5F54-A7C8-4062-9561-132A8C5DCEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78E5F54-A7C8-4062-9561-132A8C5DCEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78E5F54-A7C8-4062-9561-132A8C5DCEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D11B5D-93D5-40D6-A04A-DAAACF24F862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D11B5D-93D5-40D6-A04A-DAAACF24F862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D11B5D-93D5-40D6-A04A-DAAACF24F862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D11B5D-93D5-40D6-A04A-DAAACF24F862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F1B3EF-A43C-40A7-9083-1102F73E289E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F20896F-72A2-44AA-81DA-7358993D9948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5531D8-35B8-49A8-8600-71CFF0B80297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C12E9E8-C3D0-4704-AE6F-A811A320F297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C12E9E8-C3D0-4704-AE6F-A811A320F297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C12E9E8-C3D0-4704-AE6F-A811A320F297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C12E9E8-C3D0-4704-AE6F-A811A320F297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D725AE-9E97-4DAC-9964-69DD987AD5CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A17A651-B08D-4882-BC46-9D743C63F90E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7428AA98-D7D3-4DCE-9874-2269146CDDD9}
+	EndGlobalSection
+EndGlobal

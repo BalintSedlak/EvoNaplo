@@ -1,0 +1,12 @@
+.roleTable td,
+.roleTable th {
+    border: 2px solid #ddd;
+    padding: 0.5rem;
+    width: 600px;
+}
+
+.base {
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+}
